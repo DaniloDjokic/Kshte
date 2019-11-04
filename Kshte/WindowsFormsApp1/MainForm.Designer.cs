@@ -30,24 +30,24 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.TablesTabPage = new System.Windows.Forms.TabPage();
-            this.ActiveTables = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ActiveTransactionsListBox = new System.Windows.Forms.ListBox();
+            this.UpstairsGroupBox = new System.Windows.Forms.GroupBox();
+            this.table11btn = new System.Windows.Forms.Button();
+            this.table12btn = new System.Windows.Forms.Button();
+            this.table14btn = new System.Windows.Forms.Button();
+            this.SideRoomGroupBox = new System.Windows.Forms.GroupBox();
+            this.table8btn = new System.Windows.Forms.Button();
+            this.table9btn = new System.Windows.Forms.Button();
+            this.table10btn = new System.Windows.Forms.Button();
+            this.MainRoomGroupBox = new System.Windows.Forms.GroupBox();
+            this.table5btn = new System.Windows.Forms.Button();
+            this.table6btn = new System.Windows.Forms.Button();
+            this.table4btn = new System.Windows.Forms.Button();
+            this.table3btn = new System.Windows.Forms.Button();
+            this.table2btn = new System.Windows.Forms.Button();
+            this.table1btn = new System.Windows.Forms.Button();
+            this.table0btn = new System.Windows.Forms.Button();
+            this.table7btn = new System.Windows.Forms.Button();
             this.AdminTabPage = new System.Windows.Forms.TabPage();
             this.button21 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -63,9 +63,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TabControl.SuspendLayout();
             this.TablesTabPage.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.UpstairsGroupBox.SuspendLayout();
+            this.SideRoomGroupBox.SuspendLayout();
+            this.MainRoomGroupBox.SuspendLayout();
             this.AdminTabPage.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.HistoryTabPage.SuspendLayout();
@@ -86,10 +86,10 @@
             // TablesTabPage
             // 
             this.TablesTabPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.TablesTabPage.Controls.Add(this.ActiveTables);
-            this.TablesTabPage.Controls.Add(this.groupBox3);
-            this.TablesTabPage.Controls.Add(this.groupBox2);
-            this.TablesTabPage.Controls.Add(this.groupBox1);
+            this.TablesTabPage.Controls.Add(this.ActiveTransactionsListBox);
+            this.TablesTabPage.Controls.Add(this.UpstairsGroupBox);
+            this.TablesTabPage.Controls.Add(this.SideRoomGroupBox);
+            this.TablesTabPage.Controls.Add(this.MainRoomGroupBox);
             this.TablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.TablesTabPage.Name = "TablesTabPage";
             this.TablesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -97,194 +97,196 @@
             this.TablesTabPage.TabIndex = 0;
             this.TablesTabPage.Text = "Tables";
             // 
-            // ActiveTables
+            // ActiveTransactionsListBox
             // 
-            this.ActiveTables.FormattingEnabled = true;
-            this.ActiveTables.Location = new System.Drawing.Point(715, 6);
-            this.ActiveTables.Name = "ActiveTables";
-            this.ActiveTables.Size = new System.Drawing.Size(182, 394);
-            this.ActiveTables.TabIndex = 3;
+            this.ActiveTransactionsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActiveTransactionsListBox.FormattingEnabled = true;
+            this.ActiveTransactionsListBox.ItemHeight = 24;
+            this.ActiveTransactionsListBox.Location = new System.Drawing.Point(715, 6);
+            this.ActiveTransactionsListBox.Name = "ActiveTransactionsListBox";
+            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(182, 388);
+            this.ActiveTransactionsListBox.TabIndex = 3;
             // 
-            // groupBox3
+            // UpstairsGroupBox
             // 
-            this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.button13);
-            this.groupBox3.Controls.Add(this.button14);
-            this.groupBox3.Location = new System.Drawing.Point(356, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(353, 180);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Upstairs";
+            this.UpstairsGroupBox.Controls.Add(this.table11btn);
+            this.UpstairsGroupBox.Controls.Add(this.table12btn);
+            this.UpstairsGroupBox.Controls.Add(this.table14btn);
+            this.UpstairsGroupBox.Location = new System.Drawing.Point(356, 6);
+            this.UpstairsGroupBox.Name = "UpstairsGroupBox";
+            this.UpstairsGroupBox.Size = new System.Drawing.Size(353, 180);
+            this.UpstairsGroupBox.TabIndex = 2;
+            this.UpstairsGroupBox.TabStop = false;
+            this.UpstairsGroupBox.Text = "Upstairs";
             // 
-            // button12
+            // table11btn
             // 
-            this.button12.BackColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(6, 129);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(62, 45);
-            this.button12.TabIndex = 13;
-            this.button12.Text = "11";
-            this.button12.UseVisualStyleBackColor = false;
+            this.table11btn.BackColor = System.Drawing.Color.White;
+            this.table11btn.Location = new System.Drawing.Point(6, 129);
+            this.table11btn.Name = "table11btn";
+            this.table11btn.Size = new System.Drawing.Size(62, 45);
+            this.table11btn.TabIndex = 13;
+            this.table11btn.Text = "11";
+            this.table11btn.UseVisualStyleBackColor = false;
             // 
-            // button13
+            // table12btn
             // 
-            this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(285, 129);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(62, 45);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "12";
-            this.button13.UseVisualStyleBackColor = false;
+            this.table12btn.BackColor = System.Drawing.Color.White;
+            this.table12btn.Location = new System.Drawing.Point(285, 129);
+            this.table12btn.Name = "table12btn";
+            this.table12btn.Size = new System.Drawing.Size(62, 45);
+            this.table12btn.TabIndex = 12;
+            this.table12btn.Text = "12";
+            this.table12btn.UseVisualStyleBackColor = false;
             // 
-            // button14
+            // table14btn
             // 
-            this.button14.BackColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(285, 10);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(62, 45);
-            this.button14.TabIndex = 11;
-            this.button14.Text = "13";
-            this.button14.UseVisualStyleBackColor = false;
+            this.table14btn.BackColor = System.Drawing.Color.White;
+            this.table14btn.Location = new System.Drawing.Point(285, 10);
+            this.table14btn.Name = "table14btn";
+            this.table14btn.Size = new System.Drawing.Size(62, 45);
+            this.table14btn.TabIndex = 11;
+            this.table14btn.Text = "13";
+            this.table14btn.UseVisualStyleBackColor = false;
             // 
-            // groupBox2
+            // SideRoomGroupBox
             // 
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Location = new System.Drawing.Point(356, 192);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(353, 208);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Side room";
+            this.SideRoomGroupBox.Controls.Add(this.table8btn);
+            this.SideRoomGroupBox.Controls.Add(this.table9btn);
+            this.SideRoomGroupBox.Controls.Add(this.table10btn);
+            this.SideRoomGroupBox.Location = new System.Drawing.Point(356, 192);
+            this.SideRoomGroupBox.Name = "SideRoomGroupBox";
+            this.SideRoomGroupBox.Size = new System.Drawing.Size(353, 208);
+            this.SideRoomGroupBox.TabIndex = 1;
+            this.SideRoomGroupBox.TabStop = false;
+            this.SideRoomGroupBox.Text = "Side room";
             // 
-            // button11
+            // table8btn
             // 
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(6, 157);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(62, 45);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "8";
-            this.button11.UseVisualStyleBackColor = false;
+            this.table8btn.BackColor = System.Drawing.Color.White;
+            this.table8btn.Location = new System.Drawing.Point(6, 157);
+            this.table8btn.Name = "table8btn";
+            this.table8btn.Size = new System.Drawing.Size(62, 45);
+            this.table8btn.TabIndex = 10;
+            this.table8btn.Text = "8";
+            this.table8btn.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // table9btn
             // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(285, 157);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(62, 45);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "9";
-            this.button10.UseVisualStyleBackColor = false;
+            this.table9btn.BackColor = System.Drawing.Color.White;
+            this.table9btn.Location = new System.Drawing.Point(285, 157);
+            this.table9btn.Name = "table9btn";
+            this.table9btn.Size = new System.Drawing.Size(62, 45);
+            this.table9btn.TabIndex = 9;
+            this.table9btn.Text = "9";
+            this.table9btn.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // table10btn
             // 
-            this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(285, 19);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(62, 45);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "10";
-            this.button9.UseVisualStyleBackColor = false;
+            this.table10btn.BackColor = System.Drawing.Color.White;
+            this.table10btn.Location = new System.Drawing.Point(285, 19);
+            this.table10btn.Name = "table10btn";
+            this.table10btn.Size = new System.Drawing.Size(62, 45);
+            this.table10btn.TabIndex = 8;
+            this.table10btn.Text = "10";
+            this.table10btn.UseVisualStyleBackColor = false;
             // 
-            // groupBox1
+            // MainRoomGroupBox
             // 
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(344, 394);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Main room";
+            this.MainRoomGroupBox.Controls.Add(this.table5btn);
+            this.MainRoomGroupBox.Controls.Add(this.table6btn);
+            this.MainRoomGroupBox.Controls.Add(this.table4btn);
+            this.MainRoomGroupBox.Controls.Add(this.table3btn);
+            this.MainRoomGroupBox.Controls.Add(this.table2btn);
+            this.MainRoomGroupBox.Controls.Add(this.table1btn);
+            this.MainRoomGroupBox.Controls.Add(this.table0btn);
+            this.MainRoomGroupBox.Controls.Add(this.table7btn);
+            this.MainRoomGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.MainRoomGroupBox.Name = "MainRoomGroupBox";
+            this.MainRoomGroupBox.Size = new System.Drawing.Size(344, 394);
+            this.MainRoomGroupBox.TabIndex = 0;
+            this.MainRoomGroupBox.TabStop = false;
+            this.MainRoomGroupBox.Text = "Main room";
             // 
-            // button8
+            // table5btn
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(234, 286);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(62, 45);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "5";
-            this.button8.UseVisualStyleBackColor = false;
+            this.table5btn.BackColor = System.Drawing.Color.White;
+            this.table5btn.Location = new System.Drawing.Point(234, 286);
+            this.table5btn.Name = "table5btn";
+            this.table5btn.Size = new System.Drawing.Size(62, 45);
+            this.table5btn.TabIndex = 7;
+            this.table5btn.Text = "5";
+            this.table5btn.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // table6btn
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(234, 186);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(62, 45);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "6";
-            this.button7.UseVisualStyleBackColor = false;
+            this.table6btn.BackColor = System.Drawing.Color.White;
+            this.table6btn.Location = new System.Drawing.Point(234, 186);
+            this.table6btn.Name = "table6btn";
+            this.table6btn.Size = new System.Drawing.Size(62, 45);
+            this.table6btn.TabIndex = 6;
+            this.table6btn.Text = "6";
+            this.table6btn.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // table4btn
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(122, 343);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(62, 45);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "4";
-            this.button6.UseVisualStyleBackColor = false;
+            this.table4btn.BackColor = System.Drawing.Color.White;
+            this.table4btn.Location = new System.Drawing.Point(122, 343);
+            this.table4btn.Name = "table4btn";
+            this.table4btn.Size = new System.Drawing.Size(62, 45);
+            this.table4btn.TabIndex = 5;
+            this.table4btn.Text = "4";
+            this.table4btn.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // table3btn
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(6, 286);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(62, 45);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "3";
-            this.button5.UseVisualStyleBackColor = false;
+            this.table3btn.BackColor = System.Drawing.Color.White;
+            this.table3btn.Location = new System.Drawing.Point(6, 286);
+            this.table3btn.Name = "table3btn";
+            this.table3btn.Size = new System.Drawing.Size(62, 45);
+            this.table3btn.TabIndex = 4;
+            this.table3btn.Text = "3";
+            this.table3btn.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // table2btn
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(6, 186);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(62, 45);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "2";
-            this.button4.UseVisualStyleBackColor = false;
+            this.table2btn.BackColor = System.Drawing.Color.White;
+            this.table2btn.Location = new System.Drawing.Point(6, 186);
+            this.table2btn.Name = "table2btn";
+            this.table2btn.Size = new System.Drawing.Size(62, 45);
+            this.table2btn.TabIndex = 3;
+            this.table2btn.Text = "2";
+            this.table2btn.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // table1btn
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(6, 81);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(62, 45);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "1";
-            this.button3.UseVisualStyleBackColor = false;
+            this.table1btn.BackColor = System.Drawing.Color.White;
+            this.table1btn.Location = new System.Drawing.Point(6, 81);
+            this.table1btn.Name = "table1btn";
+            this.table1btn.Size = new System.Drawing.Size(62, 45);
+            this.table1btn.TabIndex = 2;
+            this.table1btn.Text = "1";
+            this.table1btn.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // table0btn
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(122, 81);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 45);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "0";
-            this.button2.UseVisualStyleBackColor = false;
+            this.table0btn.BackColor = System.Drawing.Color.White;
+            this.table0btn.Location = new System.Drawing.Point(122, 81);
+            this.table0btn.Name = "table0btn";
+            this.table0btn.Size = new System.Drawing.Size(62, 45);
+            this.table0btn.TabIndex = 1;
+            this.table0btn.Text = "0";
+            this.table0btn.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // table7btn
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(299, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 116);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "7";
-            this.button1.UseVisualStyleBackColor = false;
+            this.table7btn.BackColor = System.Drawing.Color.White;
+            this.table7btn.Location = new System.Drawing.Point(299, 10);
+            this.table7btn.Name = "table7btn";
+            this.table7btn.Size = new System.Drawing.Size(39, 116);
+            this.table7btn.TabIndex = 0;
+            this.table7btn.Text = "7";
+            this.table7btn.UseVisualStyleBackColor = false;
             // 
             // AdminTabPage
             // 
@@ -423,9 +425,9 @@
             this.Text = "Form1";
             this.TabControl.ResumeLayout(false);
             this.TablesTabPage.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.UpstairsGroupBox.ResumeLayout(false);
+            this.SideRoomGroupBox.ResumeLayout(false);
+            this.MainRoomGroupBox.ResumeLayout(false);
             this.AdminTabPage.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.HistoryTabPage.ResumeLayout(false);
@@ -438,25 +440,25 @@
 
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage TablesTabPage;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox UpstairsGroupBox;
+        private System.Windows.Forms.GroupBox SideRoomGroupBox;
+        private System.Windows.Forms.GroupBox MainRoomGroupBox;
         private System.Windows.Forms.TabPage AdminTabPage;
         private System.Windows.Forms.TabPage HistoryTabPage;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button table11btn;
+        private System.Windows.Forms.Button table12btn;
+        private System.Windows.Forms.Button table14btn;
+        private System.Windows.Forms.Button table8btn;
+        private System.Windows.Forms.Button table9btn;
+        private System.Windows.Forms.Button table10btn;
+        private System.Windows.Forms.Button table5btn;
+        private System.Windows.Forms.Button table6btn;
+        private System.Windows.Forms.Button table4btn;
+        private System.Windows.Forms.Button table3btn;
+        private System.Windows.Forms.Button table2btn;
+        private System.Windows.Forms.Button table1btn;
+        private System.Windows.Forms.Button table0btn;
+        private System.Windows.Forms.Button table7btn;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
@@ -464,7 +466,7 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.ListBox ActiveTables;
+        private System.Windows.Forms.ListBox ActiveTransactionsListBox;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.ListBox listBox1;
