@@ -29,144 +29,170 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.allArticlesListBox = new System.Windows.Forms.ListView();
+            this.hranaBtn = new System.Windows.Forms.Button();
+            this.miscBtn = new System.Windows.Forms.Button();
+            this.zestinaBtn = new System.Windows.Forms.Button();
+            this.topliNapiciBtn = new System.Windows.Forms.Button();
+            this.pivoBtn = new System.Windows.Forms.Button();
+            this.sokoviBtn = new System.Windows.Forms.Button();
+            this.activeArticlesListBox = new System.Windows.Forms.ListView();
+            this.payAllBtn = new System.Windows.Forms.Button();
+            this.deleteOrderBtn = new System.Windows.Forms.Button();
+            this.backBtn = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listView2);
-            this.groupBox4.Controls.Add(this.button20);
-            this.groupBox4.Controls.Add(this.button19);
-            this.groupBox4.Controls.Add(this.button18);
-            this.groupBox4.Controls.Add(this.button17);
-            this.groupBox4.Controls.Add(this.button16);
-            this.groupBox4.Controls.Add(this.button15);
-            this.groupBox4.Location = new System.Drawing.Point(12, 65);
+            this.groupBox4.Controls.Add(this.allArticlesListBox);
+            this.groupBox4.Controls.Add(this.hranaBtn);
+            this.groupBox4.Controls.Add(this.miscBtn);
+            this.groupBox4.Controls.Add(this.zestinaBtn);
+            this.groupBox4.Controls.Add(this.topliNapiciBtn);
+            this.groupBox4.Controls.Add(this.pivoBtn);
+            this.groupBox4.Controls.Add(this.sokoviBtn);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(16, 80);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(415, 243);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(553, 299);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Categories";
             // 
-            // button20
+            // allArticlesListBox
             // 
-            this.button20.Location = new System.Drawing.Point(331, 172);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(78, 65);
-            this.button20.TabIndex = 5;
-            this.button20.Text = "Hrana";
-            this.button20.UseVisualStyleBackColor = true;
+            this.allArticlesListBox.Location = new System.Drawing.Point(-3, 1);
+            this.allArticlesListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.allArticlesListBox.Name = "allArticlesListBox";
+            this.allArticlesListBox.Size = new System.Drawing.Size(571, 373);
+            this.allArticlesListBox.TabIndex = 6;
+            this.allArticlesListBox.UseCompatibleStateImageBehavior = false;
+            this.allArticlesListBox.Visible = false;
             // 
-            // button19
+            // hranaBtn
             // 
-            this.button19.Location = new System.Drawing.Point(163, 172);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(78, 65);
-            this.button19.TabIndex = 4;
-            this.button19.Text = "Misc";
-            this.button19.UseVisualStyleBackColor = true;
+            this.hranaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hranaBtn.Location = new System.Drawing.Point(441, 212);
+            this.hranaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.hranaBtn.Name = "hranaBtn";
+            this.hranaBtn.Size = new System.Drawing.Size(104, 80);
+            this.hranaBtn.TabIndex = 5;
+            this.hranaBtn.Text = "Hrana";
+            this.hranaBtn.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // miscBtn
             // 
-            this.button18.Location = new System.Drawing.Point(6, 172);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(78, 65);
-            this.button18.TabIndex = 3;
-            this.button18.Text = "Zestina";
-            this.button18.UseVisualStyleBackColor = true;
+            this.miscBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miscBtn.Location = new System.Drawing.Point(217, 212);
+            this.miscBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.miscBtn.Name = "miscBtn";
+            this.miscBtn.Size = new System.Drawing.Size(104, 80);
+            this.miscBtn.TabIndex = 4;
+            this.miscBtn.Text = "Misc";
+            this.miscBtn.UseVisualStyleBackColor = true;
             // 
-            // button17
+            // zestinaBtn
             // 
-            this.button17.Location = new System.Drawing.Point(331, 19);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(78, 65);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "Topli napici";
-            this.button17.UseVisualStyleBackColor = true;
+            this.zestinaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zestinaBtn.Location = new System.Drawing.Point(8, 212);
+            this.zestinaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.zestinaBtn.Name = "zestinaBtn";
+            this.zestinaBtn.Size = new System.Drawing.Size(104, 80);
+            this.zestinaBtn.TabIndex = 3;
+            this.zestinaBtn.Text = "Zestina";
+            this.zestinaBtn.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // topliNapiciBtn
             // 
-            this.button16.Location = new System.Drawing.Point(163, 19);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(78, 65);
-            this.button16.TabIndex = 1;
-            this.button16.Text = "Pivo";
-            this.button16.UseVisualStyleBackColor = true;
+            this.topliNapiciBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.topliNapiciBtn.Location = new System.Drawing.Point(441, 37);
+            this.topliNapiciBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.topliNapiciBtn.Name = "topliNapiciBtn";
+            this.topliNapiciBtn.Size = new System.Drawing.Size(104, 80);
+            this.topliNapiciBtn.TabIndex = 2;
+            this.topliNapiciBtn.Text = "Topli napici";
+            this.topliNapiciBtn.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // pivoBtn
             // 
-            this.button15.Location = new System.Drawing.Point(6, 19);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(78, 65);
-            this.button15.TabIndex = 0;
-            this.button15.Text = "Sokovi";
-            this.button15.UseVisualStyleBackColor = true;
+            this.pivoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pivoBtn.Location = new System.Drawing.Point(217, 37);
+            this.pivoBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.pivoBtn.Name = "pivoBtn";
+            this.pivoBtn.Size = new System.Drawing.Size(104, 80);
+            this.pivoBtn.TabIndex = 1;
+            this.pivoBtn.Text = "Pivo";
+            this.pivoBtn.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // sokoviBtn
             // 
-            this.listView1.Location = new System.Drawing.Point(459, 66);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(326, 242);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.sokoviBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sokoviBtn.Location = new System.Drawing.Point(8, 37);
+            this.sokoviBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.sokoviBtn.Name = "sokoviBtn";
+            this.sokoviBtn.Size = new System.Drawing.Size(104, 80);
+            this.sokoviBtn.TabIndex = 0;
+            this.sokoviBtn.Text = "Sokovi";
+            this.sokoviBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // activeArticlesListBox
             // 
-            this.button1.Location = new System.Drawing.Point(459, 314);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 56);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Pay All";
-            this.button1.UseVisualStyleBackColor = true;
+            this.activeArticlesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeArticlesListBox.Location = new System.Drawing.Point(612, 81);
+            this.activeArticlesListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.activeArticlesListBox.Name = "activeArticlesListBox";
+            this.activeArticlesListBox.Size = new System.Drawing.Size(433, 297);
+            this.activeArticlesListBox.TabIndex = 2;
+            this.activeArticlesListBox.UseCompatibleStateImageBehavior = false;
             // 
-            // button2
+            // payAllBtn
             // 
-            this.button2.Location = new System.Drawing.Point(664, 314);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 56);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Delete Order";
-            this.button2.UseVisualStyleBackColor = true;
+            this.payAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payAllBtn.Location = new System.Drawing.Point(612, 386);
+            this.payAllBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.payAllBtn.Name = "payAllBtn";
+            this.payAllBtn.Size = new System.Drawing.Size(161, 69);
+            this.payAllBtn.TabIndex = 3;
+            this.payAllBtn.Text = "Pay All";
+            this.payAllBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // deleteOrderBtn
             // 
-            this.button3.Location = new System.Drawing.Point(353, 28);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 31);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.deleteOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteOrderBtn.Location = new System.Drawing.Point(885, 386);
+            this.deleteOrderBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteOrderBtn.Name = "deleteOrderBtn";
+            this.deleteOrderBtn.Size = new System.Drawing.Size(161, 69);
+            this.deleteOrderBtn.TabIndex = 4;
+            this.deleteOrderBtn.Text = "Delete Order";
+            this.deleteOrderBtn.UseVisualStyleBackColor = true;
             // 
-            // listView2
+            // backBtn
             // 
-            this.listView2.Location = new System.Drawing.Point(12, 0);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(429, 304);
-            this.listView2.TabIndex = 6;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backBtn.Location = new System.Drawing.Point(471, 34);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(99, 38);
+            this.backBtn.TabIndex = 5;
+            this.backBtn.Text = "Back";
+            this.backBtn.UseVisualStyleBackColor = true;
             // 
             // TableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(800, 382);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(1067, 470);
+            this.Controls.Add(this.backBtn);
+            this.Controls.Add(this.deleteOrderBtn);
+            this.Controls.Add(this.payAllBtn);
+            this.Controls.Add(this.activeArticlesListBox);
             this.Controls.Add(this.groupBox4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TableForm";
             this.Text = "TableForm";
             this.groupBox4.ResumeLayout(false);
@@ -177,16 +203,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button hranaBtn;
+        private System.Windows.Forms.Button miscBtn;
+        private System.Windows.Forms.Button zestinaBtn;
+        private System.Windows.Forms.Button topliNapiciBtn;
+        private System.Windows.Forms.Button pivoBtn;
+        private System.Windows.Forms.Button sokoviBtn;
+        private System.Windows.Forms.ListView allArticlesListBox;
+        private System.Windows.Forms.ListView activeArticlesListBox;
+        private System.Windows.Forms.Button payAllBtn;
+        private System.Windows.Forms.Button deleteOrderBtn;
+        private System.Windows.Forms.Button backBtn;
     }
 }

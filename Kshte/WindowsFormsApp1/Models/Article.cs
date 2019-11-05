@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Transaction
+    public class Article
     {
-        public int TableID { get; set; }
-        public decimal CurrentValue { get; set; }
-
-        public List<Article> Articles { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
 
         public override string ToString()
         {
-            return $"Table: {TableID}  $: {CurrentValue}";
+            return $"{Name}  ${Price}";
         }
     }
 }

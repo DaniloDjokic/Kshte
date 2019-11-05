@@ -14,6 +14,9 @@ namespace WindowsFormsApp1
     public partial class MainForm : Form
     {
         private List<Transaction> activeTransactions = new List<Transaction>();
+        private List<Button> tableBtns = new List<Button>();
+
+        private Color activeTableColor = Color.Red;
 
         public MainForm()
         {
@@ -25,6 +28,7 @@ namespace WindowsFormsApp1
         {
             FillActiveTablesListBox();
             MarkActiveTableButtons();
+            AttachEventsToButtons();
         }
 
         private void FillActiveTablesListBox()
@@ -35,19 +39,32 @@ namespace WindowsFormsApp1
 
         private void MarkActiveTableButtons()
         {
-            List<Button> tableBtns = new List<Button>();
-
-            foreach(Control control in this.TabControl.TabPages[0])
+            foreach(Control control in Helpers.GetControlsRecursive(this.TabControl))
             {
-                if (control.Name.Contains("table"))
+                if (control.Name.Contains("table")) 
                     tableBtns.Add(control as Button);
             }
 
             foreach(Transaction transaction in activeTransactions)
             {
                 Button tableBtn = tableBtns.Where(t => t.Name.Contains(transaction.TableID.ToString())).FirstOrDefault();
-                tableBtn.BackColor = Color.Red;
+                tableBtn.BackColor = activeTableColor;
             }
+        }
+
+        private void AttachEventsToButtons()
+        {
+            foreach(Button button in tableBtns)
+            {
+                button.Click += new EventHandler(OpenTableForm);
+            }
+        }
+
+        private void OpenTableForm(object sender, EventArgs args)
+        {
+            Transaction transaction = activeTransactions.Where(t => t.TableID == Int32.Parse((sender as Button).Text)).FirstOrDefault();
+            Form tableForm = new TableForm(transaction);
+            tableForm.ShowDialog();
         }
     }
 }

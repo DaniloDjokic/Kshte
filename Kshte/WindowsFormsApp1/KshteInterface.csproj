@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +53,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MockData.cs" />
+    <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Program.cs" />
