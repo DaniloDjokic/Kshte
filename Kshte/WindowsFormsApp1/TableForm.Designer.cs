@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.allArticlesListBox = new System.Windows.Forms.ListView();
+            this.allArticlesListView = new System.Windows.Forms.ListView();
             this.hranaBtn = new System.Windows.Forms.Button();
             this.miscBtn = new System.Windows.Forms.Button();
             this.zestinaBtn = new System.Windows.Forms.Button();
             this.topliNapiciBtn = new System.Windows.Forms.Button();
             this.pivoBtn = new System.Windows.Forms.Button();
             this.sokoviBtn = new System.Windows.Forms.Button();
-            this.activeArticlesListBox = new System.Windows.Forms.ListView();
+            this.activeArticlesListView = new System.Windows.Forms.ListView();
             this.payAllBtn = new System.Windows.Forms.Button();
             this.deleteOrderBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.allArticlesListBox);
+            this.groupBox4.Controls.Add(this.allArticlesListView);
             this.groupBox4.Controls.Add(this.hranaBtn);
             this.groupBox4.Controls.Add(this.miscBtn);
             this.groupBox4.Controls.Add(this.zestinaBtn);
@@ -62,15 +62,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Categories";
             // 
-            // allArticlesListBox
+            // allArticlesListView
             // 
-            this.allArticlesListBox.Location = new System.Drawing.Point(-3, 1);
-            this.allArticlesListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.allArticlesListBox.Name = "allArticlesListBox";
-            this.allArticlesListBox.Size = new System.Drawing.Size(571, 373);
-            this.allArticlesListBox.TabIndex = 6;
-            this.allArticlesListBox.UseCompatibleStateImageBehavior = false;
-            this.allArticlesListBox.Visible = false;
+            this.allArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allArticlesListView.Location = new System.Drawing.Point(-3, 0);
+            this.allArticlesListView.Margin = new System.Windows.Forms.Padding(4);
+            this.allArticlesListView.Name = "allArticlesListView";
+            this.allArticlesListView.Size = new System.Drawing.Size(579, 375);
+            this.allArticlesListView.TabIndex = 6;
+            this.allArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
             // hranaBtn
             // 
@@ -82,6 +82,7 @@
             this.hranaBtn.TabIndex = 5;
             this.hranaBtn.Text = "Hrana";
             this.hranaBtn.UseVisualStyleBackColor = true;
+            this.hranaBtn.Click += new System.EventHandler(this.hranaBtn_Click);
             // 
             // miscBtn
             // 
@@ -93,6 +94,7 @@
             this.miscBtn.TabIndex = 4;
             this.miscBtn.Text = "Misc";
             this.miscBtn.UseVisualStyleBackColor = true;
+            this.miscBtn.Click += new System.EventHandler(this.miscBtn_Click);
             // 
             // zestinaBtn
             // 
@@ -104,6 +106,7 @@
             this.zestinaBtn.TabIndex = 3;
             this.zestinaBtn.Text = "Zestina";
             this.zestinaBtn.UseVisualStyleBackColor = true;
+            this.zestinaBtn.Click += new System.EventHandler(this.zestinaBtn_Click);
             // 
             // topliNapiciBtn
             // 
@@ -115,6 +118,7 @@
             this.topliNapiciBtn.TabIndex = 2;
             this.topliNapiciBtn.Text = "Topli napici";
             this.topliNapiciBtn.UseVisualStyleBackColor = true;
+            this.topliNapiciBtn.Click += new System.EventHandler(this.topliNapiciBtn_Click);
             // 
             // pivoBtn
             // 
@@ -126,6 +130,7 @@
             this.pivoBtn.TabIndex = 1;
             this.pivoBtn.Text = "Pivo";
             this.pivoBtn.UseVisualStyleBackColor = true;
+            this.pivoBtn.Click += new System.EventHandler(this.pivoBtn_Click);
             // 
             // sokoviBtn
             // 
@@ -137,16 +142,17 @@
             this.sokoviBtn.TabIndex = 0;
             this.sokoviBtn.Text = "Sokovi";
             this.sokoviBtn.UseVisualStyleBackColor = true;
+            this.sokoviBtn.Click += new System.EventHandler(this.sokoviBtn_Click);
             // 
-            // activeArticlesListBox
+            // activeArticlesListView
             // 
-            this.activeArticlesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeArticlesListBox.Location = new System.Drawing.Point(612, 81);
-            this.activeArticlesListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.activeArticlesListBox.Name = "activeArticlesListBox";
-            this.activeArticlesListBox.Size = new System.Drawing.Size(433, 297);
-            this.activeArticlesListBox.TabIndex = 2;
-            this.activeArticlesListBox.UseCompatibleStateImageBehavior = false;
+            this.activeArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeArticlesListView.Location = new System.Drawing.Point(612, 81);
+            this.activeArticlesListView.Margin = new System.Windows.Forms.Padding(4);
+            this.activeArticlesListView.Name = "activeArticlesListView";
+            this.activeArticlesListView.Size = new System.Drawing.Size(433, 297);
+            this.activeArticlesListView.TabIndex = 2;
+            this.activeArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
             // payAllBtn
             // 
@@ -180,6 +186,7 @@
             this.backBtn.TabIndex = 5;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // TableForm
             // 
@@ -190,7 +197,7 @@
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.deleteOrderBtn);
             this.Controls.Add(this.payAllBtn);
-            this.Controls.Add(this.activeArticlesListBox);
+            this.Controls.Add(this.activeArticlesListView);
             this.Controls.Add(this.groupBox4);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TableForm";
@@ -209,10 +216,10 @@
         private System.Windows.Forms.Button topliNapiciBtn;
         private System.Windows.Forms.Button pivoBtn;
         private System.Windows.Forms.Button sokoviBtn;
-        private System.Windows.Forms.ListView allArticlesListBox;
-        private System.Windows.Forms.ListView activeArticlesListBox;
+        private System.Windows.Forms.ListView activeArticlesListView;
         private System.Windows.Forms.Button payAllBtn;
         private System.Windows.Forms.Button deleteOrderBtn;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.ListView allArticlesListView;
     }
 }
