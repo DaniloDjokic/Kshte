@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Table
+    public class Category
     {
-        #region DB Properties
         public int ID { get; set; }
-        public Transaction CurrentTransaction { get; set; }
-        #endregion
+        public string Name { get; set; }
     }
 }

@@ -8,8 +8,14 @@ namespace WindowsFormsApp1.Models
 {
     public class Transaction
     {
+        #region DB Properties
+        public int ID { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateCompleted { get; set; } = null;
         public int TableID { get; set; }
-        public decimal CurrentValue { get; set; }
+        #endregion
+
+        public decimal CurrentValue { get; }
 
         public List<Article> Articles { get; set; }
 
