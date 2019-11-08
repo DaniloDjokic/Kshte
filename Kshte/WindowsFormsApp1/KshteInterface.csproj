@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBTools\DBConnector.cs" />
+    <Compile Include="DBTools\DBContext.cs" />
+    <Compile Include="DBTools\DBSeeder.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="ListViewExtender.cs" />
     <Compile Include="MainForm.cs">
@@ -64,8 +67,10 @@
     </Compile>
     <Compile Include="MockData.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionDetail.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableForm.cs">
