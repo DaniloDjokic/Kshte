@@ -10,8 +10,8 @@ namespace WindowsFormsApp1.Models
     {
         #region DB Properties
         public int ID { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime? DateCompleted { get; set; } = null;
+        public string DateCreated { get; set; }
+        public string DateCompleted { get; set; } = null;
         public int TableID { get; set; }
         #endregion
 
