@@ -40,6 +40,7 @@
             this.payAllBtn = new System.Windows.Forms.Button();
             this.deleteOrderBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.tableIDLabel = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,6 +165,7 @@
             this.payAllBtn.TabIndex = 3;
             this.payAllBtn.Text = "Pay All";
             this.payAllBtn.UseVisualStyleBackColor = true;
+            this.payAllBtn.Click += new System.EventHandler(this.payAllBtn_Click);
             // 
             // deleteOrderBtn
             // 
@@ -175,6 +177,7 @@
             this.deleteOrderBtn.TabIndex = 4;
             this.deleteOrderBtn.Text = "Delete Order";
             this.deleteOrderBtn.UseVisualStyleBackColor = true;
+            this.deleteOrderBtn.Click += new System.EventHandler(this.deleteOrderBtn_Click);
             // 
             // backBtn
             // 
@@ -188,12 +191,22 @@
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // tableIDLabel
+            // 
+            this.tableIDLabel.AutoSize = true;
+            this.tableIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableIDLabel.Location = new System.Drawing.Point(21, 34);
+            this.tableIDLabel.Name = "tableIDLabel";
+            this.tableIDLabel.Size = new System.Drawing.Size(0, 29);
+            this.tableIDLabel.TabIndex = 6;
+            // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(1067, 470);
+            this.Controls.Add(this.tableIDLabel);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.deleteOrderBtn);
             this.Controls.Add(this.payAllBtn);
@@ -204,6 +217,7 @@
             this.Text = "TableForm";
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -221,5 +235,6 @@
         private System.Windows.Forms.Button deleteOrderBtn;
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.ListView allArticlesListView;
+        private System.Windows.Forms.Label tableIDLabel;
     }
 }

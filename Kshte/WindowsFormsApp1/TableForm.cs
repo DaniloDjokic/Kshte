@@ -15,15 +15,24 @@ namespace WindowsFormsApp1
     public partial class TableForm : Form
     {
         private int articleListViewDivider = 10;
+        private Category activeCategory;
+        private Transaction transaction;
+        private bool articleSelectMode = false;
+        private MainForm mainForm;
 
-        public TableForm(Transaction transaction)
+        public TableForm(Transaction transaction, MainForm mainForm)
         {
             InitializeComponent();
-            InitForm(transaction);
+            InitForm(transaction, mainForm);
         }
 
-        private void InitForm(Transaction transaction)
+        private void InitForm(Transaction transaction, MainForm mainForm)
         {
+            this.transaction = transaction;
+            this.mainForm = mainForm;
+            this.tableIDLabel.Text = $"Table: {transaction.TableID.ToString()}"; 
+
+
             InitActiveArticlesListView(transaction);
             InitAllArticlesListView();
             allArticlesListView.Visible = false;
@@ -104,14 +113,11 @@ namespace WindowsFormsApp1
             //Add column data and buttons
             foreach (Article article in transaction.Articles)
             {
-                ListViewItem name = new ListViewItem(article.Name);
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "$"));
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "/"));
-
-                activeArticlesListView.Items.Add(name);
+                AddArticleToActiveItems(article);
             }
         }
+
+        
 
         private void DisplayArticles(Category category)
         {
@@ -121,68 +127,136 @@ namespace WindowsFormsApp1
 
             foreach (Article article in articles)
             {
-                ListViewItem name = new ListViewItem(article.Name);
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "Add"));
+                ListViewItem articleRow = new ListViewItem(article.Name);
+                articleRow.Name = article.Name;
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, article.Price.ToString()));
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "Add"));
 
-                allArticlesListView.Items.Add(name);
+                allArticlesListView.Items.Add(articleRow);
             }
 
             allArticlesListView.Visible = true;
+        }
+
+        private void AddArticleToTransaction(Article article)
+        {
+            AddArticleToActiveItems(article);
+            this.transaction.Articles.Add(article);
+        }
+
+        private void AddArticleToActiveItems(Article article)
+        {
+            ListViewItem articleRow = new ListViewItem(article.Name);
+            articleRow.Name = article.Name;
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, article.Price.ToString()));
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "$"));
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
+
+            activeArticlesListView.Items.Add(articleRow);
+        }
+
+        private void RemoveArticleFromTransaction(Article article, ListViewItem listItem)
+        {
+            this.transaction.Articles.Remove(article);
+            activeArticlesListView.Items.Remove(listItem);
         }
 
         #region EventHandlers
 
         private void OnButtonAddClick(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("SiSa", "Tit", MessageBoxButtons.OK);
+            Article article = MockData.allArticles[activeCategory].FirstOrDefault(a => a.Name == e.Item.Name);
+            AddArticleToTransaction(article);
         }
 
         private void OnButtonPayClick(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("PENIS", "PEN", MessageBoxButtons.OK);
+            //Add payment transaction
+            activeArticlesListView.Items.Remove(e.Item);
         }
 
         private void OnButtonDeleteClick(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("BAGOMA", "BAG", MessageBoxButtons.OK);
+            RemoveArticleFromTransaction(MockData.allArticles[activeCategory].FirstOrDefault(a => a.Name == e.Item.Name), e.Item);
         }
         
 
         private void sokoviBtn_Click(object sender, EventArgs e)
         {
             DisplayArticles(Category.JUICE);
+            activeCategory = Category.JUICE;
+            articleSelectMode = true;
         }
 
         private void pivoBtn_Click(object sender, EventArgs e)
         {
             DisplayArticles(Category.BEER);
+            activeCategory = Category.BEER;
+            articleSelectMode = true;
+
         }
 
         private void topliNapiciBtn_Click(object sender, EventArgs e)
         {
             DisplayArticles(Category.WARM_DRINKS);
+            activeCategory = Category.WARM_DRINKS;
+            articleSelectMode = true;
+
         }
 
         private void zestinaBtn_Click(object sender, EventArgs e)
         {
             DisplayArticles(Category.ALCOHOL);
+            activeCategory = Category.ALCOHOL;
+            articleSelectMode = true;
+
         }
 
         private void miscBtn_Click(object sender, EventArgs e)
         {
             DisplayArticles(Category.MISC);
+            activeCategory = Category.MISC;
+            articleSelectMode = true;
+
         }
 
         private void hranaBtn_Click(object sender, EventArgs e)
         {
             DisplayArticles(Category.FOOD);
+            activeCategory = Category.FOOD;
+            articleSelectMode = true;
+
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.allArticlesListView.Visible = false;
+            if (articleSelectMode)
+                this.allArticlesListView.Visible = false;
+            else
+                this.Close();
         }
+
+        private void payAllBtn_Click(object sender, EventArgs e)
+        {
+            //Add transaction to db
+            this.transaction.Articles.Clear();
+            this.activeArticlesListView.Items.Clear();          
+        }
+
+        private void deleteOrderBtn_Click(object sender, EventArgs e)
+        {
+            this.transaction.Articles.Clear();
+            this.activeArticlesListView.Items.Clear();
+            MockData.activeTransactions.Remove(transaction);
+            this.Close();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            mainForm.RefreshForm();
+        }
+
         #endregion
 
 

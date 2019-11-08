@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         private List<Button> tableBtns = new List<Button>();
 
         private Color activeTableColor = Color.Red;
+        private Color inactiveTableColor = Color.White;
 
         public MainForm()
         {
@@ -35,15 +36,28 @@ namespace WindowsFormsApp1
         {
             activeTransactions = MockData.activeTransactions;
             this.ActiveTransactionsListBox.DataSource = activeTransactions;
+            foreach (Control control in Helpers.GetControlsRecursive(this.TabControl))
+            {
+                if (control.Name.Contains("table"))
+                    tableBtns.Add(control as Button);
+            }
+        }
+
+        public void RefreshForm()
+        {
+            RefreshActiveTransactionsList();
+            MarkActiveTableButtons();
+        }
+
+        private void RefreshActiveTransactionsList()
+        {
+            ActiveTransactionsListBox.DataSource = MockData.activeTransactions;
         }
 
         private void MarkActiveTableButtons()
         {
-            foreach(Control control in Helpers.GetControlsRecursive(this.TabControl))
-            {
-                if (control.Name.Contains("table")) 
-                    tableBtns.Add(control as Button);
-            }
+            foreach (Button btn in tableBtns)
+                btn.BackColor = inactiveTableColor;
 
             foreach(Transaction transaction in activeTransactions)
             {
@@ -63,7 +77,12 @@ namespace WindowsFormsApp1
         private void OpenTableForm(object sender, EventArgs args)
         {
             Transaction transaction = activeTransactions.Where(t => t.TableID == Int32.Parse((sender as Button).Text)).FirstOrDefault();
-            Form tableForm = new TableForm(transaction);
+            if(transaction == null)
+            {
+                transaction = new Transaction { TableID = Int32.Parse((sender as Button).Text), Articles = new List<Article>(), CurrentValue = 0 };
+                activeTransactions.Add(transaction);
+            }
+            Form tableForm = new TableForm(transaction, this);
             tableForm.ShowDialog();
         }
     }
