@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
             new Transaction
             {
                 TableID = 1,
-                CurrentValue = 340,
                 Articles = new List<Article>
                 {
                     new Article
@@ -34,7 +33,6 @@ namespace WindowsFormsApp1
             new Transaction 
             { 
                 TableID = 11, 
-                CurrentValue = 200,
                 Articles = new List<Article>
                 {
                     new Article

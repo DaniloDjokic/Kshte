@@ -51,6 +51,7 @@ namespace WindowsFormsApp1
 
         private void RefreshActiveTransactionsList()
         {
+            ActiveTransactionsListBox.DataSource = null;
             ActiveTransactionsListBox.DataSource = MockData.activeTransactions;
         }
 
@@ -77,12 +78,7 @@ namespace WindowsFormsApp1
         private void OpenTableForm(object sender, EventArgs args)
         {
             Transaction transaction = activeTransactions.Where(t => t.TableID == Int32.Parse((sender as Button).Text)).FirstOrDefault();
-            if(transaction == null)
-            {
-                transaction = new Transaction { TableID = Int32.Parse((sender as Button).Text), Articles = new List<Article>(), CurrentValue = 0 };
-                activeTransactions.Add(transaction);
-            }
-            Form tableForm = new TableForm(transaction, this);
+            Form tableForm = new TableForm(transaction, this, Int32.Parse((sender as Button).Text));
             tableForm.ShowDialog();
         }
     }

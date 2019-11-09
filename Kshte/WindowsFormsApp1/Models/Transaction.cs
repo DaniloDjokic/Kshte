@@ -9,7 +9,18 @@ namespace WindowsFormsApp1.Models
     public class Transaction
     {
         public int TableID { get; set; }
-        public decimal CurrentValue { get; set; }
+        public decimal CurrentValue
+        {
+            get
+            {
+                decimal sum = 0;
+                foreach(Article article in Articles)
+                {
+                    sum += article.Price;
+                }
+                return sum;
+            }
+        }
 
         public List<Article> Articles { get; set; }
 
