@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controllers;
 using WindowsFormsApp1.Models;
 using WindowsFormsApplication1;
 
@@ -116,10 +117,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void DisplayArticles(Category category)
+        private void DisplayArticles(List<Article> articles)
         {
-            List<Article> articles = MockData.allArticles[category];
-
             allArticlesListView.Items.Clear();
 
             foreach (Article article in articles)
@@ -160,7 +159,7 @@ namespace WindowsFormsApp1
 
         private void HandleCategoryClick(Category category)
         {
-            DisplayArticles(category);
+            DisplayArticles(ArticlesController.GetAllArticles(category));
             transactionController.SelectCategory(category);
         }
 
@@ -239,7 +238,7 @@ namespace WindowsFormsApp1
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            mainForm.RefreshForm();
+            mainForm.RefreshTableView();
         }
 
         #endregion

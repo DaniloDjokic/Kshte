@@ -66,6 +66,24 @@ namespace WindowsFormsApp1
                     new Article {Name = "Turska kafa", Price = 80, Category = Category.WARM_DRINKS},
                     new Article { Name = "Espreso", Price = 100, Category = Category.WARM_DRINKS}
                 }
+            },
+            {
+                Category.FOOD, new List<Article>
+                {
+                    
+                }
+            },
+            {
+                Category.MISC, new List<Article>
+                {
+                    
+                }
+            },
+            {
+                Category.ALCOHOL, new List<Article>
+                {
+                    
+                }
             }
         };
     }

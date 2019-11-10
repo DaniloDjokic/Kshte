@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Controllers;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
 {
-    public class TransactionController
+    public class TransactionController : CategoryController
     {
-        public Category ActiveCategory { get; private set; }
-        public bool ArticleSelectMode { get; private set; }
-
         public Transaction Transaction { get; private set; }
         
         public TransactionController(Transaction transaction, int tableID)
@@ -79,24 +77,6 @@ namespace WindowsFormsApp1
             }
 
             MockData.activeTransactions.Remove(Transaction);
-        }
-
-        /// <summary>
-        /// Selects currently active article category
-        /// </summary>
-        /// <param name="category">The category to select</param>
-        public void SelectCategory(Category category)
-        {
-            this.ActiveCategory = category;
-            ArticleSelectMode = true;
-        }
-
-        /// <summary>
-        /// Returns mode to category select
-        /// </summary>
-        public void UnselectCategory()
-        {
-            ArticleSelectMode = false;
         }
     }
 }
