@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
     public partial class MainForm : Form
     {
         private AdminController adminController;
+        private ArticleDialog articleDialog;
 
         private List<Transaction> activeTransactions = new List<Transaction>();
         private List<Button> tableBtns = new List<Button>();
@@ -160,7 +161,7 @@ namespace WindowsFormsApp1
             extender.AddColumn(btnRemove);
         }
 
-        private void DisplayArticles(List<Article> articles)
+        public void DisplayArticles(List<Article> articles)
         {
             adminArticlesListView.Items.Clear();
 
@@ -188,12 +189,22 @@ namespace WindowsFormsApp1
 
         private void modifyBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("PeniC", "Pen", MessageBoxButtons.OK);
+            Article article = MockData.allArticles[adminController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name);
+            if (article != null)
+            {
+                articleDialog = new ArticleDialog(adminController.ActiveCategory, this, article);
+                articleDialog.ShowDialog();
+            }
         }
 
         private void removeBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("Bagoma", "Bag", MessageBoxButtons.OK);
+            DialogResult res = MessageBox.Show("Are you sure you want to delete this item?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                adminController.RemoveArticle(MockData.allArticles[adminController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name));
+                DisplayArticles(MockData.allArticles[adminController.ActiveCategory]);
+            }
         }
 
         private void sokoviBtn_Click(object sender, EventArgs e)
@@ -238,7 +249,8 @@ namespace WindowsFormsApp1
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("SiSa", "SiS", MessageBoxButtons.OK);
+            articleDialog = new ArticleDialog(adminController.ActiveCategory, this);
+            articleDialog.ShowDialog();
         }
         #endregion
 

@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticleDialog.Designer.cs">
+      <DependentUpon>ArticleDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -69,6 +75,9 @@
       <DependentUpon>TableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\TransactionController.cs" />
+    <EmbeddedResource Include="ArticleDialog.resx">
+      <DependentUpon>ArticleDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
