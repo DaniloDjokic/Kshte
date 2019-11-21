@@ -54,22 +54,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="DBTools\DBConnector.cs" />
     <Compile Include="DBTools\DBContext.cs" />
     <Compile Include="DBTools\DBSeeder.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="ListViewExtender.cs" />
+=======
+    <Compile Include="ArticleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticleDialog.Designer.cs">
+      <DependentUpon>ArticleDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\ListViewExtender.cs" />
+>>>>>>> master
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Managers\ArticleManager.cs" />
     <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\TableManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="MockData.cs" />
+=======
+    <Compile Include="Helpers\MockData.cs" />
+>>>>>>> master
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Table.cs" />
@@ -83,6 +101,10 @@
     <Compile Include="TableForm.Designer.cs">
       <DependentUpon>TableForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\TransactionController.cs" />
+    <EmbeddedResource Include="ArticleDialog.resx">
+      <DependentUpon>ArticleDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

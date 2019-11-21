@@ -9,12 +9,28 @@ namespace WindowsFormsApp1.Models
 {
     public class Transaction
     {
+<<<<<<< HEAD
         #region DB Properties
         public int ID { get; internal set; }
         public string DateCreated { get; internal set; }
         public string DateCompleted { get; internal set; } = null;
         public int TableID { get; internal set; }
         #endregion
+=======
+        public int TableID { get; set; }
+        public decimal CurrentValue
+        {
+            get
+            {
+                decimal sum = 0;
+                foreach(Article article in Articles)
+                {
+                    sum += article.Price;
+                }
+                return sum;
+            }
+        }
+>>>>>>> master
 
         private List<TransactionDetail> transactionDetails = null;
         public IReadOnlyCollection<TransactionDetail> TransactionDetails { get => transactionDetails.AsReadOnly(); }

@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
             new Transaction
             {
                 TableID = 1,
+<<<<<<< HEAD:Kshte/WindowsFormsApp1/MockData.cs
                 //CurrentValue = 340,
                 //Articles = new List<Article>
                 //{
@@ -30,10 +31,26 @@ namespace WindowsFormsApp1
                 //        Price = 160
                 //    }
                 //}
+=======
+                Articles = new List<Article>
+                {
+                    new Article
+                    {
+                        Name = "Kafa",
+                        Price = 100
+                    },
+                    new Article
+                    {
+                        Name ="Lasko 0.5",
+                        Price = 160
+                    }
+                }
+>>>>>>> master:Kshte/WindowsFormsApp1/Helpers/MockData.cs
             },
             new Transaction 
             { 
                 TableID = 11, 
+<<<<<<< HEAD:Kshte/WindowsFormsApp1/MockData.cs
                 //CurrentValue = 200,
                 //Articles = new List<Article>
                 //{
@@ -72,5 +89,60 @@ namespace WindowsFormsApp1
 //                }
 //            }
 //        };
+=======
+                Articles = new List<Article>
+                {
+                    new Article
+                    {
+                        Name = "Koka kola",
+                        Price = 120
+                    }
+                }
+            }
+        };
+
+        public static Dictionary<Category, List<Article>> allArticles = new Dictionary<Category, List<Article>>
+        {
+            {
+                Category.JUICE, new List<Article>
+                {
+                    new Article { Name = "Next", Price = 120, Category = Category.JUICE },
+                    new Article {Name = "Koka kola", Price = 100, Category = Category.JUICE}
+                }
+            },
+            {
+                Category.BEER, new List<Article>
+                {
+                    new Article { Name = "Lasko 0.5l", Price = 160, Category = Category.BEER },
+                    new Article {Name = "Nisko 0.3l", Price = 100, Category = Category.BEER}
+                }
+            },
+            {
+                Category.WARM_DRINKS, new List<Article>
+                {
+                    new Article {Name = "Turska kafa", Price = 80, Category = Category.WARM_DRINKS},
+                    new Article { Name = "Espreso", Price = 100, Category = Category.WARM_DRINKS}
+                }
+            },
+            {
+                Category.FOOD, new List<Article>
+                {
+                    
+                }
+            },
+            {
+                Category.MISC, new List<Article>
+                {
+                    
+                }
+            },
+            {
+                Category.ALCOHOL, new List<Article>
+                {
+                    
+                }
+            }
+        };
+>>>>>>> master:Kshte/WindowsFormsApp1/Helpers/MockData.cs
     }
 }
