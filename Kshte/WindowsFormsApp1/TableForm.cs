@@ -102,15 +102,15 @@ namespace WindowsFormsApp1
             extender.AddColumn(buttonDelete);
 
             //Add column data and buttons
-            foreach (Article article in transaction.Articles)
-            {
-                ListViewItem name = new ListViewItem(article.Name);
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "$"));
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "/"));
+            //foreach (Article article in transaction.Articles)
+            //{
+            //    ListViewItem name = new ListViewItem(article.Name);
+            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
+            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "$"));
+            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "/"));
 
-                activeArticlesListView.Items.Add(name);
-            }
+            //    activeArticlesListView.Items.Add(name);
+            //}
         }
 
         private void DisplayArticles(Category category)
@@ -151,32 +151,32 @@ namespace WindowsFormsApp1
 
         private void sokoviBtn_Click(object sender, EventArgs e)
         {
-            DisplayArticles(Category.JUICE);
+            //DisplayArticles(Category.JUICE);
         }
 
         private void pivoBtn_Click(object sender, EventArgs e)
         {
-            DisplayArticles(Category.BEER);
+            //DisplayArticles(Category.BEER);
         }
 
         private void topliNapiciBtn_Click(object sender, EventArgs e)
         {
-            DisplayArticles(Category.WARM_DRINKS);
+            //DisplayArticles(Category.WARM_DRINKS);
         }
 
         private void zestinaBtn_Click(object sender, EventArgs e)
         {
-            DisplayArticles(Category.ALCOHOL);
+            //DisplayArticles(Category.ALCOHOL);
         }
 
         private void miscBtn_Click(object sender, EventArgs e)
         {
-            DisplayArticles(Category.MISC);
+            //DisplayArticles(Category.MISC);
         }
 
         private void hranaBtn_Click(object sender, EventArgs e)
         {
-            DisplayArticles(Category.FOOD);
+            //DisplayArticles(Category.FOOD);
         }
 
         private void backBtn_Click(object sender, EventArgs e)

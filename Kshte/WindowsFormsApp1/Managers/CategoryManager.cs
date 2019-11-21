@@ -10,23 +10,34 @@ namespace WindowsFormsApp1.Managers
 {
     public static class CategoryManager
     {
-        private static IReadOnlyCollection<Category> categories = null;
+        private static List<Category> categories = null;
         public static IReadOnlyCollection<Category> Categories
         {
             get
             {
                 if (categories == null)
                 {
-                    categories = DBContext.GetExistingCategories().AsReadOnly();
+                    categories = DBContext.GetExistingCategories();
                 }
-                return categories;
-            }
-            private set
-            {
-                categories = value;
+                return categories.AsReadOnly();
             }
         }
 
+        internal static Category GetById(int categoryID)
+        {
+            Category result = null;
+
+            foreach (var category in Categories)
+            {
+                if (category.ID == categoryID)
+                {
+                    result = category;
+                    break;
+                }
+            }
+
+            return result;
+        }
         public static Category GetByName(string name, int ID = 0)
         {
             Category result = null;
@@ -47,16 +58,28 @@ namespace WindowsFormsApp1.Managers
 
             return result;
         }
-
-        public static void AddCategory(Category category)
+        public static bool AddCategory(Category category)
         {
-            var id = DBContext.AddNewCategory(category);
+            if (!Categories.Contains(category))
+            {
+                var id = DBContext.AddNewCategory(category);
 
-            category.ID = id;
-
-            var temp = categories.ToList();
-            temp.Add(category);
-            categories = temp.AsReadOnly();
+                category.ID = id;
+                categories.Add(category);
+                return true;
+            }
+            else
+                return false;
+        }
+        public static bool UpdateCategory(Category category)
+        {
+            if (Categories.Contains(category))
+            {
+                DBContext.UpdateDB(category);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

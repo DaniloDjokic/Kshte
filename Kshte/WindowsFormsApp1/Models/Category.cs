@@ -10,8 +10,8 @@ namespace WindowsFormsApp1.Models
     public class Category : IEquatable<Category>
     {
         #region DB Properties
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int ID { get; internal set; }
+        public string Name { get; internal set; }
         #endregion
 
         public bool Equals(Category other)
