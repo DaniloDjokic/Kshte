@@ -19,15 +19,9 @@ namespace WindowsFormsApp1
         {
             DBSeeder.Seed(DBConnector.Connection);
 
-            //Category category = new Category();
-            //category.Name = "NovaKat";
-            //CategoryManager.AddCategory(category);
-
-            var categories = DBTools.DBContext.GetExistingCategories();
-            //ArticleManager.GetByCategory(CategoryManager.GetByName("Alkohol"));
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
         }
     }
 }

@@ -14,6 +14,8 @@ namespace WindowsFormsApp1.Models
         public string Name { get; internal set; }
         #endregion
 
+        public Category() { }
+
         public bool Equals(Category other)
         {
             if (other.ID == ID)

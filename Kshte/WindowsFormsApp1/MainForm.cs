@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
+using WindowsFormsApp1.Managers;
 using WindowsFormsApp1.Models;
 using WindowsFormsApplication1;
 
@@ -15,10 +16,9 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
-        private AdminController adminController;
+        public AdminController AdminController { get; private set; }
         private ArticleDialog articleDialog;
 
-        private List<Transaction> activeTransactions = new List<Transaction>();
         private List<Button> tableBtns = new List<Button>();
 
         private Color activeTableColor = Color.Red;
@@ -48,8 +48,7 @@ namespace WindowsFormsApp1
 
         private void FillActiveTablesListBox()
         {
-            activeTransactions = MockData.activeTransactions;
-            this.ActiveTransactionsListBox.DataSource = activeTransactions;
+            this.ActiveTransactionsListBox.DataSource = TransactionManager.ActiveTransactions;
             foreach (Control control in Helpers.GetControlsRecursive(this.TabControl))
             {
                 if (control.Name.Contains("table"))
@@ -66,7 +65,7 @@ namespace WindowsFormsApp1
         private void RefreshActiveTransactionsList()
         {
             ActiveTransactionsListBox.DataSource = null;
-            ActiveTransactionsListBox.DataSource = MockData.activeTransactions;
+            ActiveTransactionsListBox.DataSource = TransactionManager.ActiveTransactions;
         }
 
         private void MarkActiveTableButtons()
@@ -74,7 +73,7 @@ namespace WindowsFormsApp1
             foreach (Button btn in tableBtns)
                 btn.BackColor = inactiveTableColor;
 
-            foreach(Transaction transaction in activeTransactions)
+            foreach(Transaction transaction in TransactionManager.ActiveTransactions)
             {
                 Button tableBtn = tableBtns.Where(t => t.Name.Contains(transaction.TableID.ToString())).FirstOrDefault();
                 tableBtn.BackColor = activeTableColor;
@@ -91,7 +90,7 @@ namespace WindowsFormsApp1
 
         private void OpenTableForm(object sender, EventArgs args)
         {
-            Transaction transaction = activeTransactions.Where(t => t.TableID == Int32.Parse((sender as Button).Text)).FirstOrDefault();
+            Transaction transaction = TableManager.GetById(Int32.Parse((sender as Button).Text)).CurrentTransaction;
             Form tableForm = new TableForm(transaction, this, Int32.Parse((sender as Button).Text));
             tableForm.ShowDialog();
         }
@@ -106,7 +105,7 @@ namespace WindowsFormsApp1
 
         private void InitAdminView()
         {
-            adminController = new AdminController();
+            AdminController = new AdminController();
 
             SetTitleLabel("Categories");
             SetNavigationControls(false);
@@ -182,17 +181,17 @@ namespace WindowsFormsApp1
         private void HandleCategoryClick(Category category)
         {
             DisplayArticles(ArticlesController.GetAllArticles(category));
-            SetTitleLabel(category.ToString());
+            SetTitleLabel(category.Name);
             SetNavigationControls(true);
-            adminController.SelectCategory(category);
+            AdminController.SelectCategory(category);
         }
 
         private void modifyBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            Article article = MockData.allArticles[adminController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name);
+            Article article = ArticleManager.GetByCategory(AdminController.ActiveCategory).FirstOrDefault(a => a.Name == e.Item.Name);
             if (article != null)
             {
-                articleDialog = new ArticleDialog(adminController.ActiveCategory, this, article);
+                articleDialog = new ArticleDialog(AdminController.ActiveCategory, this, article);
                 articleDialog.ShowDialog();
             }
         }
@@ -202,54 +201,54 @@ namespace WindowsFormsApp1
             DialogResult res = MessageBox.Show("Are you sure you want to delete this item?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (res == DialogResult.Yes)
             {
-                adminController.RemoveArticle(MockData.allArticles[adminController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name));
-                DisplayArticles(MockData.allArticles[adminController.ActiveCategory]);
+                AdminController.RemoveArticle(ArticleManager.GetByCategory(AdminController.ActiveCategory).FirstOrDefault(a => a.Name == e.Item.Name));
+                DisplayArticles(ArticleManager.GetByCategory(AdminController.ActiveCategory).ToList());
             }
         }
 
         private void sokoviBtn_Click(object sender, EventArgs e)
         {
-            HandleCategoryClick(Category.JUICE);
+            HandleCategoryClick(CategoryManager.GetByName("JUICE"));
         }
 
         private void pivoBtn_Click(object sender, EventArgs e)
         {
-            HandleCategoryClick(Category.BEER);
+            HandleCategoryClick(CategoryManager.GetByName("BEER"));
         }
 
         private void topliNapiciBtn_Click(object sender, EventArgs e)
         {
-            HandleCategoryClick(Category.WARM_DRINKS);
+            HandleCategoryClick(CategoryManager.GetByName("WARM DRINKS"));
         }
 
         private void zestinaBtn_Click(object sender, EventArgs e)
         {
-            HandleCategoryClick(Category.ALCOHOL);
+            HandleCategoryClick(CategoryManager.GetByName("ALCOHOL"));
         }
 
         private void miscBtn_Click(object sender, EventArgs e)
         {
-            HandleCategoryClick(Category.MISC);
+            HandleCategoryClick(CategoryManager.GetByName("COMBINATIONS"));
         }
 
         private void hranaBtn_Click(object sender, EventArgs e)
         {
-            HandleCategoryClick(Category.FOOD);
+            HandleCategoryClick(CategoryManager.GetByName("FOOD"));
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            if (adminController.ArticleSelectMode)
+            if (AdminController.ArticleSelectMode)
             {
                 SetNavigationControls(false);
                 SetTitleLabel("Categories");
-                adminController.UnselectCategory();
+                AdminController.UnselectCategory();
             }
         }
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-            articleDialog = new ArticleDialog(adminController.ActiveCategory, this);
+            articleDialog = new ArticleDialog(AdminController.ActiveCategory, this);
             articleDialog.ShowDialog();
         }
         #endregion

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
+using WindowsFormsApp1.Managers;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
@@ -23,7 +24,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            adminController = new AdminController();
+            this.adminController = mainForm.AdminController;
             this.category = category;
             this.mainForm = mainForm;
 
@@ -38,7 +39,7 @@ namespace WindowsFormsApp1
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            mainForm.DisplayArticles(MockData.allArticles[adminController.ActiveCategory]);
+            mainForm.DisplayArticles(ArticleManager.GetByCategory(adminController.ActiveCategory).ToList());
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -54,12 +55,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                Article article = new Article
-                {
-                    Name = nameTxtBox.Text,
-                    Price = Int32.Parse(priceTxtBox.Text),
-                    Category = category
-                };
+                Article article = new Article(nameTxtBox.Text, int.Parse(priceTxtBox.Text), category);
 
                 if (articleToEdit != null)
                 {

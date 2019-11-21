@@ -14,6 +14,8 @@ namespace WindowsFormsApp1.Models
         public int? CurrentTransactionID { get; set; }
         #endregion
 
+        public Table() { }
+
         private Transaction currentTransaction = null;
         public Transaction CurrentTransaction 
         {

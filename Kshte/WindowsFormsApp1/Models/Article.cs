@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Models
         #region DB Properties
         public int ID { get; internal set; }
         public string Name { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public int CategoryID { get; internal set; }
         #endregion
 
@@ -27,6 +27,19 @@ namespace WindowsFormsApp1.Models
                 }
                 return category;
             }
+        }
+
+        public Article() { }
+
+        public Article(string name, decimal price, Category category)
+        {
+            Name = name;
+            Price = price;
+
+            if (!CategoryManager.Categories.Contains(category))
+                throw new InvalidOperationException("This category does not exist.");
+
+            this.category = category;
         }
 
         public override string ToString()

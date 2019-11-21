@@ -43,6 +43,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public TransactionDetail() { }
         public TransactionDetail(Article article, bool paidFor, decimal effectivePrice)
         {
             if (effectivePrice < 0)

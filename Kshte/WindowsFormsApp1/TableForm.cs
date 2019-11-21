@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
+using WindowsFormsApp1.Managers;
 using WindowsFormsApp1.Models;
 using WindowsFormsApplication1;
 
@@ -116,7 +117,7 @@ namespace WindowsFormsApp1
             //    ListViewItem name = new ListViewItem(article.Name);
             //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
             //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "$"));
-            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "/"));
+            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "X"));
 
             //    activeArticlesListView.Items.Add(name);
             //}
@@ -139,26 +140,27 @@ namespace WindowsFormsApp1
             allArticlesListView.Visible = true;
         }
 
-        private void AddArticleToTransaction(Article article)
+        private void AddArticleToTransaction(TransactionDetail detail)
         {
-            transactionController.AddArticle(article);
-            AddArticleToActiveItems(article);
+            transactionController.AddArticle(detail.Article);
+            AddArticleToActiveItems(detail);
         }
 
-        private void AddArticleToActiveItems(Article article)
+        private void AddArticleToActiveItems(TransactionDetail detail)
         {
-            ListViewItem articleRow = new ListViewItem(article.Name);
-            articleRow.Name = article.Name;
-            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, article.Price.ToString()));
+            ListViewItem articleRow = new ListViewItem(detail.Article.Name);
+
+            articleRow.Name = detail.ID.ToString();
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, detail.EffectivePrice.ToString()));
             articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "$"));
             articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
 
             activeArticlesListView.Items.Add(articleRow);
         }
 
-        private void RemoveArticleFromTransaction(Article article, ListViewItem listItem)
+        private void RemoveArticleFromTransaction(TransactionDetail detail, ListViewItem listItem)
         {
-            transactionController.RemoveArticle(article);
+            transactionController.RemoveArticle(detail);
             activeArticlesListView.Items.Remove(listItem);
         }
 
@@ -172,8 +174,8 @@ namespace WindowsFormsApp1
 
         private void addBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            Article article = MockData.allArticles[transactionController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name);
-            AddArticleToTransaction(article);
+            Article article = ArticleManager.GetByCategory(transactionController.ActiveCategory).FirstOrDefault(a => a.Name == e.Item.Name); 
+            AddArticleToTransaction(transactionController.AddArticle(article));
         }
 
         private void payBtn_Click(object sender, ListViewColumnMouseEventArgs e)
@@ -183,38 +185,37 @@ namespace WindowsFormsApp1
 
         private void deleteBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            RemoveArticleFromTransaction(MockData.allArticles[transactionController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name), e.Item);
+            RemoveArticleFromTransaction(transactionController.Transaction.TransactionDetails.FirstOrDefault(a => a.ID == Int32.Parse(e.Item.Name)), e.Item);
         }
         
-
         private void sokoviBtn_Click(object sender, EventArgs e)
         {
-            //DisplayArticles(Category.JUICE);
+            HandleCategoryClick(CategoryManager.GetByName("JUICE"));
         }
 
         private void pivoBtn_Click(object sender, EventArgs e)
         {
-            //DisplayArticles(Category.BEER);
+            HandleCategoryClick(CategoryManager.GetByName("BEER"));
         }
 
         private void topliNapiciBtn_Click(object sender, EventArgs e)
         {
-            //DisplayArticles(Category.WARM_DRINKS);
+            HandleCategoryClick(CategoryManager.GetByName("WARM DRINKS"));
         }
 
         private void zestinaBtn_Click(object sender, EventArgs e)
         {
-            //DisplayArticles(Category.ALCOHOL);
+            HandleCategoryClick(CategoryManager.GetByName("ALCOHOL"));
         }
 
         private void miscBtn_Click(object sender, EventArgs e)
         {
-            //DisplayArticles(Category.MISC);
+            HandleCategoryClick(CategoryManager.GetByName("COMBINATIONS"));
         }
 
         private void hranaBtn_Click(object sender, EventArgs e)
         {
-            //DisplayArticles(Category.FOOD);
+            HandleCategoryClick(CategoryManager.GetByName("FOOD"));
         }
 
         private void backBtn_Click(object sender, EventArgs e)

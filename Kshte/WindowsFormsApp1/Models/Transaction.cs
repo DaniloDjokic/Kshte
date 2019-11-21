@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Models
         public int TableID { get; internal set; }
         #endregion
 
+
         private List<TransactionDetail> transactionDetails = null;
         public IReadOnlyCollection<TransactionDetail> TransactionDetails { get => transactionDetails.AsReadOnly(); }
         private decimal? currentPrice = null;

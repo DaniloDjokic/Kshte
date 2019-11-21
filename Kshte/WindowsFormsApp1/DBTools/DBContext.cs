@@ -98,7 +98,6 @@ namespace WindowsFormsApp1.DBTools
 
             return transactions;
         }
-
         internal static IEnumerable<Transaction> GetAllTransactions()
         {
             string sqlQuery = "SELECT * FROM [Transaction];";
@@ -125,12 +124,16 @@ namespace WindowsFormsApp1.DBTools
         }
         internal static int AddNewArticle(Article article)
         {
-            string sqlQuery = "INSERT INTO Article(Name,Price,CategoryID) VALUES (@Name,@Price,@CategoryID); SELECT last_insert_rowid();";
+            string sqlQuery = "INSERT INTO Article(Name,Price,CategoryID) VALUES (@name,@price,@catId); SELECT last_insert_rowid();";
 
             int newId;
             try
             {
-                newId = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new { article.Name, article.Price, article.Category.ID }).ToString());
+                string name = article.Name;
+                decimal price = article.Price;
+                int catId = article.Category.ID;
+
+                newId = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new { name, price, catId }).ToString());
                 article.ID = newId;
             }
             catch (Exception e)
@@ -192,7 +195,6 @@ namespace WindowsFormsApp1.DBTools
             }
             return newId;
         }
-
         internal static void UpdateDB(Article article)
         {
             string sqlQuery = "UPDATE Article SET Name=@Name, Price=@Price, CategoryID=@CategoryID WHERE ID=@ID;";
@@ -301,6 +303,20 @@ namespace WindowsFormsApp1.DBTools
                 throw new Exception("Error updating transaction details.", e);
             }
         }
+        internal static void RemoveArticle(Article article)
+        {
+            string sqlQuery = "DELETE FROM [Article] WHERE ID=@ID;";
+
+            try
+            {
+                DBConnector.Connection.Execute(sqlQuery, new { article.ID });
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error removing article.", e);
+            }
+        }
+
 
     }
 }

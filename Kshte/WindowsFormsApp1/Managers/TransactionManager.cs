@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Managers
             {
                 if (activeTransactions == null)
                 {
-                    activeTransactions = DBContext.GetActiveTransactions();
+                    activeTransactions = DBContext.GetActiveTransactions().ToList();
                     //TableManager.RefreshTransactionReferences();
                 }
 

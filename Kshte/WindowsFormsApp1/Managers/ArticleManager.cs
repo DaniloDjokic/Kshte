@@ -38,6 +38,18 @@ namespace WindowsFormsApp1.Managers
                 return false;    
         }
 
+        public static bool RemoveArticle(Article article)
+        {
+            if (AllArticles.Contains(article))
+            {
+                DBContext.RemoveArticle(article);
+                articles.Remove(article);
+                return true;
+            }
+            else
+                return false;
+        }
+
         public static bool UpdateArticle(Article article)
         {
             if (AllArticles.Contains(article))
