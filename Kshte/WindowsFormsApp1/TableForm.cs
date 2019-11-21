@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controllers;
 using WindowsFormsApp1.Models;
 using WindowsFormsApplication1;
 
@@ -15,15 +16,23 @@ namespace WindowsFormsApp1
     public partial class TableForm : Form
     {
         private int articleListViewDivider = 10;
+        private MainForm mainForm;
+        private TransactionController transactionController;
 
-        public TableForm(Transaction transaction)
+        public TableForm(Transaction transaction, MainForm mainForm, int tableID)
         {
             InitializeComponent();
-            InitForm(transaction);
+            transactionController = new TransactionController(transaction, tableID);
+            transaction = transactionController.Transaction;
+
+            InitForm(transaction, mainForm);
         }
 
-        private void InitForm(Transaction transaction)
+        private void InitForm(Transaction transaction, MainForm mainForm)
         {
+            this.mainForm = mainForm;
+            this.tableIDLabel.Text = $"Table: {transaction.TableID.ToString()}"; 
+
             InitActiveArticlesListView(transaction);
             InitAllArticlesListView();
             allArticlesListView.Visible = false;
@@ -56,7 +65,7 @@ namespace WindowsFormsApp1
             ListViewExtender extender = new ListViewExtender(allArticlesListView);
 
             ListViewButtonColumn buttonAdd = new ListViewButtonColumn(2);
-            buttonAdd.Click += OnButtonAddClick;
+            buttonAdd.Click += addBtn_Click;
             buttonAdd.FixedWidth = true;
             extender.AddColumn(buttonAdd);
         }
@@ -92,12 +101,12 @@ namespace WindowsFormsApp1
             ListViewExtender extender = new ListViewExtender(activeArticlesListView);
 
             ListViewButtonColumn buttonPay = new ListViewButtonColumn(2);
-            buttonPay.Click += OnButtonPayClick;
+            buttonPay.Click += payBtn_Click;
             buttonPay.FixedWidth = true;
             extender.AddColumn(buttonPay);
 
             ListViewButtonColumn buttonDelete = new ListViewButtonColumn(3);
-            buttonDelete.Click += OnButtonDeleteClick;
+            buttonDelete.Click += deleteBtn_Click;
             buttonDelete.FixedWidth = true;
             extender.AddColumn(buttonDelete);
 
@@ -113,39 +122,68 @@ namespace WindowsFormsApp1
             //}
         }
 
-        private void DisplayArticles(Category category)
+        private void DisplayArticles(List<Article> articles)
         {
-            List<Article> articles = MockData.allArticles[category];
-
             allArticlesListView.Items.Clear();
 
             foreach (Article article in articles)
             {
-                ListViewItem name = new ListViewItem(article.Name);
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
-                name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "Add"));
+                ListViewItem articleRow = new ListViewItem(article.Name);
+                articleRow.Name = article.Name;
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, article.Price.ToString()));
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "Add"));
 
-                allArticlesListView.Items.Add(name);
+                allArticlesListView.Items.Add(articleRow);
             }
 
             allArticlesListView.Visible = true;
         }
 
+        private void AddArticleToTransaction(Article article)
+        {
+            transactionController.AddArticle(article);
+            AddArticleToActiveItems(article);
+        }
+
+        private void AddArticleToActiveItems(Article article)
+        {
+            ListViewItem articleRow = new ListViewItem(article.Name);
+            articleRow.Name = article.Name;
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, article.Price.ToString()));
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "$"));
+            articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
+
+            activeArticlesListView.Items.Add(articleRow);
+        }
+
+        private void RemoveArticleFromTransaction(Article article, ListViewItem listItem)
+        {
+            transactionController.RemoveArticle(article);
+            activeArticlesListView.Items.Remove(listItem);
+        }
+
+        private void HandleCategoryClick(Category category)
+        {
+            DisplayArticles(ArticlesController.GetAllArticles(category));
+            transactionController.SelectCategory(category);
+        }
+
         #region EventHandlers
 
-        private void OnButtonAddClick(object sender, ListViewColumnMouseEventArgs e)
+        private void addBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("SiSa", "Tit", MessageBoxButtons.OK);
+            Article article = MockData.allArticles[transactionController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name);
+            AddArticleToTransaction(article);
         }
 
-        private void OnButtonPayClick(object sender, ListViewColumnMouseEventArgs e)
+        private void payBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("PENIS", "PEN", MessageBoxButtons.OK);
+            activeArticlesListView.Items.Remove(e.Item);
         }
 
-        private void OnButtonDeleteClick(object sender, ListViewColumnMouseEventArgs e)
+        private void deleteBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            MessageBox.Show("BAGOMA", "BAG", MessageBoxButtons.OK);
+            RemoveArticleFromTransaction(MockData.allArticles[transactionController.ActiveCategory].FirstOrDefault(a => a.Name == e.Item.Name), e.Item);
         }
         
 
@@ -181,8 +219,33 @@ namespace WindowsFormsApp1
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.allArticlesListView.Visible = false;
+            if (transactionController.ArticleSelectMode)
+            {
+                this.allArticlesListView.Visible = false;
+                transactionController.UnselectCategory();
+            }
+            else
+                this.Close();
         }
+
+        private void payAllBtn_Click(object sender, EventArgs e)
+        {
+            transactionController.PayAll();
+            this.activeArticlesListView.Items.Clear();          
+        }
+
+        private void deleteOrderBtn_Click(object sender, EventArgs e)
+        {
+            transactionController.RemoveTransaction();
+            this.Close();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            mainForm.RefreshTableView();
+        }
+
         #endregion
 
 
