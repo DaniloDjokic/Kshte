@@ -11,30 +11,29 @@ namespace WindowsFormsApp1.Controllers
 {
     public class AdminController : CategoryController
     {
-        public void UpdateArticle(Article newArticle, Article oldArticle)
+        public void UpdateArticle(Article articleToUpdate)
         {
-            Article ar = ArticleManager.GetByCategory(oldArticle.Category).FirstOrDefault(a => a == oldArticle);
-
-            ar.Name = newArticle.Name;
-            ar.Price = newArticle.Price;
+            try
+            {
+                if (!ArticleManager.UpdateArticle(articleToUpdate))
+                    throw new Exception("Couldn't update article.");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Artikal ne moze biti promenjen: " + e.GetFullMessage(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         public bool AddNewArticle(Article article)
         {
-            //Article ar = MockData.allArticles[article.Category].FirstOrDefault(a => a.Name == article.Name);
-
-            //if (ar != null)
-            //    return false;
-
-            //MockData.allArticles[article.Category].Add(article);
-
             try
             {
                 return ArticleManager.AddArticle(article);
             }
             catch (Exception e)
             {
-                MessageBox.Show("Artikal ne moze biti dodat: " + e.GetFullMessage() , "Error:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Artikal ne moze biti dodat: " + e.GetFullMessage() , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -47,7 +46,7 @@ namespace WindowsFormsApp1.Controllers
             }
             catch (Exception e)
             {
-                MessageBox.Show("Artikal ne moze biti obrisan: " + e.GetFullMessage(), "Error:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Artikal ne moze biti obrisan: " + e.GetFullMessage(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

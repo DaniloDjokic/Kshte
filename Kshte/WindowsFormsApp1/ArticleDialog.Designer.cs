@@ -51,7 +51,7 @@
             // 
             this.nameTxtBox.Location = new System.Drawing.Point(200, 44);
             this.nameTxtBox.Name = "nameTxtBox";
-            this.nameTxtBox.Size = new System.Drawing.Size(144, 22);
+            this.nameTxtBox.Size = new System.Drawing.Size(352, 22);
             this.nameTxtBox.TabIndex = 1;
             // 
             // saveBtn
@@ -69,7 +69,7 @@
             // 
             this.priceTxtBox.Location = new System.Drawing.Point(200, 116);
             this.priceTxtBox.Name = "priceTxtBox";
-            this.priceTxtBox.Size = new System.Drawing.Size(144, 22);
+            this.priceTxtBox.Size = new System.Drawing.Size(352, 22);
             this.priceTxtBox.TabIndex = 2;
             // 
             // label2
@@ -85,7 +85,7 @@
             // cancelBtn
             // 
             this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.Location = new System.Drawing.Point(236, 257);
+            this.cancelBtn.Location = new System.Drawing.Point(444, 257);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(108, 51);
             this.cancelBtn.TabIndex = 4;
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 337);
+            this.ClientSize = new System.Drawing.Size(620, 337);
             this.Controls.Add(this.errorLbl);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.priceTxtBox);

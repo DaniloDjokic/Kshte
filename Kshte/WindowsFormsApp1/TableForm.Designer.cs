@@ -58,7 +58,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(553, 299);
+            this.groupBox4.Size = new System.Drawing.Size(779, 385);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Categories";
@@ -66,17 +66,17 @@
             // allArticlesListView
             // 
             this.allArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.allArticlesListView.Location = new System.Drawing.Point(-3, 0);
+            this.allArticlesListView.Location = new System.Drawing.Point(0, 0);
             this.allArticlesListView.Margin = new System.Windows.Forms.Padding(4);
             this.allArticlesListView.Name = "allArticlesListView";
-            this.allArticlesListView.Size = new System.Drawing.Size(579, 375);
+            this.allArticlesListView.Size = new System.Drawing.Size(782, 394);
             this.allArticlesListView.TabIndex = 6;
             this.allArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
             // hranaBtn
             // 
             this.hranaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hranaBtn.Location = new System.Drawing.Point(441, 212);
+            this.hranaBtn.Location = new System.Drawing.Point(667, 190);
             this.hranaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.hranaBtn.Name = "hranaBtn";
             this.hranaBtn.Size = new System.Drawing.Size(104, 80);
@@ -88,7 +88,7 @@
             // miscBtn
             // 
             this.miscBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.miscBtn.Location = new System.Drawing.Point(217, 212);
+            this.miscBtn.Location = new System.Drawing.Point(340, 190);
             this.miscBtn.Margin = new System.Windows.Forms.Padding(4);
             this.miscBtn.Name = "miscBtn";
             this.miscBtn.Size = new System.Drawing.Size(104, 80);
@@ -100,19 +100,19 @@
             // zestinaBtn
             // 
             this.zestinaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zestinaBtn.Location = new System.Drawing.Point(8, 212);
+            this.zestinaBtn.Location = new System.Drawing.Point(8, 190);
             this.zestinaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.zestinaBtn.Name = "zestinaBtn";
             this.zestinaBtn.Size = new System.Drawing.Size(104, 80);
             this.zestinaBtn.TabIndex = 3;
-            this.zestinaBtn.Text = "Zestina";
+            this.zestinaBtn.Text = "Žestina";
             this.zestinaBtn.UseVisualStyleBackColor = true;
             this.zestinaBtn.Click += new System.EventHandler(this.zestinaBtn_Click);
             // 
             // topliNapiciBtn
             // 
             this.topliNapiciBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.topliNapiciBtn.Location = new System.Drawing.Point(441, 37);
+            this.topliNapiciBtn.Location = new System.Drawing.Point(667, 37);
             this.topliNapiciBtn.Margin = new System.Windows.Forms.Padding(4);
             this.topliNapiciBtn.Name = "topliNapiciBtn";
             this.topliNapiciBtn.Size = new System.Drawing.Size(104, 80);
@@ -124,7 +124,7 @@
             // pivoBtn
             // 
             this.pivoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pivoBtn.Location = new System.Drawing.Point(217, 37);
+            this.pivoBtn.Location = new System.Drawing.Point(340, 37);
             this.pivoBtn.Margin = new System.Windows.Forms.Padding(4);
             this.pivoBtn.Name = "pivoBtn";
             this.pivoBtn.Size = new System.Drawing.Size(104, 80);
@@ -148,17 +148,17 @@
             // activeArticlesListView
             // 
             this.activeArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeArticlesListView.Location = new System.Drawing.Point(612, 81);
+            this.activeArticlesListView.Location = new System.Drawing.Point(803, 80);
             this.activeArticlesListView.Margin = new System.Windows.Forms.Padding(4);
             this.activeArticlesListView.Name = "activeArticlesListView";
-            this.activeArticlesListView.Size = new System.Drawing.Size(433, 297);
+            this.activeArticlesListView.Size = new System.Drawing.Size(433, 308);
             this.activeArticlesListView.TabIndex = 2;
             this.activeArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
             // payAllBtn
             // 
             this.payAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payAllBtn.Location = new System.Drawing.Point(612, 386);
+            this.payAllBtn.Location = new System.Drawing.Point(803, 396);
             this.payAllBtn.Margin = new System.Windows.Forms.Padding(4);
             this.payAllBtn.Name = "payAllBtn";
             this.payAllBtn.Size = new System.Drawing.Size(161, 69);
@@ -170,7 +170,7 @@
             // deleteOrderBtn
             // 
             this.deleteOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteOrderBtn.Location = new System.Drawing.Point(885, 386);
+            this.deleteOrderBtn.Location = new System.Drawing.Point(1075, 396);
             this.deleteOrderBtn.Margin = new System.Windows.Forms.Padding(4);
             this.deleteOrderBtn.Name = "deleteOrderBtn";
             this.deleteOrderBtn.Size = new System.Drawing.Size(161, 69);
@@ -182,7 +182,7 @@
             // backBtn
             // 
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backBtn.Location = new System.Drawing.Point(471, 34);
+            this.backBtn.Location = new System.Drawing.Point(696, 33);
             this.backBtn.Margin = new System.Windows.Forms.Padding(4);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(99, 38);
@@ -205,15 +205,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(1067, 470);
+            this.ClientSize = new System.Drawing.Size(1249, 503);
             this.Controls.Add(this.tableIDLabel);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.deleteOrderBtn);
             this.Controls.Add(this.payAllBtn);
             this.Controls.Add(this.activeArticlesListView);
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "TableForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "TableForm";
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);

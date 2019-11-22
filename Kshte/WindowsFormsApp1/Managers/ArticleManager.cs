@@ -27,12 +27,17 @@ namespace WindowsFormsApp1.Managers
         {
             if (!AllArticles.Contains(article))
             {
-                var id = DBContext.AddNewArticle(article);
+                if (AllArticles.Where(a => a.Name == article.Name).Count() == 0)
+                {
+                    var id = DBContext.AddNewArticle(article);
 
-                article.ID = id;
-                articles.Add(article);
+                    article.ID = id;
+                    articles.Add(article);
 
-                return true;
+                    return true;
+                }
+
+                return false;
             }
             else
                 return false;    

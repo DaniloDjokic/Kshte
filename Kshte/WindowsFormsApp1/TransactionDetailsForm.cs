@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsFormsApp1.Models;
+
+namespace WindowsFormsApp1
+{
+    public partial class TransactionDetailsForm : Form
+    {
+        public TransactionDetailsForm(IEnumerable<TransactionDetail> details)
+        {
+            InitializeComponent();
+
+            detailsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Populate(details);
+        }
+
+        private void Populate(IEnumerable<TransactionDetail> details)
+        {
+            detailsGridView.DataSource = details.Select(d => new { PaidFor = d.PaidFor, Article = d.Article, EffectivePrice = d.EffectivePrice}).ToList();
+        }
+    }
+}

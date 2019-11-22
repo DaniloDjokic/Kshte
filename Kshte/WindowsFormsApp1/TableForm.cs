@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
 
             InitActiveArticlesListView(transaction);
             InitAllArticlesListView();
+
             allArticlesListView.Visible = false;
         }
 
@@ -49,7 +50,7 @@ namespace WindowsFormsApp1
 
             //Create columns
             ColumnHeader nameColumn = new ColumnHeader();
-            nameColumn.Width = 3 * (allArticlesListView.Width / articleListViewDivider);
+            nameColumn.Width = 6 * (allArticlesListView.Width / articleListViewDivider);
 
             ColumnHeader priceColumn = new ColumnHeader();
             priceColumn.Width = 2 * (allArticlesListView.Width / articleListViewDivider);
@@ -112,15 +113,16 @@ namespace WindowsFormsApp1
             extender.AddColumn(buttonDelete);
 
             //Add column data and buttons
-            //foreach (Article article in transaction.Articles)
-            //{
-            //    ListViewItem name = new ListViewItem(article.Name);
-            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, article.Price.ToString()));
-            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "$"));
-            //    name.SubItems.Add(new ListViewItem.ListViewSubItem(name, "X"));
+            foreach (TransactionDetail detail in transaction.TransactionDetails)
+            {
+                ListViewItem articleRow = new ListViewItem(detail.Article.Name);
+                articleRow.Name = detail.ID.ToString();
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, detail.EffectivePrice.ToString()));
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "$"));
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
 
-            //    activeArticlesListView.Items.Add(name);
-            //}
+                activeArticlesListView.Items.Add(articleRow);
+            }
         }
 
         private void DisplayArticles(List<Article> articles)
@@ -142,7 +144,6 @@ namespace WindowsFormsApp1
 
         private void AddArticleToTransaction(TransactionDetail detail)
         {
-            transactionController.AddArticle(detail.Article);
             AddArticleToActiveItems(detail);
         }
 
@@ -180,6 +181,7 @@ namespace WindowsFormsApp1
 
         private void payBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
+            transactionController.PayArticle(transactionController.Transaction.TransactionDetails.FirstOrDefault(detail => detail.ID == Int32.Parse(e.Item.Name)));
             activeArticlesListView.Items.Remove(e.Item);
         }
 

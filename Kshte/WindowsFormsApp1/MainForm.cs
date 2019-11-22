@@ -34,6 +34,8 @@ namespace WindowsFormsApp1
         {
             InitTableView();
             InitAdminView();
+
+            transactionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
  
@@ -258,5 +260,31 @@ namespace WindowsFormsApp1
             articleDialog.ShowDialog();
         }
         #endregion
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            var allTransactions = TransactionManager.GetTransactionHistory();
+
+            transactionsGridView.DataSource = allTransactions.Select(t => new TransactionView(t.DateCreated, t.DateCompleted, t.TableID, t.CurrentPrice, t.PaidPrice, t.TotalPrice, t.TransactionDetails)).OrderByDescending(t => DateTime.Parse(t.DateCreated)).ToList();
+        }
+
+        private void transactionsGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = ((DataGridView)sender);
+            var transactionView = (TransactionView)dataGrid.Rows[e.RowIndex].DataBoundItem;
+            var transactionDetails = transactionView.GetTransactionDetails();
+
+            if (transactionDetails != null && transactionDetails.Count() != 0)
+            {
+                using (TransactionDetailsForm detailsForm = new TransactionDetailsForm(transactionDetails))
+                {
+                    detailsForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ova transakcija nema artikle.", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

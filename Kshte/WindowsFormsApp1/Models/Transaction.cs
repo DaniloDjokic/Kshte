@@ -19,18 +19,28 @@ namespace WindowsFormsApp1.Models
 
         private List<TransactionDetail> transactionDetails = null;
         public IReadOnlyCollection<TransactionDetail> TransactionDetails { get => transactionDetails.AsReadOnly(); }
-        private decimal? currentPrice = null;
         public decimal CurrentPrice 
         { 
             get 
             {
-                if (!currentPrice.HasValue)
-                {
-                    currentPrice = CalculateCurrentPrice();
-                }
-
-                return currentPrice.Value;
+                return CalculateCurrentPrice();
             } 
+        }
+
+        public decimal TotalPrice
+        {
+            get
+            {
+                return CalculateTotalPrice();
+            }
+        }
+
+        public decimal PaidPrice
+        {
+            get
+            {
+                return CalculatePaidPrice();
+            }
         }
 
         internal Transaction()
@@ -76,7 +86,6 @@ namespace WindowsFormsApp1.Models
             if (TransactionDetails.Contains(detail))
             {
                 detail.PaidFor = true;
-                currentPrice = null;
             }
         }
         private decimal CalculateCurrentPrice()
@@ -85,6 +94,29 @@ namespace WindowsFormsApp1.Models
             foreach (var detail in transactionDetails)
             {
                 if (!detail.PaidFor)
+                {
+                    price += detail.EffectivePrice;
+                }
+            }
+            return price;
+        }
+
+        private decimal CalculateTotalPrice()
+        {
+            decimal price = 0;
+            foreach (var detail in transactionDetails)
+            {
+                price += detail.EffectivePrice;
+            }
+            return price;
+        }
+
+        private decimal CalculatePaidPrice()
+        {
+            decimal price = 0;
+            foreach (var detail in transactionDetails)
+            {
+                if (detail.PaidFor)
                 {
                     price += detail.EffectivePrice;
                 }

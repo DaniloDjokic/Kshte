@@ -67,6 +67,8 @@ namespace WindowsFormsApp1.Managers
 
             table.SetCurrentTransaction(transaction);
 
+            DBContext.UpdateDB(table);
+
             return true;
         }
 

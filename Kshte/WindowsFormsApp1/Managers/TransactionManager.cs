@@ -38,14 +38,16 @@ namespace WindowsFormsApp1.Managers
                 transaction.TableID = table.ID;
                 activeTransactions.Add(transaction);
 
+                var id = DBContext.AddNewTransaction(transaction);
+                transaction.ID = id;
+
                 if (!TableManager.SetCurrentTransaction(table, transaction))
                 {
                     activeTransactions.Remove(transaction);
+                    DBContext.RemoveTransaction(transaction);
                     throw new InvalidOperationException("This table is occupied.");
                 }
 
-                var id = DBContext.AddNewTransaction(transaction);
-                transaction.ID = id;
                 return true;
             }
             else

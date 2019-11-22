@@ -168,7 +168,7 @@ namespace WindowsFormsApp1.DBTools
             try
             {
                 string dateCreated = transaction.DateCreated.ToString();
-                string dateCompleted = transaction.DateCompleted != null ? transaction.DateCompleted.ToString() : " ";
+                string dateCompleted = transaction.DateCompleted != null ? transaction.DateCompleted.ToString() : null;
                 newId = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new {dateCreated, dateCompleted, transaction.TableID}).ToString());
                 transaction.ID = newId;
 
@@ -211,7 +211,7 @@ namespace WindowsFormsApp1.DBTools
         }
         internal static void UpdateDB(Table table)
         {
-            string sqlQuery = "UPDATE [Table] SET CurrentTransactionID=@CTID WHERE ID=@ID;";
+            string sqlQuery = "UPDATE [Table] SET CurrentTransactionID=@CurrentTransactionID WHERE ID=@ID;";
 
             try
             {
@@ -246,7 +246,7 @@ namespace WindowsFormsApp1.DBTools
 
             
             string sqlQuery = "UPDATE [Transaction] SET DateCreated=@DateCreated, DateCompleted=@DateCompleted, [TableID]=@TableID WHERE ID=@ID;";
-            string getDBDetails = "SELECT * FROM [TransactionDetail] WHERE ID=@ID;";
+            string getDBDetails = "SELECT * FROM [TransactionDetail] WHERE TransactionID=@ID;";
             string updateDetail = "UPDATE [TransactionDetail] SET PaidFor=@PaidFor, EffectivePrice=@EffectivePrice WHERE ID=@ID;";
             string insertDetail = "INSERT INTO [TransactionDetail](PaidFor,EffectivePrice,TransactionID,ArticleID) VALUES (@PaidFor,@EffectivePrice,@ID,@ArticleID); SELECT last_insert_rowid();";
             string removeDetail = "DELETE FROM [TransactionDetail] WHERE ID=@ID;";
@@ -314,6 +314,20 @@ namespace WindowsFormsApp1.DBTools
             catch (Exception e)
             {
                 throw new Exception("Error removing article.", e);
+            }
+        }
+
+        internal static void RemoveTransaction(Transaction transaction)
+        {
+            string sqlQuery = "DELETE FROM [Transaction] WHERE ID=@ID;";
+
+            try
+            {
+                DBConnector.Connection.Execute(sqlQuery, new { transaction.ID });
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error removing transaction.", e);
             }
         }
 

@@ -32,6 +32,7 @@
             this.TablesTabPage = new System.Windows.Forms.TabPage();
             this.ActiveTransactionsListBox = new System.Windows.Forms.ListBox();
             this.MainRoomGroupBox = new System.Windows.Forms.GroupBox();
+            this.table7btn = new System.Windows.Forms.Button();
             this.table0btn = new System.Windows.Forms.Button();
             this.table1btn = new System.Windows.Forms.Button();
             this.table2btn = new System.Windows.Forms.Button();
@@ -49,11 +50,11 @@
             this.table13btn = new System.Windows.Forms.Button();
             this.table14btn = new System.Windows.Forms.Button();
             this.AdminTabPage = new System.Windows.Forms.TabPage();
+            this.adminArticlesListView = new System.Windows.Forms.ListView();
             this.titleLabel = new System.Windows.Forms.Label();
             this.backBtn = new System.Windows.Forms.Button();
             this.addProductBtn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.adminArticlesListView = new System.Windows.Forms.ListView();
             this.hranaBtn = new System.Windows.Forms.Button();
             this.miscBtn = new System.Windows.Forms.Button();
             this.zestinaBtn = new System.Windows.Forms.Button();
@@ -61,8 +62,8 @@
             this.pivoBtn = new System.Windows.Forms.Button();
             this.sokoviBtn = new System.Windows.Forms.Button();
             this.HistoryTabPage = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.table7btn = new System.Windows.Forms.Button();
+            this.refreshBtn = new System.Windows.Forms.Button();
+            this.transactionsGridView = new System.Windows.Forms.DataGridView();
             this.TabControl.SuspendLayout();
             this.TablesTabPage.SuspendLayout();
             this.MainRoomGroupBox.SuspendLayout();
@@ -71,7 +72,7 @@
             this.AdminTabPage.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.HistoryTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -80,7 +81,7 @@
             this.TabControl.Controls.Add(this.AdminTabPage);
             this.TabControl.Controls.Add(this.HistoryTabPage);
             this.TabControl.Location = new System.Drawing.Point(16, 15);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(1237, 532);
@@ -94,9 +95,9 @@
             this.TablesTabPage.Controls.Add(this.SideRoomGroupBox);
             this.TablesTabPage.Controls.Add(this.UpstairsGroupBox);
             this.TablesTabPage.Location = new System.Drawing.Point(4, 25);
-            this.TablesTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TablesTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.TablesTabPage.Name = "TablesTabPage";
-            this.TablesTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TablesTabPage.Padding = new System.Windows.Forms.Padding(4);
             this.TablesTabPage.Size = new System.Drawing.Size(1229, 503);
             this.TablesTabPage.TabIndex = 0;
             this.TablesTabPage.Text = "Tables";
@@ -106,10 +107,10 @@
             this.ActiveTransactionsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ActiveTransactionsListBox.FormattingEnabled = true;
             this.ActiveTransactionsListBox.ItemHeight = 29;
-            this.ActiveTransactionsListBox.Location = new System.Drawing.Point(953, 7);
-            this.ActiveTransactionsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ActiveTransactionsListBox.Location = new System.Drawing.Point(954, 24);
+            this.ActiveTransactionsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.ActiveTransactionsListBox.Name = "ActiveTransactionsListBox";
-            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(241, 468);
+            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(254, 468);
             this.ActiveTransactionsListBox.TabIndex = 3;
             // 
             // MainRoomGroupBox
@@ -125,20 +126,32 @@
             this.MainRoomGroupBox.Controls.Add(this.table8btn);
             this.MainRoomGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainRoomGroupBox.Location = new System.Drawing.Point(8, 7);
-            this.MainRoomGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MainRoomGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.MainRoomGroupBox.Name = "MainRoomGroupBox";
-            this.MainRoomGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MainRoomGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.MainRoomGroupBox.Size = new System.Drawing.Size(459, 485);
             this.MainRoomGroupBox.TabIndex = 0;
             this.MainRoomGroupBox.TabStop = false;
             this.MainRoomGroupBox.Text = "Main room";
+            // 
+            // table7btn
+            // 
+            this.table7btn.BackColor = System.Drawing.Color.White;
+            this.table7btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.table7btn.Location = new System.Drawing.Point(326, 187);
+            this.table7btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table7btn.Name = "table7btn";
+            this.table7btn.Size = new System.Drawing.Size(83, 55);
+            this.table7btn.TabIndex = 8;
+            this.table7btn.Text = "7";
+            this.table7btn.UseVisualStyleBackColor = false;
             // 
             // table0btn
             // 
             this.table0btn.BackColor = System.Drawing.Color.White;
             this.table0btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table0btn.Location = new System.Drawing.Point(163, 71);
-            this.table0btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table0btn.Margin = new System.Windows.Forms.Padding(4);
             this.table0btn.Name = "table0btn";
             this.table0btn.Size = new System.Drawing.Size(83, 55);
             this.table0btn.TabIndex = 1;
@@ -150,7 +163,7 @@
             this.table1btn.BackColor = System.Drawing.Color.White;
             this.table1btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table1btn.Location = new System.Drawing.Point(8, 71);
-            this.table1btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table1btn.Margin = new System.Windows.Forms.Padding(4);
             this.table1btn.Name = "table1btn";
             this.table1btn.Size = new System.Drawing.Size(83, 55);
             this.table1btn.TabIndex = 2;
@@ -162,7 +175,7 @@
             this.table2btn.BackColor = System.Drawing.Color.White;
             this.table2btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table2btn.Location = new System.Drawing.Point(8, 187);
-            this.table2btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table2btn.Margin = new System.Windows.Forms.Padding(4);
             this.table2btn.Name = "table2btn";
             this.table2btn.Size = new System.Drawing.Size(83, 55);
             this.table2btn.TabIndex = 3;
@@ -174,7 +187,7 @@
             this.table3btn.BackColor = System.Drawing.Color.White;
             this.table3btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table3btn.Location = new System.Drawing.Point(8, 304);
-            this.table3btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table3btn.Margin = new System.Windows.Forms.Padding(4);
             this.table3btn.Name = "table3btn";
             this.table3btn.Size = new System.Drawing.Size(83, 55);
             this.table3btn.TabIndex = 4;
@@ -186,7 +199,7 @@
             this.table4btn.BackColor = System.Drawing.Color.White;
             this.table4btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table4btn.Location = new System.Drawing.Point(88, 422);
-            this.table4btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table4btn.Margin = new System.Windows.Forms.Padding(4);
             this.table4btn.Name = "table4btn";
             this.table4btn.Size = new System.Drawing.Size(83, 55);
             this.table4btn.TabIndex = 5;
@@ -198,7 +211,7 @@
             this.table5btn.BackColor = System.Drawing.Color.White;
             this.table5btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table5btn.Location = new System.Drawing.Point(239, 422);
-            this.table5btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table5btn.Margin = new System.Windows.Forms.Padding(4);
             this.table5btn.Name = "table5btn";
             this.table5btn.Size = new System.Drawing.Size(83, 55);
             this.table5btn.TabIndex = 7;
@@ -210,7 +223,7 @@
             this.table6btn.BackColor = System.Drawing.Color.White;
             this.table6btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table6btn.Location = new System.Drawing.Point(326, 304);
-            this.table6btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table6btn.Margin = new System.Windows.Forms.Padding(4);
             this.table6btn.Name = "table6btn";
             this.table6btn.Size = new System.Drawing.Size(83, 55);
             this.table6btn.TabIndex = 6;
@@ -222,7 +235,7 @@
             this.table8btn.BackColor = System.Drawing.Color.White;
             this.table8btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table8btn.Location = new System.Drawing.Point(399, 12);
-            this.table8btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table8btn.Margin = new System.Windows.Forms.Padding(4);
             this.table8btn.Name = "table8btn";
             this.table8btn.Size = new System.Drawing.Size(52, 143);
             this.table8btn.TabIndex = 0;
@@ -236,9 +249,9 @@
             this.SideRoomGroupBox.Controls.Add(this.table11btn);
             this.SideRoomGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SideRoomGroupBox.Location = new System.Drawing.Point(475, 236);
-            this.SideRoomGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SideRoomGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.SideRoomGroupBox.Name = "SideRoomGroupBox";
-            this.SideRoomGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SideRoomGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.SideRoomGroupBox.Size = new System.Drawing.Size(471, 256);
             this.SideRoomGroupBox.TabIndex = 1;
             this.SideRoomGroupBox.TabStop = false;
@@ -249,7 +262,7 @@
             this.table9btn.BackColor = System.Drawing.Color.White;
             this.table9btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table9btn.Location = new System.Drawing.Point(8, 193);
-            this.table9btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table9btn.Margin = new System.Windows.Forms.Padding(4);
             this.table9btn.Name = "table9btn";
             this.table9btn.Size = new System.Drawing.Size(83, 55);
             this.table9btn.TabIndex = 10;
@@ -261,7 +274,7 @@
             this.table10btn.BackColor = System.Drawing.Color.White;
             this.table10btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table10btn.Location = new System.Drawing.Point(380, 193);
-            this.table10btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table10btn.Margin = new System.Windows.Forms.Padding(4);
             this.table10btn.Name = "table10btn";
             this.table10btn.Size = new System.Drawing.Size(83, 55);
             this.table10btn.TabIndex = 9;
@@ -273,7 +286,7 @@
             this.table11btn.BackColor = System.Drawing.Color.White;
             this.table11btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table11btn.Location = new System.Drawing.Point(380, 23);
-            this.table11btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table11btn.Margin = new System.Windows.Forms.Padding(4);
             this.table11btn.Name = "table11btn";
             this.table11btn.Size = new System.Drawing.Size(83, 55);
             this.table11btn.TabIndex = 8;
@@ -287,9 +300,9 @@
             this.UpstairsGroupBox.Controls.Add(this.table14btn);
             this.UpstairsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpstairsGroupBox.Location = new System.Drawing.Point(475, 7);
-            this.UpstairsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UpstairsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.UpstairsGroupBox.Name = "UpstairsGroupBox";
-            this.UpstairsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UpstairsGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.UpstairsGroupBox.Size = new System.Drawing.Size(471, 222);
             this.UpstairsGroupBox.TabIndex = 2;
             this.UpstairsGroupBox.TabStop = false;
@@ -300,7 +313,7 @@
             this.table12btn.BackColor = System.Drawing.Color.White;
             this.table12btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table12btn.Location = new System.Drawing.Point(8, 159);
-            this.table12btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table12btn.Margin = new System.Windows.Forms.Padding(4);
             this.table12btn.Name = "table12btn";
             this.table12btn.Size = new System.Drawing.Size(83, 55);
             this.table12btn.TabIndex = 13;
@@ -312,7 +325,7 @@
             this.table13btn.BackColor = System.Drawing.Color.White;
             this.table13btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table13btn.Location = new System.Drawing.Point(380, 159);
-            this.table13btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table13btn.Margin = new System.Windows.Forms.Padding(4);
             this.table13btn.Name = "table13btn";
             this.table13btn.Size = new System.Drawing.Size(83, 55);
             this.table13btn.TabIndex = 12;
@@ -324,7 +337,7 @@
             this.table14btn.BackColor = System.Drawing.Color.White;
             this.table14btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table14btn.Location = new System.Drawing.Point(380, 12);
-            this.table14btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.table14btn.Margin = new System.Windows.Forms.Padding(4);
             this.table14btn.Name = "table14btn";
             this.table14btn.Size = new System.Drawing.Size(83, 55);
             this.table14btn.TabIndex = 11;
@@ -334,18 +347,28 @@
             // AdminTabPage
             // 
             this.AdminTabPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.AdminTabPage.Controls.Add(this.adminArticlesListView);
             this.AdminTabPage.Controls.Add(this.titleLabel);
             this.AdminTabPage.Controls.Add(this.backBtn);
             this.AdminTabPage.Controls.Add(this.addProductBtn);
             this.AdminTabPage.Controls.Add(this.groupBox4);
             this.AdminTabPage.Location = new System.Drawing.Point(4, 25);
-            this.AdminTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.AdminTabPage.Name = "AdminTabPage";
-            this.AdminTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminTabPage.Padding = new System.Windows.Forms.Padding(4);
             this.AdminTabPage.Size = new System.Drawing.Size(1229, 503);
             this.AdminTabPage.TabIndex = 1;
             this.AdminTabPage.Text = "Admin";
+            // 
+            // adminArticlesListView
+            // 
+            this.adminArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminArticlesListView.HideSelection = false;
+            this.adminArticlesListView.Location = new System.Drawing.Point(0, 0);
+            this.adminArticlesListView.Margin = new System.Windows.Forms.Padding(4);
+            this.adminArticlesListView.Name = "adminArticlesListView";
+            this.adminArticlesListView.Size = new System.Drawing.Size(903, 346);
+            this.adminArticlesListView.TabIndex = 1;
+            this.adminArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
             // titleLabel
             // 
@@ -361,7 +384,7 @@
             // 
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.Location = new System.Drawing.Point(784, 26);
-            this.backBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(4);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(127, 44);
             this.backBtn.TabIndex = 3;
@@ -373,7 +396,7 @@
             // 
             this.addProductBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductBtn.Location = new System.Drawing.Point(16, 432);
-            this.addProductBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addProductBtn.Margin = new System.Windows.Forms.Padding(4);
             this.addProductBtn.Name = "addProductBtn";
             this.addProductBtn.Size = new System.Drawing.Size(164, 63);
             this.addProductBtn.TabIndex = 2;
@@ -383,6 +406,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.adminArticlesListView);
             this.groupBox4.Controls.Add(this.hranaBtn);
             this.groupBox4.Controls.Add(this.miscBtn);
             this.groupBox4.Controls.Add(this.zestinaBtn);
@@ -390,30 +414,19 @@
             this.groupBox4.Controls.Add(this.pivoBtn);
             this.groupBox4.Controls.Add(this.sokoviBtn);
             this.groupBox4.Location = new System.Drawing.Point(16, 78);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox4.Size = new System.Drawing.Size(553, 346);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(895, 346);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Categories";
             // 
-            // adminArticlesListView
-            // 
-            this.adminArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminArticlesListView.HideSelection = false;
-            this.adminArticlesListView.Location = new System.Drawing.Point(16, 78);
-            this.adminArticlesListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.adminArticlesListView.Name = "adminArticlesListView";
-            this.adminArticlesListView.Size = new System.Drawing.Size(895, 346);
-            this.adminArticlesListView.TabIndex = 1;
-            this.adminArticlesListView.UseCompatibleStateImageBehavior = false;
-            // 
             // hranaBtn
             // 
             this.hranaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hranaBtn.Location = new System.Drawing.Point(441, 212);
-            this.hranaBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hranaBtn.Location = new System.Drawing.Point(783, 212);
+            this.hranaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.hranaBtn.Name = "hranaBtn";
             this.hranaBtn.Size = new System.Drawing.Size(104, 80);
             this.hranaBtn.TabIndex = 5;
@@ -424,8 +437,8 @@
             // miscBtn
             // 
             this.miscBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.miscBtn.Location = new System.Drawing.Point(217, 212);
-            this.miscBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.miscBtn.Location = new System.Drawing.Point(394, 212);
+            this.miscBtn.Margin = new System.Windows.Forms.Padding(4);
             this.miscBtn.Name = "miscBtn";
             this.miscBtn.Size = new System.Drawing.Size(104, 80);
             this.miscBtn.TabIndex = 4;
@@ -437,19 +450,19 @@
             // 
             this.zestinaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zestinaBtn.Location = new System.Drawing.Point(8, 212);
-            this.zestinaBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.zestinaBtn.Margin = new System.Windows.Forms.Padding(4);
             this.zestinaBtn.Name = "zestinaBtn";
             this.zestinaBtn.Size = new System.Drawing.Size(104, 80);
             this.zestinaBtn.TabIndex = 3;
-            this.zestinaBtn.Text = "Zestina";
+            this.zestinaBtn.Text = "Žestina";
             this.zestinaBtn.UseVisualStyleBackColor = true;
             this.zestinaBtn.Click += new System.EventHandler(this.zestinaBtn_Click);
             // 
             // topliNapiciBtn
             // 
             this.topliNapiciBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.topliNapiciBtn.Location = new System.Drawing.Point(441, 23);
-            this.topliNapiciBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.topliNapiciBtn.Location = new System.Drawing.Point(783, 23);
+            this.topliNapiciBtn.Margin = new System.Windows.Forms.Padding(4);
             this.topliNapiciBtn.Name = "topliNapiciBtn";
             this.topliNapiciBtn.Size = new System.Drawing.Size(104, 80);
             this.topliNapiciBtn.TabIndex = 2;
@@ -460,8 +473,8 @@
             // pivoBtn
             // 
             this.pivoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pivoBtn.Location = new System.Drawing.Point(217, 23);
-            this.pivoBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pivoBtn.Location = new System.Drawing.Point(394, 23);
+            this.pivoBtn.Margin = new System.Windows.Forms.Padding(4);
             this.pivoBtn.Name = "pivoBtn";
             this.pivoBtn.Size = new System.Drawing.Size(104, 80);
             this.pivoBtn.TabIndex = 1;
@@ -473,7 +486,7 @@
             // 
             this.sokoviBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sokoviBtn.Location = new System.Drawing.Point(8, 23);
-            this.sokoviBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sokoviBtn.Margin = new System.Windows.Forms.Padding(4);
             this.sokoviBtn.Name = "sokoviBtn";
             this.sokoviBtn.Size = new System.Drawing.Size(104, 80);
             this.sokoviBtn.TabIndex = 0;
@@ -484,36 +497,40 @@
             // HistoryTabPage
             // 
             this.HistoryTabPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.HistoryTabPage.Controls.Add(this.dataGridView1);
+            this.HistoryTabPage.Controls.Add(this.refreshBtn);
+            this.HistoryTabPage.Controls.Add(this.transactionsGridView);
             this.HistoryTabPage.Location = new System.Drawing.Point(4, 25);
-            this.HistoryTabPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HistoryTabPage.Margin = new System.Windows.Forms.Padding(4);
             this.HistoryTabPage.Name = "HistoryTabPage";
-            this.HistoryTabPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HistoryTabPage.Padding = new System.Windows.Forms.Padding(4);
             this.HistoryTabPage.Size = new System.Drawing.Size(1229, 503);
             this.HistoryTabPage.TabIndex = 2;
             this.HistoryTabPage.Text = "History";
             // 
-            // dataGridView1
+            // refreshBtn
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 105);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1211, 388);
-            this.dataGridView1.TabIndex = 0;
+            this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshBtn.Location = new System.Drawing.Point(8, 7);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(176, 47);
+            this.refreshBtn.TabIndex = 1;
+            this.refreshBtn.Text = "Refresh";
+            this.refreshBtn.UseVisualStyleBackColor = true;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
-            // table7btn
+            // transactionsGridView
             // 
-            this.table7btn.BackColor = System.Drawing.Color.White;
-            this.table7btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table7btn.Location = new System.Drawing.Point(326, 187);
-            this.table7btn.Margin = new System.Windows.Forms.Padding(4);
-            this.table7btn.Name = "table7btn";
-            this.table7btn.Size = new System.Drawing.Size(83, 55);
-            this.table7btn.TabIndex = 8;
-            this.table7btn.Text = "7";
-            this.table7btn.UseVisualStyleBackColor = false;
+            this.transactionsGridView.AllowUserToAddRows = false;
+            this.transactionsGridView.AllowUserToDeleteRows = false;
+            this.transactionsGridView.ColumnHeadersHeight = 29;
+            this.transactionsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.transactionsGridView.Location = new System.Drawing.Point(8, 105);
+            this.transactionsGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.transactionsGridView.Name = "transactionsGridView";
+            this.transactionsGridView.RowHeadersWidth = 51;
+            this.transactionsGridView.Size = new System.Drawing.Size(1211, 388);
+            this.transactionsGridView.TabIndex = 0;
+            this.transactionsGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_CellMouseDoubleClick);
             // 
             // MainForm
             // 
@@ -521,7 +538,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1287, 561);
             this.Controls.Add(this.TabControl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Form1";
             this.TabControl.ResumeLayout(false);
@@ -533,7 +552,7 @@
             this.AdminTabPage.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.HistoryTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionsGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,10 +590,11 @@
         private System.Windows.Forms.ListBox ActiveTransactionsListBox;
         private System.Windows.Forms.ListView adminArticlesListView;
         private System.Windows.Forms.Button addProductBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView transactionsGridView;
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button table7btn;
+        private System.Windows.Forms.Button refreshBtn;
     }
 }
 

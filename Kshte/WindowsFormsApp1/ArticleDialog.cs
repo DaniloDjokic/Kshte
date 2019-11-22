@@ -55,15 +55,18 @@ namespace WindowsFormsApp1
             }
             else
             {
-                Article article = new Article(nameTxtBox.Text, int.Parse(priceTxtBox.Text), category);
-
                 if (articleToEdit != null)
                 {
-                    adminController.UpdateArticle(article, articleToEdit);
+                    articleToEdit.Name = nameTxtBox.Text;
+                    articleToEdit.Price = int.Parse(priceTxtBox.Text);
+
+                    adminController.UpdateArticle(articleToEdit);
                     this.Close();
                 }
                 else
                 {
+                    Article article = new Article(nameTxtBox.Text, int.Parse(priceTxtBox.Text), category);
+
                     if (!adminController.AddNewArticle(article))
                     {
                         DisplayErrorMessage("Article name exists");
