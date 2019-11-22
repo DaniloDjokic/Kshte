@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.Models
         { 
             get 
             {
-                if (currentPrice.HasValue)
+                if (!currentPrice.HasValue)
                 {
                     currentPrice = CalculateCurrentPrice();
                 }
@@ -44,9 +44,6 @@ namespace WindowsFormsApp1.Models
         }
         internal void ForceSetTransactionDetails(IEnumerable<TransactionDetail> details)
         {
-            if (transactionDetails != null)
-                throw new InvalidOperationException("This transaction's transaction details are already set.");
-
             transactionDetails = details.ToList();
         }
         public bool AddTransactionDetail(TransactionDetail detail)

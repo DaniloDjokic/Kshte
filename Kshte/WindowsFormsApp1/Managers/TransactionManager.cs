@@ -79,6 +79,7 @@ namespace WindowsFormsApp1.Managers
                 transaction.DateCompleted = dateCompleted.ToString();
                 DBContext.UpdateDB(transaction);
                 activeTransactions.Remove(transaction);
+                TableManager.GetById(transaction.TableID).SetCurrentTransaction(null);
                 return true;
             }
             else

@@ -36,7 +36,7 @@ namespace WindowsFormsApp1.Models
 
             currentTransaction = transaction;
 
-            if (transaction != null)
+            if (transaction == null)
                 CurrentTransactionID = null;
             else
                 CurrentTransactionID = transaction.ID;

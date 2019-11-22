@@ -269,7 +269,7 @@ namespace WindowsFormsApp1.DBTools
                 {
                     foundDetail = null;
 
-                    for (int i = dbDetails.Count; i >= 0; i--)
+                    for (int i = dbDetails.Count - 1; i >= 0; i--)
                     {
                         if (dbDetails[i].ID == detail.ID)
                         {

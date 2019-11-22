@@ -90,7 +90,8 @@ namespace WindowsFormsApp1
 
         private void OpenTableForm(object sender, EventArgs args)
         {
-            Transaction transaction = TableManager.GetById(Int32.Parse((sender as Button).Text)).CurrentTransaction;
+            Table table = TableManager.GetById(Int32.Parse((sender as Button).Text));
+            Transaction transaction = table.CurrentTransaction;
             if (transaction == null)
             {
                 transaction = new Transaction(DateTime.Now);
@@ -257,7 +258,5 @@ namespace WindowsFormsApp1
             articleDialog.ShowDialog();
         }
         #endregion
-
-
     }
 }
