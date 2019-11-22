@@ -91,6 +91,11 @@ namespace WindowsFormsApp1
         private void OpenTableForm(object sender, EventArgs args)
         {
             Transaction transaction = TableManager.GetById(Int32.Parse((sender as Button).Text)).CurrentTransaction;
+            if (transaction == null)
+            {
+                transaction = new Transaction(DateTime.Now);
+                TransactionManager.AddActiveTransaction(TableManager.GetById(Int32.Parse((sender as Button).Text)), transaction);
+            }
             Form tableForm = new TableForm(transaction, this, Int32.Parse((sender as Button).Text));
             tableForm.ShowDialog();
         }
@@ -129,7 +134,7 @@ namespace WindowsFormsApp1
 
             //Create columns
             ColumnHeader nameColumn = new ColumnHeader();
-            nameColumn.Width = 3 * (adminArticlesListView.Width / adminListViewDevider);
+            nameColumn.Width = 4 * (adminArticlesListView.Width / adminListViewDevider);
 
             ColumnHeader priceColumn = new ColumnHeader();
             priceColumn.Width = 2 * (adminArticlesListView.Width / adminListViewDevider);
@@ -169,7 +174,7 @@ namespace WindowsFormsApp1
                 ListViewItem articleRow = new ListViewItem(article.Name);
                 articleRow.Name = article.Name;
                 articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, article.Price.ToString()));
-                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "Mod"));
+                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "?"));
                 articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
 
                 adminArticlesListView.Items.Add(articleRow);
@@ -198,7 +203,7 @@ namespace WindowsFormsApp1
 
         private void removeBtn_Click(object sender, ListViewColumnMouseEventArgs e)
         {
-            DialogResult res = MessageBox.Show("Are you sure you want to delete this item?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult res = MessageBox.Show("Da li ste sigurni da zelite da obrisete ovaj artikl?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (res == DialogResult.Yes)
             {
                 AdminController.RemoveArticle(ArticleManager.GetByCategory(AdminController.ActiveCategory).FirstOrDefault(a => a.Name == e.Item.Name));

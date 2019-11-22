@@ -77,7 +77,7 @@ namespace WindowsFormsApp1.DBTools
         internal static IEnumerable<Transaction> GetActiveTransactions()
         {
             string sqlQuery = "SELECT * FROM [Transaction] WHERE DateCompleted IS NULL;";
-            string detailSqlQuery = "SELECT * FROM [TransactionDetail] WHERE TransactionID = @TransID;";
+            string detailSqlQuery = "SELECT * FROM [TransactionDetail] WHERE TransactionID = @ID;";
 
             IEnumerable<Transaction> transactions = null;
             try
@@ -101,7 +101,7 @@ namespace WindowsFormsApp1.DBTools
         internal static IEnumerable<Transaction> GetAllTransactions()
         {
             string sqlQuery = "SELECT * FROM [Transaction];";
-            string detailSqlQuery = "SELECT * FROM [TransactionDetail] WHERE TransactionID = @TransID;";
+            string detailSqlQuery = "SELECT * FROM [TransactionDetail] WHERE TransactionID = @ID;";
 
             List<Transaction> transactions = null;
             try
@@ -160,15 +160,15 @@ namespace WindowsFormsApp1.DBTools
         }
         internal static int AddNewTransaction(Transaction transaction)
         {
-            string sqlQuery = "INSERT INTO [Transaction](DateCreated,DateCompleted,TableID) VALUES (@DateCreated,@DateCompleted,@TableID); SELECT last_insert_rowid();";
-            string detailSqlQuery = "INSERT INTO [TransactionDetail](PaidFor, EffectivePrice, TransactionID, ArticleID) VALUES (@PaidFor, @EffectivePrice, @TransactionId, @ArticleID); SELECT last_insert_rowid();";
+            string sqlQuery = "INSERT INTO [Transaction](DateCreated,DateCompleted,TableID) VALUES (@dateCreated,@dateCompleted,@TableID); SELECT last_insert_rowid();";
+            string detailSqlQuery = "INSERT INTO [TransactionDetail](PaidFor, EffectivePrice, TransactionID, ArticleID) VALUES (@paidFor, @effectivePrice, @transactionId, @articleId); SELECT last_insert_rowid();";
 
             int newId;
             int detailId;
             try
             {
                 string dateCreated = transaction.DateCreated.ToString();
-                string dateCompleted = transaction.DateCompleted.ToString();
+                string dateCompleted = transaction.DateCompleted != null ? transaction.DateCompleted.ToString() : " ";
                 newId = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new {dateCreated, dateCompleted, transaction.TableID}).ToString());
                 transaction.ID = newId;
 
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1.DBTools
         }
         internal static void UpdateDB(Article article)
         {
-            string sqlQuery = "UPDATE Article SET Name=@Name, Price=@Price, CategoryID=@CategoryID WHERE ID=@ID;";
+            string sqlQuery = "UPDATE Article SET Name=@Name, Price=@Price, CategoryID=@categoryID WHERE ID=@ID;";
 
             try
             {
@@ -248,7 +248,7 @@ namespace WindowsFormsApp1.DBTools
             string sqlQuery = "UPDATE [Transaction] SET DateCreated=@DateCreated, DateCompleted=@DateCompleted, [TableID]=@TableID WHERE ID=@ID;";
             string getDBDetails = "SELECT * FROM [TransactionDetail] WHERE ID=@ID;";
             string updateDetail = "UPDATE [TransactionDetail] SET PaidFor=@PaidFor, EffectivePrice=@EffectivePrice WHERE ID=@ID;";
-            string insertDetail = "INSERT INTO [TransactionDetail](PaidFor,EffectivePrice,TransactionID,ArticleID) VALUES (@PaidFor,@EffectivePrice,@TransactionID,@ArticleID); SELECT last_insert_rowid();";
+            string insertDetail = "INSERT INTO [TransactionDetail](PaidFor,EffectivePrice,TransactionID,ArticleID) VALUES (@PaidFor,@EffectivePrice,@ID,@ArticleID); SELECT last_insert_rowid();";
             string removeDetail = "DELETE FROM [TransactionDetail] WHERE ID=@ID;";
 
             try

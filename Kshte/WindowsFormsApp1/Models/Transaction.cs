@@ -40,6 +40,7 @@ namespace WindowsFormsApp1.Models
         public Transaction(DateTime dateCreated)
         {
             DateCreated = dateCreated.ToString();
+            transactionDetails = new List<TransactionDetail>();
         }
         internal void ForceSetTransactionDetails(IEnumerable<TransactionDetail> details)
         {
