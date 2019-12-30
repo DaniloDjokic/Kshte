@@ -151,7 +151,7 @@
             this.activeArticlesListView.Location = new System.Drawing.Point(803, 80);
             this.activeArticlesListView.Margin = new System.Windows.Forms.Padding(4);
             this.activeArticlesListView.Name = "activeArticlesListView";
-            this.activeArticlesListView.Size = new System.Drawing.Size(433, 308);
+            this.activeArticlesListView.Size = new System.Drawing.Size(569, 308);
             this.activeArticlesListView.TabIndex = 2;
             this.activeArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -170,7 +170,7 @@
             // deleteOrderBtn
             // 
             this.deleteOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteOrderBtn.Location = new System.Drawing.Point(1075, 396);
+            this.deleteOrderBtn.Location = new System.Drawing.Point(1211, 396);
             this.deleteOrderBtn.Margin = new System.Windows.Forms.Padding(4);
             this.deleteOrderBtn.Name = "deleteOrderBtn";
             this.deleteOrderBtn.Size = new System.Drawing.Size(161, 69);
@@ -205,7 +205,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(1249, 503);
+            this.ClientSize = new System.Drawing.Size(1385, 503);
             this.Controls.Add(this.tableIDLabel);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.deleteOrderBtn);

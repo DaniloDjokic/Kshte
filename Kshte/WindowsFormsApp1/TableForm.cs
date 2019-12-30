@@ -115,13 +115,17 @@ namespace WindowsFormsApp1
             //Add column data and buttons
             foreach (TransactionDetail detail in transaction.TransactionDetails)
             {
-                ListViewItem articleRow = new ListViewItem(detail.Article.Name);
-                articleRow.Name = detail.ID.ToString();
-                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, detail.EffectivePrice.ToString()));
-                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "$"));
-                articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
+                if (!detail.PaidFor)
+                {
+                    ListViewItem articleRow = new ListViewItem(detail.Article.Name);
+                    articleRow.Name = detail.ID.ToString();
+                    articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, detail.EffectivePrice.ToString()));
+                    articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "$"));
+                    articleRow.SubItems.Add(new ListViewItem.ListViewSubItem(articleRow, "X"));
 
-                activeArticlesListView.Items.Add(articleRow);
+                    activeArticlesListView.Items.Add(articleRow);
+                }
+               
             }
         }
 

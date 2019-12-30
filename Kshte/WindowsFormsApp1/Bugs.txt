@@ -1,3 +1,0 @@
-ids except juice break
-sqlquery rename parametres the same as arguments
-clicking on table breaks, probably due to upper statement
