@@ -237,8 +237,27 @@ namespace WindowsFormsApp1
 
         private void payAllBtn_Click(object sender, EventArgs e)
         {
-            transactionController.PayAll();
-            this.activeArticlesListView.Items.Clear();          
+            DialogResult dialogResult = MessageBox.Show("Complete transaction?", "Transaction completition", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            try
+            {
+                if (dialogResult == DialogResult.Yes)
+                {
+                    transactionController.PayAll();
+                    this.activeArticlesListView.Items.Clear();
+                    transactionController.CompleteTransaction();
+                    this.Close();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    transactionController.PayAll();
+                    this.activeArticlesListView.Items.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.GetFullMessage(), "Error paying", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void deleteOrderBtn_Click(object sender, EventArgs e)

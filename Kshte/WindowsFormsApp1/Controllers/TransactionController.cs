@@ -109,11 +109,17 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// Clears all active articles and removes this transaction from active transactions
+        /// Removes this transaction and all of its details from the database and references to it
         /// </summary>
         public void RemoveTransaction()
         {
             TransactionManager.RemoveTransaction(Transaction);
+        }
+
+
+        public void CompleteTransaction()
+        {
+            TransactionManager.CompleteTransaction(Transaction, DateTime.Now);
         }
     }
 }
