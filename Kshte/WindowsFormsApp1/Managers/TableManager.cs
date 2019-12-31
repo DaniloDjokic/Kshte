@@ -66,7 +66,6 @@ namespace WindowsFormsApp1.Managers
                 throw new InvalidOperationException("This table already has an ongoing transaction.");
 
             table.SetCurrentTransaction(transaction);
-
             DBContext.UpdateDB(table);
 
             return true;
@@ -81,6 +80,7 @@ namespace WindowsFormsApp1.Managers
                 return true;
 
             table.SetCurrentTransaction(null);
+            DBContext.UpdateDB(table);
 
             return true;
         }

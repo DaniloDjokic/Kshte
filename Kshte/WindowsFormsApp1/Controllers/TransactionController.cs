@@ -113,14 +113,7 @@ namespace WindowsFormsApp1
         /// </summary>
         public void RemoveTransaction()
         {
-            var details = Transaction.GetUnpaidDetails().ToList();
-
-            for(int i = 0; i < details.Count; i++)
-            {
-                RemoveArticle(details[i], false);
-            }
-
-            TransactionManager.CompleteTransaction(Transaction, DateTime.Now);
+            TransactionManager.RemoveTransaction(Transaction);
         }
     }
 }

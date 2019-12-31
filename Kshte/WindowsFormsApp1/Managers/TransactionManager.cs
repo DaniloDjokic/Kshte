@@ -66,7 +66,7 @@ namespace WindowsFormsApp1.Managers
 
         public static bool CompleteTransaction(Transaction transaction, DateTime dateCompleted)
         {
-            if (!ActiveTransactions.Contains(transaction))
+            if (transaction == null || !ActiveTransactions.Contains(transaction))
             {
                 return false;
             }
@@ -81,11 +81,45 @@ namespace WindowsFormsApp1.Managers
                 transaction.DateCompleted = dateCompleted.ToString();
                 DBContext.UpdateDB(transaction);
                 activeTransactions.Remove(transaction);
-                TableManager.GetById(transaction.TableID).SetCurrentTransaction(null);
+
+                Table currentTable = TableManager.GetById(transaction.TableID);
+
+                if (currentTable != null)
+                {
+                    TableManager.ClearCurrentTransaction(currentTable);
+                }
+
                 return true;
             }
             else
                 return false;
+        }
+
+        public static bool RemoveTransaction(Transaction transaction)
+        {
+            if (transaction == null || transaction.ID < 0)
+            {
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(transaction.DateCompleted))
+            {
+                return false;
+            }
+
+            activeTransactions.Remove(transaction);
+            Table currentTable = TableManager.GetById(transaction.TableID);
+            if (currentTable != null)
+            {
+                TableManager.ClearCurrentTransaction(currentTable);
+            }
+
+            if (DBContext.RemoveTransaction(transaction) == 0)
+            {
+                throw new Exception("Couldn't remove the transaction.");
+            }
+
+            return true;
         }
 
         internal static bool SwapTables(Transaction transaction1, Transaction transaction2)

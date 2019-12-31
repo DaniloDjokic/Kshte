@@ -165,33 +165,38 @@ namespace WindowsFormsApp1.DBTools
 
             int newId;
             int detailId;
-            try
+            using (var tran = DBConnector.Connection.BeginTransaction())
             {
-                string dateCreated = transaction.DateCreated.ToString();
-                string dateCompleted = transaction.DateCompleted != null ? transaction.DateCompleted.ToString() : null;
-                newId = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new {dateCreated, dateCompleted, transaction.TableID}).ToString());
-                transaction.ID = newId;
-
                 try
                 {
-                    foreach (var detail in transaction.TransactionDetails)
+                    string dateCreated = transaction.DateCreated.ToString();
+                    string dateCompleted = transaction.DateCompleted != null ? transaction.DateCompleted.ToString() : null;
+                    newId = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new { dateCreated, dateCompleted, transaction.TableID }).ToString());
+                    transaction.ID = newId;
+
+                    try
                     {
-                        int paidFor = detail.PaidFor ? 1 : 0;
-                        decimal effectivePrice = detail.EffectivePrice;
-                        int transactionId = transaction.ID;
-                        int articleId = detail.Article.ID;
-                        detailId = int.Parse(DBConnector.Connection.ExecuteScalar(detailSqlQuery, new { paidFor, effectivePrice, transactionId, articleId }).ToString());
-                        detail.ID = detailId;
+                        foreach (var detail in transaction.TransactionDetails)
+                        {
+                            int paidFor = detail.PaidFor ? 1 : 0;
+                            decimal effectivePrice = detail.EffectivePrice;
+                            int transactionId = transaction.ID;
+                            int articleId = detail.Article.ID;
+                            detailId = int.Parse(DBConnector.Connection.ExecuteScalar(detailSqlQuery, new { paidFor, effectivePrice, transactionId, articleId }).ToString());
+                            detail.ID = detailId;
+                        }
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception("Error inserting a transaction detail.", e);
                     }
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Error inserting a transaction detail.", e);
+                    tran.Rollback();
+                    throw new Exception("Error inserting a new transaction.", e);
                 }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Error inserting a new transaction.", e);
             }
             return newId;
         }
@@ -317,18 +322,27 @@ namespace WindowsFormsApp1.DBTools
             }
         }
 
-        internal static void RemoveTransaction(Transaction transaction)
+        internal static int RemoveTransaction(Transaction transaction)
         {
-            string sqlQuery = "DELETE FROM [Transaction] WHERE ID=@ID;";
+            string deleteDetails = "DELETE FROM [TransactionDetail] WHERE TransactionID=@ID;"; 
+            string sqlQuery = "DELETE FROM [Transaction] WHERE ID=@ID AND DateCompleted IS NULL; SELECT changes();";
 
-            try
+            int removedRowCount = 0;
+            using (var tran = DBConnector.Connection.BeginTransaction())
             {
-                DBConnector.Connection.Execute(sqlQuery, new { transaction.ID });
+                try
+                {
+                    DBConnector.Connection.Execute(deleteDetails, new { transaction.ID });
+                    removedRowCount = int.Parse(DBConnector.Connection.ExecuteScalar(sqlQuery, new { transaction.ID }).ToString());
+                    tran.Commit();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    throw new Exception("Error removing transaction.", e);
+                }
             }
-            catch (Exception e)
-            {
-                throw new Exception("Error removing transaction.", e);
-            }
+            return removedRowCount;
         }
 
 
