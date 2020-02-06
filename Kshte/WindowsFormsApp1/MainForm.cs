@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,8 @@ namespace WindowsFormsApp1
     public partial class MainForm : Form
     {
         public AdminController AdminController { get; private set; }
+        public HistoryController HistoryController { get; private set; }
+        public ExportController ExportController { get; private set; }
         private ArticleDialog articleDialog;
 
         private List<Button> tableBtns = new List<Button>();
@@ -34,11 +37,9 @@ namespace WindowsFormsApp1
         {
             InitTableView();
             InitAdminView();
-
-            transactionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            InitHistoryView();
         }
 
- 
         #region TableView
 
         private void InitTableView()
@@ -261,30 +262,35 @@ namespace WindowsFormsApp1
         }
         #endregion
 
+        #region HistoryView
+
+        private void InitHistoryView()
+        {
+            HistoryController = new HistoryController(transactionsGridView);
+            ExportController = new ExportController();
+
+            HistoryController.InitDataGridView();
+        }
+
         private void refreshBtn_Click(object sender, EventArgs e)
         {
-            var allTransactions = TransactionManager.GetTransactionHistory();
-
-            transactionsGridView.DataSource = allTransactions.Select(t => new TransactionView(t.DateCreated, t.DateCompleted, t.TableID, t.CurrentPrice, t.PaidPrice, t.TotalPrice, t.TransactionDetails)).OrderByDescending(t => DateTime.Parse(t.DateCreated)).ToList();
+            HistoryController.RefreshDataGridView();
         }
 
         private void transactionsGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var dataGrid = ((DataGridView)sender);
-            var transactionView = (TransactionView)dataGrid.Rows[e.RowIndex].DataBoundItem;
-            var transactionDetails = transactionView.GetTransactionDetails();
-
-            if (transactionDetails != null && transactionDetails.Count() != 0)
-            {
-                using (TransactionDetailsForm detailsForm = new TransactionDetailsForm(transactionDetails))
-                {
-                    detailsForm.ShowDialog();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ova transakcija nema artikle.", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            HistoryController.HandleCellDoubleClick(sender, e);
         }
+
+        private void transactionsGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            HistoryController.HandleColumnHeaderClick(e);
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            ExportController.HandleExport(HistoryController.GetSelected());
+        }
+        #endregion
     }
 }

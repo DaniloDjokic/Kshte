@@ -64,6 +64,7 @@
             this.HistoryTabPage = new System.Windows.Forms.TabPage();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.transactionsGridView = new System.Windows.Forms.DataGridView();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.TablesTabPage.SuspendLayout();
             this.MainRoomGroupBox.SuspendLayout();
@@ -80,11 +81,10 @@
             this.TabControl.Controls.Add(this.TablesTabPage);
             this.TabControl.Controls.Add(this.AdminTabPage);
             this.TabControl.Controls.Add(this.HistoryTabPage);
-            this.TabControl.Location = new System.Drawing.Point(16, 15);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(4);
+            this.TabControl.Location = new System.Drawing.Point(12, 12);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1237, 532);
+            this.TabControl.Size = new System.Drawing.Size(928, 432);
             this.TabControl.TabIndex = 3;
             // 
             // TablesTabPage
@@ -94,11 +94,10 @@
             this.TablesTabPage.Controls.Add(this.MainRoomGroupBox);
             this.TablesTabPage.Controls.Add(this.SideRoomGroupBox);
             this.TablesTabPage.Controls.Add(this.UpstairsGroupBox);
-            this.TablesTabPage.Location = new System.Drawing.Point(4, 25);
-            this.TablesTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.TablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.TablesTabPage.Name = "TablesTabPage";
-            this.TablesTabPage.Padding = new System.Windows.Forms.Padding(4);
-            this.TablesTabPage.Size = new System.Drawing.Size(1229, 503);
+            this.TablesTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TablesTabPage.Size = new System.Drawing.Size(920, 406);
             this.TablesTabPage.TabIndex = 0;
             this.TablesTabPage.Text = "Tables";
             // 
@@ -106,11 +105,10 @@
             // 
             this.ActiveTransactionsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ActiveTransactionsListBox.FormattingEnabled = true;
-            this.ActiveTransactionsListBox.ItemHeight = 29;
-            this.ActiveTransactionsListBox.Location = new System.Drawing.Point(954, 24);
-            this.ActiveTransactionsListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ActiveTransactionsListBox.ItemHeight = 24;
+            this.ActiveTransactionsListBox.Location = new System.Drawing.Point(716, 20);
             this.ActiveTransactionsListBox.Name = "ActiveTransactionsListBox";
-            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(254, 468);
+            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(192, 364);
             this.ActiveTransactionsListBox.TabIndex = 3;
             // 
             // MainRoomGroupBox
@@ -125,11 +123,9 @@
             this.MainRoomGroupBox.Controls.Add(this.table3btn);
             this.MainRoomGroupBox.Controls.Add(this.table14btn);
             this.MainRoomGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainRoomGroupBox.Location = new System.Drawing.Point(8, 7);
-            this.MainRoomGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.MainRoomGroupBox.Location = new System.Drawing.Point(6, 6);
             this.MainRoomGroupBox.Name = "MainRoomGroupBox";
-            this.MainRoomGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.MainRoomGroupBox.Size = new System.Drawing.Size(459, 485);
+            this.MainRoomGroupBox.Size = new System.Drawing.Size(344, 394);
             this.MainRoomGroupBox.TabIndex = 0;
             this.MainRoomGroupBox.TabStop = false;
             this.MainRoomGroupBox.Text = "Main room";
@@ -138,10 +134,9 @@
             // 
             this.table2btn.BackColor = System.Drawing.Color.White;
             this.table2btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table2btn.Location = new System.Drawing.Point(326, 187);
-            this.table2btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table2btn.Location = new System.Drawing.Point(244, 152);
             this.table2btn.Name = "table2btn";
-            this.table2btn.Size = new System.Drawing.Size(83, 55);
+            this.table2btn.Size = new System.Drawing.Size(62, 45);
             this.table2btn.TabIndex = 8;
             this.table2btn.Text = "2";
             this.table2btn.UseVisualStyleBackColor = false;
@@ -150,10 +145,9 @@
             // 
             this.table0btn.BackColor = System.Drawing.Color.White;
             this.table0btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table0btn.Location = new System.Drawing.Point(163, 71);
-            this.table0btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table0btn.Location = new System.Drawing.Point(122, 58);
             this.table0btn.Name = "table0btn";
-            this.table0btn.Size = new System.Drawing.Size(83, 55);
+            this.table0btn.Size = new System.Drawing.Size(62, 45);
             this.table0btn.TabIndex = 1;
             this.table0btn.Text = "0";
             this.table0btn.UseVisualStyleBackColor = false;
@@ -162,10 +156,9 @@
             // 
             this.table1btn.BackColor = System.Drawing.Color.White;
             this.table1btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table1btn.Location = new System.Drawing.Point(8, 71);
-            this.table1btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table1btn.Location = new System.Drawing.Point(6, 58);
             this.table1btn.Name = "table1btn";
-            this.table1btn.Size = new System.Drawing.Size(83, 55);
+            this.table1btn.Size = new System.Drawing.Size(62, 45);
             this.table1btn.TabIndex = 2;
             this.table1btn.Text = "1";
             this.table1btn.UseVisualStyleBackColor = false;
@@ -174,10 +167,9 @@
             // 
             this.table4btn.BackColor = System.Drawing.Color.White;
             this.table4btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table4btn.Location = new System.Drawing.Point(8, 187);
-            this.table4btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table4btn.Location = new System.Drawing.Point(6, 152);
             this.table4btn.Name = "table4btn";
-            this.table4btn.Size = new System.Drawing.Size(83, 55);
+            this.table4btn.Size = new System.Drawing.Size(62, 45);
             this.table4btn.TabIndex = 3;
             this.table4btn.Text = "4";
             this.table4btn.UseVisualStyleBackColor = false;
@@ -186,10 +178,9 @@
             // 
             this.table5btn.BackColor = System.Drawing.Color.White;
             this.table5btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table5btn.Location = new System.Drawing.Point(8, 304);
-            this.table5btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table5btn.Location = new System.Drawing.Point(6, 247);
             this.table5btn.Name = "table5btn";
-            this.table5btn.Size = new System.Drawing.Size(83, 55);
+            this.table5btn.Size = new System.Drawing.Size(62, 45);
             this.table5btn.TabIndex = 4;
             this.table5btn.Text = "5";
             this.table5btn.UseVisualStyleBackColor = false;
@@ -198,10 +189,9 @@
             // 
             this.table6btn.BackColor = System.Drawing.Color.White;
             this.table6btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table6btn.Location = new System.Drawing.Point(88, 422);
-            this.table6btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table6btn.Location = new System.Drawing.Point(66, 343);
             this.table6btn.Name = "table6btn";
-            this.table6btn.Size = new System.Drawing.Size(83, 55);
+            this.table6btn.Size = new System.Drawing.Size(62, 45);
             this.table6btn.TabIndex = 5;
             this.table6btn.Text = "6";
             this.table6btn.UseVisualStyleBackColor = false;
@@ -210,10 +200,9 @@
             // 
             this.table7btn.BackColor = System.Drawing.Color.White;
             this.table7btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table7btn.Location = new System.Drawing.Point(239, 422);
-            this.table7btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table7btn.Location = new System.Drawing.Point(179, 343);
             this.table7btn.Name = "table7btn";
-            this.table7btn.Size = new System.Drawing.Size(83, 55);
+            this.table7btn.Size = new System.Drawing.Size(62, 45);
             this.table7btn.TabIndex = 7;
             this.table7btn.Text = "7";
             this.table7btn.UseVisualStyleBackColor = false;
@@ -222,10 +211,9 @@
             // 
             this.table3btn.BackColor = System.Drawing.Color.White;
             this.table3btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table3btn.Location = new System.Drawing.Point(326, 304);
-            this.table3btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table3btn.Location = new System.Drawing.Point(244, 247);
             this.table3btn.Name = "table3btn";
-            this.table3btn.Size = new System.Drawing.Size(83, 55);
+            this.table3btn.Size = new System.Drawing.Size(62, 45);
             this.table3btn.TabIndex = 6;
             this.table3btn.Text = "3";
             this.table3btn.UseVisualStyleBackColor = false;
@@ -234,10 +222,9 @@
             // 
             this.table14btn.BackColor = System.Drawing.Color.White;
             this.table14btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table14btn.Location = new System.Drawing.Point(379, 12);
-            this.table14btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table14btn.Location = new System.Drawing.Point(284, 10);
             this.table14btn.Name = "table14btn";
-            this.table14btn.Size = new System.Drawing.Size(72, 143);
+            this.table14btn.Size = new System.Drawing.Size(54, 116);
             this.table14btn.TabIndex = 0;
             this.table14btn.Text = "14";
             this.table14btn.UseVisualStyleBackColor = false;
@@ -248,11 +235,9 @@
             this.SideRoomGroupBox.Controls.Add(this.table9btn);
             this.SideRoomGroupBox.Controls.Add(this.table10btn);
             this.SideRoomGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SideRoomGroupBox.Location = new System.Drawing.Point(475, 236);
-            this.SideRoomGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SideRoomGroupBox.Location = new System.Drawing.Point(356, 192);
             this.SideRoomGroupBox.Name = "SideRoomGroupBox";
-            this.SideRoomGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.SideRoomGroupBox.Size = new System.Drawing.Size(471, 256);
+            this.SideRoomGroupBox.Size = new System.Drawing.Size(353, 208);
             this.SideRoomGroupBox.TabIndex = 1;
             this.SideRoomGroupBox.TabStop = false;
             this.SideRoomGroupBox.Text = "Side room";
@@ -261,10 +246,9 @@
             // 
             this.table8btn.BackColor = System.Drawing.Color.White;
             this.table8btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table8btn.Location = new System.Drawing.Point(8, 193);
-            this.table8btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table8btn.Location = new System.Drawing.Point(6, 157);
             this.table8btn.Name = "table8btn";
-            this.table8btn.Size = new System.Drawing.Size(83, 55);
+            this.table8btn.Size = new System.Drawing.Size(62, 45);
             this.table8btn.TabIndex = 10;
             this.table8btn.Text = "8";
             this.table8btn.UseVisualStyleBackColor = false;
@@ -273,10 +257,9 @@
             // 
             this.table9btn.BackColor = System.Drawing.Color.White;
             this.table9btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table9btn.Location = new System.Drawing.Point(380, 193);
-            this.table9btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table9btn.Location = new System.Drawing.Point(285, 157);
             this.table9btn.Name = "table9btn";
-            this.table9btn.Size = new System.Drawing.Size(83, 55);
+            this.table9btn.Size = new System.Drawing.Size(62, 45);
             this.table9btn.TabIndex = 9;
             this.table9btn.Text = "9";
             this.table9btn.UseVisualStyleBackColor = false;
@@ -285,10 +268,9 @@
             // 
             this.table10btn.BackColor = System.Drawing.Color.White;
             this.table10btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table10btn.Location = new System.Drawing.Point(380, 23);
-            this.table10btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table10btn.Location = new System.Drawing.Point(285, 19);
             this.table10btn.Name = "table10btn";
-            this.table10btn.Size = new System.Drawing.Size(83, 55);
+            this.table10btn.Size = new System.Drawing.Size(62, 45);
             this.table10btn.TabIndex = 8;
             this.table10btn.Text = "10";
             this.table10btn.UseVisualStyleBackColor = false;
@@ -299,11 +281,9 @@
             this.UpstairsGroupBox.Controls.Add(this.table12btn);
             this.UpstairsGroupBox.Controls.Add(this.table11btn);
             this.UpstairsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpstairsGroupBox.Location = new System.Drawing.Point(475, 7);
-            this.UpstairsGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.UpstairsGroupBox.Location = new System.Drawing.Point(356, 6);
             this.UpstairsGroupBox.Name = "UpstairsGroupBox";
-            this.UpstairsGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.UpstairsGroupBox.Size = new System.Drawing.Size(471, 222);
+            this.UpstairsGroupBox.Size = new System.Drawing.Size(353, 180);
             this.UpstairsGroupBox.TabIndex = 2;
             this.UpstairsGroupBox.TabStop = false;
             this.UpstairsGroupBox.Text = "Upstairs";
@@ -312,10 +292,9 @@
             // 
             this.table13btn.BackColor = System.Drawing.Color.White;
             this.table13btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table13btn.Location = new System.Drawing.Point(8, 159);
-            this.table13btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table13btn.Location = new System.Drawing.Point(6, 129);
             this.table13btn.Name = "table13btn";
-            this.table13btn.Size = new System.Drawing.Size(83, 55);
+            this.table13btn.Size = new System.Drawing.Size(62, 45);
             this.table13btn.TabIndex = 13;
             this.table13btn.Text = "13";
             this.table13btn.UseVisualStyleBackColor = false;
@@ -324,10 +303,9 @@
             // 
             this.table12btn.BackColor = System.Drawing.Color.White;
             this.table12btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table12btn.Location = new System.Drawing.Point(380, 159);
-            this.table12btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table12btn.Location = new System.Drawing.Point(285, 129);
             this.table12btn.Name = "table12btn";
-            this.table12btn.Size = new System.Drawing.Size(83, 55);
+            this.table12btn.Size = new System.Drawing.Size(62, 45);
             this.table12btn.TabIndex = 12;
             this.table12btn.Text = "12";
             this.table12btn.UseVisualStyleBackColor = false;
@@ -336,10 +314,9 @@
             // 
             this.table11btn.BackColor = System.Drawing.Color.White;
             this.table11btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table11btn.Location = new System.Drawing.Point(380, 12);
-            this.table11btn.Margin = new System.Windows.Forms.Padding(4);
+            this.table11btn.Location = new System.Drawing.Point(285, 10);
             this.table11btn.Name = "table11btn";
-            this.table11btn.Size = new System.Drawing.Size(83, 55);
+            this.table11btn.Size = new System.Drawing.Size(62, 45);
             this.table11btn.TabIndex = 11;
             this.table11btn.Text = "11";
             this.table11btn.UseVisualStyleBackColor = false;
@@ -351,11 +328,10 @@
             this.AdminTabPage.Controls.Add(this.backBtn);
             this.AdminTabPage.Controls.Add(this.addProductBtn);
             this.AdminTabPage.Controls.Add(this.groupBox4);
-            this.AdminTabPage.Location = new System.Drawing.Point(4, 25);
-            this.AdminTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.AdminTabPage.Location = new System.Drawing.Point(4, 22);
             this.AdminTabPage.Name = "AdminTabPage";
-            this.AdminTabPage.Padding = new System.Windows.Forms.Padding(4);
-            this.AdminTabPage.Size = new System.Drawing.Size(1229, 503);
+            this.AdminTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.AdminTabPage.Size = new System.Drawing.Size(920, 406);
             this.AdminTabPage.TabIndex = 1;
             this.AdminTabPage.Text = "Admin";
             // 
@@ -363,19 +339,19 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(24, 26);
+            this.titleLabel.Location = new System.Drawing.Point(18, 21);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(125, 29);
+            this.titleLabel.Size = new System.Drawing.Size(99, 25);
             this.titleLabel.TabIndex = 4;
             this.titleLabel.Text = "titleLabel";
             // 
             // backBtn
             // 
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backBtn.Location = new System.Drawing.Point(784, 26);
-            this.backBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.backBtn.Location = new System.Drawing.Point(588, 21);
             this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(127, 44);
+            this.backBtn.Size = new System.Drawing.Size(95, 36);
             this.backBtn.TabIndex = 3;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = true;
@@ -384,10 +360,9 @@
             // addProductBtn
             // 
             this.addProductBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductBtn.Location = new System.Drawing.Point(16, 432);
-            this.addProductBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.addProductBtn.Location = new System.Drawing.Point(12, 351);
             this.addProductBtn.Name = "addProductBtn";
-            this.addProductBtn.Size = new System.Drawing.Size(164, 63);
+            this.addProductBtn.Size = new System.Drawing.Size(123, 51);
             this.addProductBtn.TabIndex = 2;
             this.addProductBtn.Text = "Add Product";
             this.addProductBtn.UseVisualStyleBackColor = true;
@@ -402,11 +377,9 @@
             this.groupBox4.Controls.Add(this.topliNapiciBtn);
             this.groupBox4.Controls.Add(this.pivoBtn);
             this.groupBox4.Controls.Add(this.sokoviBtn);
-            this.groupBox4.Location = new System.Drawing.Point(16, 78);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Location = new System.Drawing.Point(12, 63);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(895, 346);
+            this.groupBox4.Size = new System.Drawing.Size(671, 281);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Categories";
@@ -416,19 +389,17 @@
             this.adminArticlesListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminArticlesListView.HideSelection = false;
             this.adminArticlesListView.Location = new System.Drawing.Point(0, 0);
-            this.adminArticlesListView.Margin = new System.Windows.Forms.Padding(4);
             this.adminArticlesListView.Name = "adminArticlesListView";
-            this.adminArticlesListView.Size = new System.Drawing.Size(903, 346);
+            this.adminArticlesListView.Size = new System.Drawing.Size(678, 282);
             this.adminArticlesListView.TabIndex = 1;
             this.adminArticlesListView.UseCompatibleStateImageBehavior = false;
             // 
             // hranaBtn
             // 
             this.hranaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hranaBtn.Location = new System.Drawing.Point(783, 212);
-            this.hranaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.hranaBtn.Location = new System.Drawing.Point(587, 172);
             this.hranaBtn.Name = "hranaBtn";
-            this.hranaBtn.Size = new System.Drawing.Size(104, 80);
+            this.hranaBtn.Size = new System.Drawing.Size(78, 65);
             this.hranaBtn.TabIndex = 5;
             this.hranaBtn.Text = "Hrana";
             this.hranaBtn.UseVisualStyleBackColor = true;
@@ -437,10 +408,9 @@
             // miscBtn
             // 
             this.miscBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.miscBtn.Location = new System.Drawing.Point(394, 212);
-            this.miscBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.miscBtn.Location = new System.Drawing.Point(296, 172);
             this.miscBtn.Name = "miscBtn";
-            this.miscBtn.Size = new System.Drawing.Size(104, 80);
+            this.miscBtn.Size = new System.Drawing.Size(78, 65);
             this.miscBtn.TabIndex = 4;
             this.miscBtn.Text = "Kombinacije";
             this.miscBtn.UseVisualStyleBackColor = true;
@@ -449,10 +419,9 @@
             // zestinaBtn
             // 
             this.zestinaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zestinaBtn.Location = new System.Drawing.Point(8, 212);
-            this.zestinaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.zestinaBtn.Location = new System.Drawing.Point(6, 172);
             this.zestinaBtn.Name = "zestinaBtn";
-            this.zestinaBtn.Size = new System.Drawing.Size(104, 80);
+            this.zestinaBtn.Size = new System.Drawing.Size(78, 65);
             this.zestinaBtn.TabIndex = 3;
             this.zestinaBtn.Text = "Žestina";
             this.zestinaBtn.UseVisualStyleBackColor = true;
@@ -461,10 +430,9 @@
             // topliNapiciBtn
             // 
             this.topliNapiciBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.topliNapiciBtn.Location = new System.Drawing.Point(783, 23);
-            this.topliNapiciBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.topliNapiciBtn.Location = new System.Drawing.Point(587, 19);
             this.topliNapiciBtn.Name = "topliNapiciBtn";
-            this.topliNapiciBtn.Size = new System.Drawing.Size(104, 80);
+            this.topliNapiciBtn.Size = new System.Drawing.Size(78, 65);
             this.topliNapiciBtn.TabIndex = 2;
             this.topliNapiciBtn.Text = "Topli napici";
             this.topliNapiciBtn.UseVisualStyleBackColor = true;
@@ -473,10 +441,9 @@
             // pivoBtn
             // 
             this.pivoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pivoBtn.Location = new System.Drawing.Point(394, 23);
-            this.pivoBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.pivoBtn.Location = new System.Drawing.Point(296, 19);
             this.pivoBtn.Name = "pivoBtn";
-            this.pivoBtn.Size = new System.Drawing.Size(104, 80);
+            this.pivoBtn.Size = new System.Drawing.Size(78, 65);
             this.pivoBtn.TabIndex = 1;
             this.pivoBtn.Text = "Pivo";
             this.pivoBtn.UseVisualStyleBackColor = true;
@@ -485,10 +452,9 @@
             // sokoviBtn
             // 
             this.sokoviBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sokoviBtn.Location = new System.Drawing.Point(8, 23);
-            this.sokoviBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.sokoviBtn.Location = new System.Drawing.Point(6, 19);
             this.sokoviBtn.Name = "sokoviBtn";
-            this.sokoviBtn.Size = new System.Drawing.Size(104, 80);
+            this.sokoviBtn.Size = new System.Drawing.Size(78, 65);
             this.sokoviBtn.TabIndex = 0;
             this.sokoviBtn.Text = "Sokovi";
             this.sokoviBtn.UseVisualStyleBackColor = true;
@@ -497,22 +463,23 @@
             // HistoryTabPage
             // 
             this.HistoryTabPage.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.HistoryTabPage.Controls.Add(this.buttonExport);
             this.HistoryTabPage.Controls.Add(this.refreshBtn);
             this.HistoryTabPage.Controls.Add(this.transactionsGridView);
-            this.HistoryTabPage.Location = new System.Drawing.Point(4, 25);
-            this.HistoryTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.HistoryTabPage.Location = new System.Drawing.Point(4, 22);
             this.HistoryTabPage.Name = "HistoryTabPage";
-            this.HistoryTabPage.Padding = new System.Windows.Forms.Padding(4);
-            this.HistoryTabPage.Size = new System.Drawing.Size(1229, 503);
+            this.HistoryTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.HistoryTabPage.Size = new System.Drawing.Size(920, 406);
             this.HistoryTabPage.TabIndex = 2;
             this.HistoryTabPage.Text = "History";
             // 
             // refreshBtn
             // 
             this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn.Location = new System.Drawing.Point(8, 7);
+            this.refreshBtn.Location = new System.Drawing.Point(6, 6);
+            this.refreshBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(176, 47);
+            this.refreshBtn.Size = new System.Drawing.Size(132, 38);
             this.refreshBtn.TabIndex = 1;
             this.refreshBtn.Text = "Refresh";
             this.refreshBtn.UseVisualStyleBackColor = true;
@@ -524,22 +491,34 @@
             this.transactionsGridView.AllowUserToDeleteRows = false;
             this.transactionsGridView.ColumnHeadersHeight = 29;
             this.transactionsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.transactionsGridView.Location = new System.Drawing.Point(8, 105);
-            this.transactionsGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.transactionsGridView.Location = new System.Drawing.Point(6, 85);
             this.transactionsGridView.Name = "transactionsGridView";
             this.transactionsGridView.RowHeadersWidth = 51;
-            this.transactionsGridView.Size = new System.Drawing.Size(1211, 388);
+            this.transactionsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.transactionsGridView.Size = new System.Drawing.Size(908, 315);
             this.transactionsGridView.TabIndex = 0;
             this.transactionsGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_CellMouseDoubleClick);
+            this.transactionsGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_ColumnHeaderMouseClick);
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExport.Location = new System.Drawing.Point(782, 6);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(132, 38);
+            this.buttonExport.TabIndex = 2;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1287, 561);
+            this.ClientSize = new System.Drawing.Size(965, 456);
             this.Controls.Add(this.TabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Kshte";
@@ -595,6 +574,7 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button table2btn;
         private System.Windows.Forms.Button refreshBtn;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
 

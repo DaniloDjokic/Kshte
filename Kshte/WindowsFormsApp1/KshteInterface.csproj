@@ -42,6 +42,9 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -64,6 +67,8 @@
     <Compile Include="ArticleDialog.Designer.cs">
       <DependentUpon>ArticleDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ExportController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="DBTools\DBConnector.cs" />
     <Compile Include="DBTools\DBContext.cs" />
     <Compile Include="DBTools\DBSeeder.cs" />

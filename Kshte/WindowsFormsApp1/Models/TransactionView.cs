@@ -8,6 +8,8 @@ namespace WindowsFormsApp1.Models
 {
     public class TransactionView
     {
+        private readonly int ID;
+
         public string DateCreated { get; private set; }
         public string DateCompleted { get; private set; }
         public int TableID { get; private set; }
@@ -18,8 +20,9 @@ namespace WindowsFormsApp1.Models
         private IEnumerable<TransactionDetail> transactionDetails;
         public IEnumerable<TransactionDetail> GetTransactionDetails() {return transactionDetails;}
 
-        public TransactionView(string DateCreated, string DateCompleted, int TableID, decimal CurrentPrice, decimal PaidPrice, decimal TotalPrice, IEnumerable<TransactionDetail> details)
+        public TransactionView(int ID, string DateCreated, string DateCompleted, int TableID, decimal CurrentPrice, decimal PaidPrice, decimal TotalPrice, IEnumerable<TransactionDetail> details)
         {
+            this.ID = ID;
             this.DateCreated = DateCreated;
             this.DateCompleted = DateCompleted;
             this.TableID = TableID;
@@ -33,6 +36,9 @@ namespace WindowsFormsApp1.Models
             this.transactionDetails = details;
         }
 
-
+        public int GetID()
+        {
+            return ID;
+        }
     }
 }
