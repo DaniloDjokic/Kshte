@@ -44,9 +44,10 @@ namespace WindowsFormsApp1.Models
         }
 
         public TransactionDetail() { }
-        public TransactionDetail(Article article, bool paidFor, decimal effectivePrice)
+
+        public TransactionDetail(Article article, bool PaidFor, decimal EffectivePrice)
         {
-            if (effectivePrice < 0)
+            if (EffectivePrice < 0)
                 throw new ArgumentOutOfRangeException();
 
             if (article == null)
@@ -60,8 +61,8 @@ namespace WindowsFormsApp1.Models
             else
                 throw new InvalidOperationException("This article is not contained in the ArticleManager.");
 
-            EffectivePrice = effectivePrice;
-            PaidFor = paidFor;
+            this.EffectivePrice = EffectivePrice;
+            this.PaidFor = PaidFor;
 
             transaction = null;
             TransactionID = -1;

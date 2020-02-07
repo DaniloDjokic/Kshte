@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class TransactionDetailsForm : Form
     {
-        public TransactionDetailsForm(IEnumerable<TransactionDetail> details)
+        public TransactionDetailsForm(IEnumerable<TransactionDetailView> details)
         {
             InitializeComponent();
 
@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
             Populate(details);
         }
 
-        private void Populate(IEnumerable<TransactionDetail> details)
+        private void Populate(IEnumerable<TransactionDetailView> details)
         {
             detailsGridView.DataSource = details.Select(d => new { PaidFor = d.PaidFor, Article = d.Article, EffectivePrice = d.EffectivePrice}).ToList();
         }

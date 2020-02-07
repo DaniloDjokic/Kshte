@@ -339,12 +339,45 @@ namespace WindowsFormsApp1.DBTools
                 catch (Exception e)
                 {
                     tran.Rollback();
-                    throw new Exception("Error removing transaction.", e);
+                    throw new Exception("Error removing transaction. Changes rollbacked.", e);
                 }
             }
             return removedRowCount;
         }
+        internal static int RemoveExportedTransactions(IEnumerable<TransactionView> transactionViews)
+        {
+            int removedRowCount = 0;
+            using (var tran = DBConnector.Connection.BeginTransaction())
+            {
+                try
+                {
+                    int[] ids = transactionViews.Select(tv => tv.ID).ToArray();
+                    string idsString = string.Join(", ", ids);
 
+                    string deleteDetails = $"DELETE FROM [TransactionDetail] WHERE TransactionID IN ({idsString});";
+                    string deleteTransaction = $"DELETE FROM [Transaction] WHERE DateCompleted IS NOT NULL AND ID IN ({idsString}); SELECT changes();";
+
+                    DBConnector.Connection.Execute(deleteDetails);
+                    removedRowCount = int.Parse(DBConnector.Connection.ExecuteScalar(deleteTransaction).ToString());
+
+                    if (removedRowCount == transactionViews.Count())
+                    {
+                        tran.Commit();
+                    }
+                    else
+                    {
+                        throw new Exception("Not all transactions have been removed.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    throw new Exception("Error removing transactions. Changes rollbacked.", e);
+                }
+            }
+
+            return removedRowCount;
+        }
 
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public static class Helpers
+    public static class HelperMethods
     {
         public static List<Control> GetControlsRecursive(Control parentControl)
         {

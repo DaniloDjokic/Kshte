@@ -62,9 +62,20 @@
             this.pivoBtn = new System.Windows.Forms.Button();
             this.sokoviBtn = new System.Windows.Forms.Button();
             this.HistoryTabPage = new System.Windows.Forms.TabPage();
+            this.labelLatestAction = new System.Windows.Forms.Label();
+            this.groupBoxSelectTo = new System.Windows.Forms.GroupBox();
+            this.buttonSelect = new System.Windows.Forms.Button();
+            this.timePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.datePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.groupBoxSelectFrom = new System.Windows.Forms.GroupBox();
+            this.timePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.datePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.transactionsGridView = new System.Windows.Forms.DataGridView();
-            this.buttonExport = new System.Windows.Forms.Button();
+            this.labelGridDisplay = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.TablesTabPage.SuspendLayout();
             this.MainRoomGroupBox.SuspendLayout();
@@ -73,6 +84,9 @@
             this.AdminTabPage.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.HistoryTabPage.SuspendLayout();
+            this.groupBoxSelectTo.SuspendLayout();
+            this.groupBoxSelectFrom.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transactionsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +110,7 @@
             this.TablesTabPage.Controls.Add(this.UpstairsGroupBox);
             this.TablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.TablesTabPage.Name = "TablesTabPage";
-            this.TablesTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TablesTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.TablesTabPage.Size = new System.Drawing.Size(920, 406);
             this.TablesTabPage.TabIndex = 0;
             this.TablesTabPage.Text = "Tables";
@@ -330,7 +344,7 @@
             this.AdminTabPage.Controls.Add(this.groupBox4);
             this.AdminTabPage.Location = new System.Drawing.Point(4, 22);
             this.AdminTabPage.Name = "AdminTabPage";
-            this.AdminTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.AdminTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.AdminTabPage.Size = new System.Drawing.Size(920, 406);
             this.AdminTabPage.TabIndex = 1;
             this.AdminTabPage.Text = "Admin";
@@ -463,21 +477,144 @@
             // HistoryTabPage
             // 
             this.HistoryTabPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.HistoryTabPage.Controls.Add(this.buttonExport);
+            this.HistoryTabPage.Controls.Add(this.labelGridDisplay);
+            this.HistoryTabPage.Controls.Add(this.labelLatestAction);
+            this.HistoryTabPage.Controls.Add(this.groupBoxSelectTo);
+            this.HistoryTabPage.Controls.Add(this.groupBoxSelectFrom);
+            this.HistoryTabPage.Controls.Add(this.groupBox1);
             this.HistoryTabPage.Controls.Add(this.refreshBtn);
             this.HistoryTabPage.Controls.Add(this.transactionsGridView);
             this.HistoryTabPage.Location = new System.Drawing.Point(4, 22);
             this.HistoryTabPage.Name = "HistoryTabPage";
-            this.HistoryTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.HistoryTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.HistoryTabPage.Size = new System.Drawing.Size(920, 406);
             this.HistoryTabPage.TabIndex = 2;
             this.HistoryTabPage.Text = "History";
             // 
+            // labelLatestAction
+            // 
+            this.labelLatestAction.AutoSize = true;
+            this.labelLatestAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLatestAction.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelLatestAction.Location = new System.Drawing.Point(6, 6);
+            this.labelLatestAction.MaximumSize = new System.Drawing.Size(350, 36);
+            this.labelLatestAction.Name = "labelLatestAction";
+            this.labelLatestAction.Size = new System.Drawing.Size(0, 18);
+            this.labelLatestAction.TabIndex = 8;
+            // 
+            // groupBoxSelectTo
+            // 
+            this.groupBoxSelectTo.Controls.Add(this.buttonSelect);
+            this.groupBoxSelectTo.Controls.Add(this.timePickerTo);
+            this.groupBoxSelectTo.Controls.Add(this.datePickerTo);
+            this.groupBoxSelectTo.Location = new System.Drawing.Point(484, 6);
+            this.groupBoxSelectTo.Name = "groupBoxSelectTo";
+            this.groupBoxSelectTo.Size = new System.Drawing.Size(210, 73);
+            this.groupBoxSelectTo.TabIndex = 7;
+            this.groupBoxSelectTo.TabStop = false;
+            this.groupBoxSelectTo.Text = "Select to";
+            // 
+            // buttonSelect
+            // 
+            this.buttonSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSelect.Location = new System.Drawing.Point(105, 18);
+            this.buttonSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSelect.Name = "buttonSelect";
+            this.buttonSelect.Size = new System.Drawing.Size(100, 30);
+            this.buttonSelect.TabIndex = 4;
+            this.buttonSelect.Text = "Select";
+            this.buttonSelect.UseVisualStyleBackColor = true;
+            this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
+            // 
+            // timePickerTo
+            // 
+            this.timePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePickerTo.Location = new System.Drawing.Point(6, 45);
+            this.timePickerTo.Name = "timePickerTo";
+            this.timePickerTo.ShowUpDown = true;
+            this.timePickerTo.Size = new System.Drawing.Size(94, 20);
+            this.timePickerTo.TabIndex = 5;
+            this.timePickerTo.Value = new System.DateTime(2020, 2, 7, 22, 34, 50, 0);
+            // 
+            // datePickerTo
+            // 
+            this.datePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePickerTo.Location = new System.Drawing.Point(6, 19);
+            this.datePickerTo.Name = "datePickerTo";
+            this.datePickerTo.Size = new System.Drawing.Size(94, 20);
+            this.datePickerTo.TabIndex = 4;
+            this.datePickerTo.Value = new System.DateTime(2020, 2, 7, 22, 34, 44, 0);
+            // 
+            // groupBoxSelectFrom
+            // 
+            this.groupBoxSelectFrom.Controls.Add(this.timePickerFrom);
+            this.groupBoxSelectFrom.Controls.Add(this.datePickerFrom);
+            this.groupBoxSelectFrom.Location = new System.Drawing.Point(370, 6);
+            this.groupBoxSelectFrom.Name = "groupBoxSelectFrom";
+            this.groupBoxSelectFrom.Size = new System.Drawing.Size(108, 73);
+            this.groupBoxSelectFrom.TabIndex = 6;
+            this.groupBoxSelectFrom.TabStop = false;
+            this.groupBoxSelectFrom.Text = "Select from";
+            // 
+            // timePickerFrom
+            // 
+            this.timePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePickerFrom.Location = new System.Drawing.Point(6, 45);
+            this.timePickerFrom.Name = "timePickerFrom";
+            this.timePickerFrom.ShowUpDown = true;
+            this.timePickerFrom.Size = new System.Drawing.Size(94, 20);
+            this.timePickerFrom.TabIndex = 5;
+            this.timePickerFrom.Value = new System.DateTime(2020, 2, 7, 22, 34, 29, 0);
+            // 
+            // datePickerFrom
+            // 
+            this.datePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePickerFrom.Location = new System.Drawing.Point(6, 19);
+            this.datePickerFrom.Name = "datePickerFrom";
+            this.datePickerFrom.Size = new System.Drawing.Size(94, 20);
+            this.datePickerFrom.TabIndex = 4;
+            this.datePickerFrom.Value = new System.DateTime(2020, 2, 7, 22, 34, 36, 0);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonExport);
+            this.groupBox1.Controls.Add(this.buttonImport);
+            this.groupBox1.Location = new System.Drawing.Point(700, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(214, 73);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Export controls";
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExport.Location = new System.Drawing.Point(5, 18);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(100, 30);
+            this.buttonExport.TabIndex = 2;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonImport.Location = new System.Drawing.Point(109, 19);
+            this.buttonImport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(100, 30);
+            this.buttonImport.TabIndex = 3;
+            this.buttonImport.Text = "Import";
+            this.buttonImport.UseVisualStyleBackColor = true;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
             // refreshBtn
             // 
             this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn.Location = new System.Drawing.Point(6, 6);
-            this.refreshBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.refreshBtn.Location = new System.Drawing.Point(6, 41);
+            this.refreshBtn.Margin = new System.Windows.Forms.Padding(2);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(132, 38);
             this.refreshBtn.TabIndex = 1;
@@ -494,23 +631,24 @@
             this.transactionsGridView.Location = new System.Drawing.Point(6, 85);
             this.transactionsGridView.Name = "transactionsGridView";
             this.transactionsGridView.RowHeadersWidth = 51;
+            this.transactionsGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.transactionsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.transactionsGridView.Size = new System.Drawing.Size(908, 315);
             this.transactionsGridView.TabIndex = 0;
             this.transactionsGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_CellMouseDoubleClick);
             this.transactionsGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_ColumnHeaderMouseClick);
             // 
-            // buttonExport
+            // labelGridDisplay
             // 
-            this.buttonExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExport.Location = new System.Drawing.Point(782, 6);
-            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonExport.Name = "buttonExport";
-            this.buttonExport.Size = new System.Drawing.Size(132, 38);
-            this.buttonExport.TabIndex = 2;
-            this.buttonExport.Text = "Export";
-            this.buttonExport.UseVisualStyleBackColor = true;
-            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            this.labelGridDisplay.AutoSize = true;
+            this.labelGridDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGridDisplay.ForeColor = System.Drawing.Color.Black;
+            this.labelGridDisplay.Location = new System.Drawing.Point(143, 41);
+            this.labelGridDisplay.MaximumSize = new System.Drawing.Size(225, 36);
+            this.labelGridDisplay.Name = "labelGridDisplay";
+            this.labelGridDisplay.Size = new System.Drawing.Size(85, 18);
+            this.labelGridDisplay.TabIndex = 9;
+            this.labelGridDisplay.Text = "On display: ";
             // 
             // MainForm
             // 
@@ -531,6 +669,10 @@
             this.AdminTabPage.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.HistoryTabPage.ResumeLayout(false);
+            this.HistoryTabPage.PerformLayout();
+            this.groupBoxSelectTo.ResumeLayout(false);
+            this.groupBoxSelectFrom.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transactionsGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -575,6 +717,17 @@
         private System.Windows.Forms.Button table2btn;
         private System.Windows.Forms.Button refreshBtn;
         private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonImport;
+        private System.Windows.Forms.GroupBox groupBoxSelectFrom;
+        private System.Windows.Forms.DateTimePicker timePickerFrom;
+        private System.Windows.Forms.DateTimePicker datePickerFrom;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxSelectTo;
+        private System.Windows.Forms.DateTimePicker timePickerTo;
+        private System.Windows.Forms.DateTimePicker datePickerTo;
+        private System.Windows.Forms.Button buttonSelect;
+        private System.Windows.Forms.Label labelLatestAction;
+        private System.Windows.Forms.Label labelGridDisplay;
     }
 }
 

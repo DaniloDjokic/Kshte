@@ -31,10 +31,10 @@ namespace WindowsFormsApp1.Models
 
         public Article() { }
 
-        public Article(string name, decimal price, Category category)
+        public Article(string Name, decimal Price, Category category)
         {
-            Name = name;
-            Price = price;
+            this.Name = Name;
+            this.Price = Price;
 
             if (!CategoryManager.Categories.Contains(category))
                 throw new InvalidOperationException("This category does not exist.");

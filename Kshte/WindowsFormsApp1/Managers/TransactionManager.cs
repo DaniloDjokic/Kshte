@@ -122,6 +122,28 @@ namespace WindowsFormsApp1.Managers
             return true;
         }
 
+        public static bool RemoveExportedTransactions(IEnumerable<TransactionView> transactionViews)
+        {
+            foreach (var transactionView in transactionViews)
+            {
+                if (transactionView.ID < 0 || 
+                    string.IsNullOrWhiteSpace(transactionView.DateCompleted) || 
+                    !DateTime.TryParse(transactionView.DateCompleted, out DateTime _))
+                {
+                    return false;
+                }
+            }
+
+            int removedTransactions = DBContext.RemoveExportedTransactions(transactionViews);
+
+            if (removedTransactions != transactionViews.Count())
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         internal static bool SwapTables(Transaction transaction1, Transaction transaction2)
         {
             if (!ActiveTransactions.Contains(transaction1))

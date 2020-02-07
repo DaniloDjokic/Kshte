@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
+using WindowsFormsApp1.Helpers;
 using WindowsFormsApp1.Managers;
 using WindowsFormsApp1.Models;
 using WindowsFormsApplication1;
@@ -52,7 +53,7 @@ namespace WindowsFormsApp1
         private void FillActiveTablesListBox()
         {
             this.ActiveTransactionsListBox.DataSource = TransactionManager.ActiveTransactions;
-            foreach (Control control in Helpers.GetControlsRecursive(this.TabControl))
+            foreach (Control control in HelperMethods.GetControlsRecursive(this.TabControl))
             {
                 if (control.Name.Contains("table"))
                     tableBtns.Add(control as Button);
@@ -266,31 +267,127 @@ namespace WindowsFormsApp1
 
         private void InitHistoryView()
         {
-            HistoryController = new HistoryController(transactionsGridView);
-            ExportController = new ExportController();
+            try
+            {
+                DateTimePickerSelector dateTimePickerSelector = new DateTimePickerSelector(datePickerFrom, timePickerFrom, datePickerTo, timePickerTo);
 
-            HistoryController.InitDataGridView();
+                HistoryController = new HistoryController(transactionsGridView, dateTimePickerSelector);
+                ExportController = new ExportController();
+
+                HistoryController.InitDataGridView();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("History tab initialization error: " + Environment.NewLine + e.GetFullMessage());
+            }
+        }
+
+        private void DisplayLatestAction(string action)
+        {
+            this.labelLatestAction.Text = action;
+        }
+
+        private void ClearLatestAction()
+        {
+            this.labelLatestAction.Text = string.Empty;
+        }
+
+        private void DisplayGridLabel(string gridContentLabel)
+        {
+            this.labelGridDisplay.Text = "On display: " + gridContentLabel;
+        }
+
+        private void ClearGridLabel()
+        {
+            this.labelGridDisplay.Text = "On display: ";
         }
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
-            HistoryController.RefreshDataGridView();
+            try
+            {
+                HistoryController.RefreshDataGridView();
+                DisplayGridLabel($"Database at {DateTime.Now.ToString()}");
+                ClearLatestAction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("History tab refresh error: " + Environment.NewLine + ex.GetFullMessage());
+            }
         }
 
         private void transactionsGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            HistoryController.HandleCellDoubleClick(sender, e);
+            try
+            {
+                HistoryController.HandleCellDoubleClick(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("History tab row double click error: " + Environment.NewLine + ex.GetFullMessage());
+            }
         }
 
         private void transactionsGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            HistoryController.HandleColumnHeaderClick(e);
+            try
+            {
+                HistoryController.HandleColumnHeaderClick(e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("History tab column header click error: " + Environment.NewLine + ex.GetFullMessage());
+            }
         }
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
-            ExportController.HandleExport(HistoryController.GetSelected());
+            try
+            {
+                var toExport = HistoryController.GetSelected();
+                if (ExportController.HandleExport(toExport))
+                {
+                    DisplayLatestAction($"Export successful. Written to file: {ExportController.LastFileName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("History tab export button error: " + Environment.NewLine + ex.GetFullMessage());
+            }
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var imported = ExportController.HandleImport();
+                if (imported != null)
+                {
+                    HistoryController.SetDataGridView(imported);
+                    DisplayLatestAction("Import successful.");
+                    DisplayGridLabel($"{ExportController.LastFileName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("History tab import button error: " + Environment.NewLine + ex.GetFullMessage());
+            }
+        }
+
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int numOfSelected = HistoryController.HandleSelect();
+                DisplayLatestAction($"{numOfSelected} rows selected.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("History tab select button error: " + Environment.NewLine + ex.GetFullMessage());
+            }
         }
         #endregion
+
+
     }
 }

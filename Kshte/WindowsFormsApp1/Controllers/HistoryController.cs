@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using WindowsFormsApp1.Helpers;
 using WindowsFormsApp1.Managers;
 using WindowsFormsApp1.Models;
 
@@ -13,17 +14,23 @@ namespace WindowsFormsApp1.Controllers
 {
     public class HistoryController
     {
-        private DataGridView transactionsGridView;
         private List<TransactionView> transactionViews;
 
-        public HistoryController(DataGridView historyGridView)
+        public DataGridView TransactionsGridView { get; private set; }
+        public DateTimeSelector DateTimeSelector { get; private set; }
+
+        public HistoryController(DataGridView historyGridView, DateTimeSelector dateTimeSelector = null)
         {
-            this.transactionsGridView = historyGridView;
+            if (historyGridView == null)
+                throw new ArgumentNullException("Grid view can't be null.");
+
+            this.TransactionsGridView = historyGridView;
+            this.DateTimeSelector = dateTimeSelector;
         }
 
         public void InitDataGridView()
         {
-            transactionsGridView.AutoGenerateColumns = false;
+            TransactionsGridView.AutoGenerateColumns = false;
 
             SetUpColumns();
         }
@@ -32,21 +39,28 @@ namespace WindowsFormsApp1.Controllers
             var allTransactions = TransactionManager.GetTransactionHistory();
 
             var history = allTransactions.Select(t => new TransactionView(t.ID, t.DateCreated, t.DateCompleted, t.TableID, t.CurrentPrice, t.PaidPrice, t.TotalPrice, t.TransactionDetails));
-            var historyOrdered = history.OrderByDescending(t => DateTime.Parse(t.DateCreated));
+            
+            SetDataGridView(history);
+        }
+        public void SetDataGridView(IEnumerable<TransactionView> transactionViews)
+        {
+            var ordered = transactionViews/*transactionViews.OrderByDescending(t => DateTime.Parse(t.DateCreated))*/;
 
-            transactionViews = historyOrdered.ToList();
+            this.transactionViews = ordered.ToList();
 
-            transactionsGridView.DataSource = new BindingListView<TransactionView>(transactionViews);
+            UpdateSelector();
+
+            TransactionsGridView.DataSource = new BindingListView<TransactionView>(this.transactionViews);
         }
         public IEnumerable<TransactionView> GetSelected()
         {
             List<TransactionView> results = null;
 
-            if (transactionsGridView.SelectedRows.Count > 0)
+            if (TransactionsGridView.SelectedRows.Count > 0)
             {
-                results = new List<TransactionView>(transactionsGridView.SelectedRows.Count);
+                results = new List<TransactionView>(TransactionsGridView.SelectedRows.Count);
 
-                foreach (DataGridViewRow row in transactionsGridView.SelectedRows)
+                foreach (DataGridViewRow row in TransactionsGridView.SelectedRows)
                 {
                     ObjectView<TransactionView> objectView = (ObjectView<TransactionView>)row.DataBoundItem;
                     results.Add(objectView.Object);
@@ -72,6 +86,10 @@ namespace WindowsFormsApp1.Controllers
         {
             SortDataGridView(e.ColumnIndex);
         }
+        public int HandleSelect()
+        {
+            return SelectByChosenBounds();
+        }
 
         private void DisplayTransaction(TransactionView transactionView)
         {
@@ -80,7 +98,7 @@ namespace WindowsFormsApp1.Controllers
                 throw new ArgumentNullException("Argument \"transactionView\" is null.");
             }
 
-            var transactionDetails = transactionView.GetTransactionDetails();
+            var transactionDetails = transactionView.TransactionDetailViews;
 
             if (transactionDetails != null)
             {
@@ -96,7 +114,7 @@ namespace WindowsFormsApp1.Controllers
         }
         private void SetUpColumns()
         {
-            transactionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            TransactionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             PropertyInfo[] propertyInfos = typeof(TransactionView).GetProperties();
             DataGridViewTextBoxColumn newTextColumn;
@@ -121,19 +139,14 @@ namespace WindowsFormsApp1.Controllers
                     newTextColumn.DataPropertyName = propertyInfo.Name;
                     newTextColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
 
-                    transactionsGridView.Columns.Add(newTextColumn);
-                }
-                else
-                {
-                    MessageBox.Show("One of the properties cannot be displayed as a column as its type is not expected. \n" +
-                        $" Property Name: {propertyInfo.Name} Property Type: {propertyInfo.PropertyType}");
+                    TransactionsGridView.Columns.Add(newTextColumn);
                 }
             }
         }
         private void SortDataGridView(int columnIndex)
         {
-            DataGridViewColumn newColumn = transactionsGridView.Columns[columnIndex];
-            DataGridViewColumn oldColumn = transactionsGridView.SortedColumn;
+            DataGridViewColumn newColumn = TransactionsGridView.Columns[columnIndex];
+            DataGridViewColumn oldColumn = TransactionsGridView.SortedColumn;
             ListSortDirection direction;
 
             // If oldColumn is null, then the DataGridView is not sorted.
@@ -141,7 +154,7 @@ namespace WindowsFormsApp1.Controllers
             {
                 // Sort the same column again, reversing the SortOrder.
                 if (oldColumn == newColumn &&
-                    transactionsGridView.SortOrder == SortOrder.Ascending)
+                    TransactionsGridView.SortOrder == SortOrder.Ascending)
                 {
                     direction = ListSortDirection.Descending;
                 }
@@ -158,10 +171,50 @@ namespace WindowsFormsApp1.Controllers
             }
 
             // Sort the selected column.
-            transactionsGridView.Sort(newColumn, direction);
+            TransactionsGridView.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
                 SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void UpdateSelector()
+        {
+            if (DateTimeSelector != null)
+            {
+                var transactionViews = this.transactionViews.OrderBy(tv => DateTime.Parse(tv.DateCreated));
+
+                TransactionView firstView = transactionViews.First();
+                TransactionView lastView = transactionViews.Last();
+
+                DateTimeSelector.RefreshBoundaries(DateTime.Parse(firstView.DateCreated), DateTime.Parse(lastView.DateCreated));
+            }           
+        }
+        private int SelectByChosenBounds()
+        {
+            int numOfSelected = 0;
+
+            if (DateTimeSelector != null)
+            {
+                FromToDateTime selectedBounds = DateTimeSelector.GetSelectedBounds();
+
+                foreach (DataGridViewRow row in TransactionsGridView.Rows)
+                {
+                    ObjectView<TransactionView> objectView = (ObjectView<TransactionView>)row.DataBoundItem;
+                    TransactionView transactionView = objectView.Object;
+
+                    DateTime dateCreated = DateTime.Parse(transactionView.DateCreated);
+
+                    if (selectedBounds.IsWithinBounds(dateCreated))
+                    {
+                        row.Selected = true;
+                        numOfSelected++;
+                    }
+                    else
+                        row.Selected = false;
+                }
+            }
+
+            return numOfSelected;
         }
     }
 }

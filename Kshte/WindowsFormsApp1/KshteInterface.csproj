@@ -45,6 +45,9 @@
     <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -72,7 +75,9 @@
     <Compile Include="DBTools\DBConnector.cs" />
     <Compile Include="DBTools\DBContext.cs" />
     <Compile Include="DBTools\DBSeeder.cs" />
-    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\DateTimePickerSelector.cs" />
+    <Compile Include="Helpers\DateTimeSelector.cs" />
+    <Compile Include="Helpers\HelperMethods.cs" />
     <Compile Include="Helpers\ListViewExtender.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -85,11 +90,14 @@
     <Compile Include="Managers\TableManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ModelViews\ArticleView.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ModelViews\CategoryView.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\TransactionDetail.cs" />
-    <Compile Include="Models\TransactionView.cs" />
+    <Compile Include="Models\ModelViews\TransactionDetailView.cs" />
+    <Compile Include="Models\ModelViews\TransactionView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableForm.cs">

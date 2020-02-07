@@ -116,7 +116,6 @@ namespace WindowsFormsApp1
             TransactionManager.RemoveTransaction(Transaction);
         }
 
-
         public void CompleteTransaction()
         {
             TransactionManager.CompleteTransaction(Transaction, DateTime.Now);
