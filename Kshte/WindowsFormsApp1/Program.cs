@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DBTools;
+using WindowsFormsApp1.Helpers;
 using WindowsFormsApp1.Managers;
 using WindowsFormsApp1.Models;
 
@@ -17,11 +20,20 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            DBSeeder.Seed(DBConnector.Connection);
+
+            DbCreator firstRunTest = new DbCreator();
+            firstRunTest.HandleRun();
+
+            if (!firstRunTest.DbReady)
+            {
+                Application.Exit();
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+
+            KshteSettings.Settings.CurrentConfiguration.Save();
         }
     }
 }

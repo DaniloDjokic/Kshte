@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Helpers;
 using Dapper;
 
 namespace WindowsFormsApp1.DBTools
@@ -60,7 +61,42 @@ namespace WindowsFormsApp1.DBTools
                                                         );";
         #endregion
 
-        public static void Seed(SQLiteConnection conn)
+        #region SQL Data Insert Queries
+        private static readonly string InsertNewTable = @"INSERT OR IGNORE INTO [Table](ID, CurrentTransactionID)
+                                                        VALUES({0}, NULL)
+                                                        ;";
+
+        private static readonly string InsertNewCategory = @"INSERT OR IGNORE INTO [Category](ID, Name)
+                                                        VALUES({0},""{1}"")
+                                                        ;";
+        #endregion
+
+
+
+        public static void InitializeDatabase(SQLiteConnection conn)
+        {
+            SeedTables(conn);
+            SeedData(conn);
+        }
+
+        private static void InsertTables(SQLiteConnection conn,int minId, int maxId)
+        {
+            for (int i = 0; i <= 14; i++)
+            {
+                conn.Execute(string.Format(InsertNewTable, i));
+            }
+        }
+
+        private static void InsertCategories(SQLiteConnection conn, List<string> categories)
+        {
+            for (int i = 0; i < categories.Count; i++)
+            {
+                string query = string.Format(InsertNewCategory, i+1, categories[i]);
+                conn.Execute(query);
+            }
+        }
+
+        private static void SeedData(SQLiteConnection conn)
         {
             if (conn == null)
             {
@@ -72,15 +108,53 @@ namespace WindowsFormsApp1.DBTools
                 conn.Open();
             }
 
-            conn.Execute(CreateCategory);
-            conn.Execute(CreateArticle);
+            using (var tran = conn.BeginTransaction())
+            {
+                try
+                {
+                    InsertTables(conn, KshteSettings.Settings.TableMinID, KshteSettings.Settings.TableMaxID);
+                    InsertCategories(conn, KshteSettings.Settings.CategoryList);
+                    tran.Commit();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    throw new Exception("Error seeding data.", e);
+                }
+            }
+        }
+
+        private static void SeedTables(SQLiteConnection conn)
+        {
+            if (conn == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
             conn.Execute("PRAGMA foreign_keys=off;");
-            conn.Execute("BEGIN TRANSACTION;");
-            conn.Execute(CreateTable);
-            conn.Execute(CreateTransaction);
-            conn.Execute("COMMIT;");
+            using (var tran = conn.BeginTransaction())
+            {
+                try
+                {
+                    conn.Execute(CreateCategory);
+                    conn.Execute(CreateArticle);
+                    conn.Execute(CreateTable);
+                    conn.Execute(CreateTransaction);
+                    conn.Execute(CreateTransactionDetails);
+                    tran.Commit();
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    throw new Exception("Error creating tables in database.", e);
+                }
+            }
             conn.Execute("PRAGMA foreign_keys=on;");
-            conn.Execute(CreateTransactionDetails);
         }
     }
 }
