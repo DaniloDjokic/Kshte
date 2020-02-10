@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
-using WindowsFormsApp1.Helpers;
+using Kshte.Helpers;
 
-namespace WindowsFormsApp1.DBTools
+namespace Kshte.DBTools
 {
     internal static class DBConnector
     {

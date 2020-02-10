@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace Kshte
 {
     partial class MainForm
     {
@@ -62,6 +62,7 @@
             this.pivoBtn = new System.Windows.Forms.Button();
             this.sokoviBtn = new System.Windows.Forms.Button();
             this.HistoryTabPage = new System.Windows.Forms.TabPage();
+            this.labelGridDisplay = new System.Windows.Forms.Label();
             this.labelLatestAction = new System.Windows.Forms.Label();
             this.groupBoxSelectTo = new System.Windows.Forms.GroupBox();
             this.buttonSelect = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.buttonImport = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.transactionsGridView = new System.Windows.Forms.DataGridView();
-            this.labelGridDisplay = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.TablesTabPage.SuspendLayout();
             this.MainRoomGroupBox.SuspendLayout();
@@ -491,6 +491,18 @@
             this.HistoryTabPage.TabIndex = 2;
             this.HistoryTabPage.Text = "History";
             // 
+            // labelGridDisplay
+            // 
+            this.labelGridDisplay.AutoSize = true;
+            this.labelGridDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGridDisplay.ForeColor = System.Drawing.Color.Black;
+            this.labelGridDisplay.Location = new System.Drawing.Point(143, 41);
+            this.labelGridDisplay.MaximumSize = new System.Drawing.Size(225, 36);
+            this.labelGridDisplay.Name = "labelGridDisplay";
+            this.labelGridDisplay.Size = new System.Drawing.Size(85, 18);
+            this.labelGridDisplay.TabIndex = 9;
+            this.labelGridDisplay.Text = "On display: ";
+            // 
             // labelLatestAction
             // 
             this.labelLatestAction.AutoSize = true;
@@ -628,6 +640,7 @@
             this.transactionsGridView.AllowUserToDeleteRows = false;
             this.transactionsGridView.ColumnHeadersHeight = 29;
             this.transactionsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.transactionsGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.transactionsGridView.Location = new System.Drawing.Point(6, 85);
             this.transactionsGridView.Name = "transactionsGridView";
             this.transactionsGridView.RowHeadersWidth = 51;
@@ -637,18 +650,6 @@
             this.transactionsGridView.TabIndex = 0;
             this.transactionsGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_CellMouseDoubleClick);
             this.transactionsGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.transactionsGridView_ColumnHeaderMouseClick);
-            // 
-            // labelGridDisplay
-            // 
-            this.labelGridDisplay.AutoSize = true;
-            this.labelGridDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGridDisplay.ForeColor = System.Drawing.Color.Black;
-            this.labelGridDisplay.Location = new System.Drawing.Point(143, 41);
-            this.labelGridDisplay.MaximumSize = new System.Drawing.Size(225, 36);
-            this.labelGridDisplay.Name = "labelGridDisplay";
-            this.labelGridDisplay.Size = new System.Drawing.Size(85, 18);
-            this.labelGridDisplay.TabIndex = 9;
-            this.labelGridDisplay.Text = "On display: ";
             // 
             // MainForm
             // 

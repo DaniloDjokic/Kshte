@@ -8,13 +8,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers;
-using WindowsFormsApp1.Helpers;
-using WindowsFormsApp1.Managers;
-using WindowsFormsApp1.Models;
+using Kshte.Controllers;
+using Kshte.Helpers;
+using Kshte.Managers;
+using Kshte.Models;
 using WindowsFormsApplication1;
 
-namespace WindowsFormsApp1
+namespace Kshte
 {
     public partial class MainForm : Form
     {

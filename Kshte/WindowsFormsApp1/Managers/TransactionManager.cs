@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.DBTools;
-using WindowsFormsApp1.Models;
+using Kshte.DBTools;
+using Kshte.Models;
 
-namespace WindowsFormsApp1.Managers
+namespace Kshte.Managers
 {
     public static class TransactionManager
     {

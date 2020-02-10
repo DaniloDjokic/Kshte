@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Controllers;
-using WindowsFormsApp1.Managers;
-using WindowsFormsApp1.Models;
+using Kshte.Controllers;
+using Kshte.Managers;
+using Kshte.Models;
 using WindowsFormsApplication1;
 
-namespace WindowsFormsApp1
+namespace Kshte
 {
     public partial class TableForm : Form
     {

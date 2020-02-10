@@ -4,10 +4,10 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.Helpers;
+using Kshte.Helpers;
 using Dapper;
 
-namespace WindowsFormsApp1.DBTools
+namespace Kshte.DBTools
 {
     internal static class DBSeeder
     {

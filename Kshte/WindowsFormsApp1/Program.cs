@@ -5,12 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.DBTools;
-using WindowsFormsApp1.Helpers;
-using WindowsFormsApp1.Managers;
-using WindowsFormsApp1.Models;
+using Kshte.DBTools;
+using Kshte.Helpers;
+using Kshte.Managers;
+using Kshte.Models;
 
-namespace WindowsFormsApp1
+namespace Kshte
 {
     static class Program
     {
@@ -20,19 +20,27 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-
-            DbCreator firstRunTest = new DbCreator();
-            firstRunTest.HandleRun();
-
-            if (!firstRunTest.DbReady)
+            //This is not proper logging. Change later.
+            try
             {
-                Application.Exit();
+                DbCreator firstRunTest = new DbCreator();
+                firstRunTest.HandleRun();
+
+                if (!firstRunTest.DbReady)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new MainForm());
+                }
             }
-            else
+            catch (Exception e)
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainForm());
+                ErrorLogger errorLogger = new ErrorLogger();
+                errorLogger.LogException(e);
             }
         }
     }

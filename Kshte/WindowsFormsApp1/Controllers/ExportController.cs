@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Managers;
-using WindowsFormsApp1.Models;
+using Kshte.Managers;
+using Kshte.Models;
 
-namespace WindowsFormsApp1.Controllers
+namespace Kshte.Controllers
 {
     public class ExportController
     {
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1.Controllers
         }
         private void RemovePrompt(IEnumerable<TransactionView> transactionViews)
         {
-            DialogResult dialogResult = MessageBox.Show("Remove exported transactions from the database?", "Remove prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("Obrisati eksportovane transakcije iz baze?", "Upit brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 bool success = TransactionManager.RemoveExportedTransactions(transactionViews);

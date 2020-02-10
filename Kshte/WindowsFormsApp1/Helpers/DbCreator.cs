@@ -1,9 +1,9 @@
 ﻿using System.Windows.Forms;
-using WindowsFormsApp1.DBTools;
-using WindowsFormsApp1.Properties;
+using Kshte.DBTools;
+using Kshte.Properties;
 using Dapper;
 
-namespace WindowsFormsApp1.Helpers
+namespace Kshte.Helpers
 {
     internal class DbCreator : FirstRunHandler
     {
@@ -18,10 +18,11 @@ namespace WindowsFormsApp1.Helpers
         {
             if (DBConnector.CheckForDatabase())
             {
-                if (!QueryUserForceCreation()) return;
-
-                DBConnector.StartAndOpenDB(true);
-                DBSeeder.InitializeDatabase(DBConnector.Connection);
+                if (!QueryUserForceCreation())
+                {
+                    DBConnector.StartAndOpenDB(true);
+                    DBSeeder.InitializeDatabase(DBConnector.Connection);
+                }
                 DbReady = true;
             }
             else
@@ -48,7 +49,7 @@ namespace WindowsFormsApp1.Helpers
 
         public bool QueryUserForceCreation()
         {
-            DialogResult result = MessageBox.Show("Postojeća baza je detektovana. Da li želite da se ona obriše i kreira nova baza?",
+            DialogResult result = MessageBox.Show("Postojeća baza je detektovana. Da li želite da se ona obriše i kreira nova baza? \nNAPOMENA: Stara baze je možda lošeg formata.",
                 "Prvo pokretanje aplikacije", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             return result == DialogResult.Yes ?  true : false;
@@ -56,7 +57,7 @@ namespace WindowsFormsApp1.Helpers
 
         public bool QueryUserCreation()
         {
-            DialogResult result = MessageBox.Show("Nije detektovana postojeća baza. Ova aplikacija se ne može pokrenti bez baze podataka. Da li želite da kreirate novu bazu?",
+            DialogResult result = MessageBox.Show("Nije detektovana postojeća baza podataka. Ova aplikacija se ne može pokrenuti bez baze podataka. Da li želite da kreirate novu bazu?",
                 "Kreiranje nove baze", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             return result == DialogResult.Yes ? true : false;

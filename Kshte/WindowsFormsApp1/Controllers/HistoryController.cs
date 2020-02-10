@@ -6,11 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using WindowsFormsApp1.Helpers;
-using WindowsFormsApp1.Managers;
-using WindowsFormsApp1.Models;
+using Kshte.Helpers;
+using Kshte.Managers;
+using Kshte.Models;
 
-namespace WindowsFormsApp1.Controllers
+namespace Kshte.Controllers
 {
     public class HistoryController
     {

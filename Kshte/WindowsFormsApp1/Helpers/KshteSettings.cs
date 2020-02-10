@@ -6,7 +6,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Windows.Forms.VisualStyles;
 
-namespace WindowsFormsApp1.Helpers
+namespace Kshte.Helpers
 {
     public class KshteSettings : ConfigurationSection
     {
@@ -34,6 +34,28 @@ namespace WindowsFormsApp1.Helpers
         public override bool IsReadOnly()
         {
             return false;
+        }
+
+        [ConfigurationProperty("LogFolderPath"
+            , DefaultValue = ""
+            , IsRequired = true)]
+        public string LogFolderPath
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace((string)this["LogFolderPath"]))
+                {
+                    this["LogFolderPath"] =
+                        Path.Combine(DocumentsFolderPath, "Logs");
+                    Configuration.Value.Save();
+                }
+                return (string)this["LogFolderPath"];
+            }
+            set
+            {
+                this["LogFolderPath"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         [ConfigurationProperty("TableMinID"

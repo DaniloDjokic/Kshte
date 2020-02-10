@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.DBTools;
+using Kshte.DBTools;
 
-namespace WindowsFormsApp1.Models
+namespace Kshte.Models
 {
     public class Category : IEquatable<Category>
     {

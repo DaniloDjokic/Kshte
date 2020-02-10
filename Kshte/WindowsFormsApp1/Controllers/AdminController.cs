@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Managers;
-using WindowsFormsApp1.Models;
+using Kshte.Managers;
+using Kshte.Models;
 
-namespace WindowsFormsApp1.Controllers
+namespace Kshte.Controllers
 {
     public class AdminController : CategoryController
     {

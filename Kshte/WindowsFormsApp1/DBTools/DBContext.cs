@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.Models;
+using Kshte.Models;
 using Dapper;
 
-namespace WindowsFormsApp1.DBTools
+namespace Kshte.DBTools
 {
     internal static class DBContext
     {

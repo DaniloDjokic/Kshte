@@ -1,9 +1,9 @@
 ﻿using System;
-using WindowsFormsApp1.DBTools;
-using WindowsFormsApp1.Properties;
+using Kshte.DBTools;
+using Kshte.Properties;
 using Dapper;
 
-namespace WindowsFormsApp1.Helpers
+namespace Kshte.Helpers
 {
     public abstract class FirstRunHandler
     {
