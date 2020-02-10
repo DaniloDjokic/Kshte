@@ -40,6 +40,10 @@ namespace WindowsFormsApp1.Helpers
                 DBSeeder.InitializeDatabase(DBConnector.Connection);
                 DbReady = true;
             }
+            else
+            {
+                DbReady = true;
+            }
         }
 
         public bool QueryUserForceCreation()

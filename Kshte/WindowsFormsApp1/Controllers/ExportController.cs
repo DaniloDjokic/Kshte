@@ -13,7 +13,9 @@ namespace WindowsFormsApp1.Controllers
 {
     public class ExportController
     {
-        public readonly string fileExtension = ".khsd";
+        public readonly string ExportCondition = "Samo kompletirane transakcije se mogu eksportovati.";
+
+        public readonly string FileExtension = ".khsd";
 
         private FolderBrowserDialog exportFolderBrowserDialog;
         private OpenFileDialog importOpenFileDialog;
@@ -23,14 +25,15 @@ namespace WindowsFormsApp1.Controllers
         public ExportController()
         {
             this.exportFolderBrowserDialog = new FolderBrowserDialog();
+            this.exportFolderBrowserDialog.Description = "Izaberite folder eksportovanja";
+            
             this.importOpenFileDialog = new OpenFileDialog();
-            importOpenFileDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
-            importOpenFileDialog.DefaultExt = fileExtension;
+            importOpenFileDialog.Multiselect = false;
+            importOpenFileDialog.DefaultExt = FileExtension;
         }
 
-        public bool HandleExport(IEnumerable<TransactionView> transactionViews)
+        public void HandleExport(IEnumerable<TransactionView> transactionViews)
         {
-            bool result = false;
             string fileName = string.Empty;
 
             if (transactionViews.Count() > 0)
@@ -41,29 +44,32 @@ namespace WindowsFormsApp1.Controllers
 
                     if (Directory.Exists(path))
                     {
-                        fileName = GenerateFileName(transactionViews);
-                        string fullPath = Path.Combine(path, fileName);
+                        if (transactionViews.All(tv => CanBeExported(tv)))
+                        {
+                            fileName = GenerateFileName(transactionViews);
+                            string fullPath = Path.Combine(path, fileName);
 
-                        ExportToFile(fullPath, transactionViews);
+                            ExportToFile(fullPath, transactionViews);
 
-                        RemovePrompt(transactionViews);
-
-                        result = true;
+                            RemovePrompt(transactionViews);
+                        }
+                        else
+                        {
+                            throw new ArgumentException($"Neke od izabranih transakcija ne mogu biti eksportovane. Uslov: {ExportCondition}");
+                        }
                     }
                     else
                     {
-                        throw new InvalidOperationException("Entered directory does not exist.");
+                        throw new ArgumentException("Izabrani direktorijum ne postoji.");
                     }
                 }
             }
             else
             {
-                throw new InvalidOperationException("No transactions selected.");
+                throw new InvalidOperationException("Nijedna transakcija nije izabrana.");
             }
 
             LastFileName = fileName;
-
-            return result;
         }
         public IEnumerable<TransactionView> HandleImport()
         {
@@ -76,13 +82,13 @@ namespace WindowsFormsApp1.Controllers
                 string filePath = importOpenFileDialog.FileName;
                 fileName = Path.GetFileName(filePath);
 
-                if (File.Exists(filePath) && Path.GetExtension(filePath) == fileExtension)
+                if (File.Exists(filePath) && Path.GetExtension(filePath) == FileExtension)
                 {
                     result = ImportFromFile(filePath);
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Import file doesn't exist or its extension is not correct. Correct extension: {fileExtension}");
+                    throw new InvalidOperationException($"Import file doesn't exist or its extension is not correct. Correct extension: {FileExtension}");
                 }
             }
 
@@ -136,9 +142,18 @@ namespace WindowsFormsApp1.Controllers
             stringBuilder.Append(DateTime.Parse(firstView.DateCreated).ToString("dd.MM.yyyy H-mm-ss"));
             stringBuilder.Append(" - ");
             stringBuilder.Append(DateTime.Parse(lastView.DateCreated).ToString("dd.MM.yyyy H-mm-ss"));
-            stringBuilder.Append(fileExtension);
+            stringBuilder.Append(FileExtension);
 
             return stringBuilder.ToString();
+        }
+        public static bool CanBeExported(TransactionView transactionView)
+        {
+            if (string.IsNullOrWhiteSpace(transactionView.DateCompleted))
+                return false;
+            if (!DateTime.TryParse(transactionView.DateCompleted, out DateTime _))
+                return false;
+
+            return true;
         }
     }
 }

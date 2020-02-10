@@ -345,14 +345,12 @@ namespace WindowsFormsApp1
             try
             {
                 var toExport = HistoryController.GetSelected();
-                if (ExportController.HandleExport(toExport))
-                {
-                    DisplayLatestAction($"Export successful. Written to file: {ExportController.LastFileName}");
-                }
+                ExportController.HandleExport(toExport);
+                DisplayLatestAction($"Export successful. Written to file: {ExportController.LastFileName}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("History tab export button error: " + Environment.NewLine + ex.GetFullMessage());
+                MessageBox.Show("History tab export error: " + Environment.NewLine + ex.GetFullMessage());
             }
         }
 
@@ -370,7 +368,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("History tab import button error: " + Environment.NewLine + ex.GetFullMessage());
+                MessageBox.Show("History tab import error: " + Environment.NewLine + ex.GetFullMessage());
             }
         }
 
@@ -383,7 +381,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("History tab select button error: " + Environment.NewLine + ex.GetFullMessage());
+                MessageBox.Show("History tab select error: " + Environment.NewLine + ex.GetFullMessage());
             }
         }
         #endregion

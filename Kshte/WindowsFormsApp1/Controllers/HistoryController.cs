@@ -38,9 +38,12 @@ namespace WindowsFormsApp1.Controllers
         {
             var allTransactions = TransactionManager.GetTransactionHistory();
 
-            var history = allTransactions.Select(t => new TransactionView(t.ID, t.DateCreated, t.DateCompleted, t.TableID, t.CurrentPrice, t.PaidPrice, t.TotalPrice, t.TransactionDetails));
-            
-            SetDataGridView(history);
+            if (allTransactions != null)
+            {
+                var history = allTransactions.Select(t => new TransactionView(t.ID, t.DateCreated, t.DateCompleted, t.TableID, t.CurrentPrice, t.PaidPrice, t.TotalPrice, t.TransactionDetails));
+
+                SetDataGridView(history);
+            }
         }
         public void SetDataGridView(IEnumerable<TransactionView> transactionViews)
         {
@@ -183,10 +186,13 @@ namespace WindowsFormsApp1.Controllers
             {
                 var transactionViews = this.transactionViews.OrderBy(tv => DateTime.Parse(tv.DateCreated));
 
-                TransactionView firstView = transactionViews.First();
-                TransactionView lastView = transactionViews.Last();
+                if (transactionViews.Count() >= 1)
+                {
+                    TransactionView firstView = transactionViews.First();
+                    TransactionView lastView = transactionViews.Last();
 
-                DateTimeSelector.RefreshBoundaries(DateTime.Parse(firstView.DateCreated), DateTime.Parse(lastView.DateCreated));
+                    DateTimeSelector.RefreshBoundaries(DateTime.Parse(firstView.DateCreated), DateTime.Parse(lastView.DateCreated));
+                }
             }           
         }
         private int SelectByChosenBounds()

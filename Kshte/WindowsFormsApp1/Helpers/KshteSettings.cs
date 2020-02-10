@@ -3,21 +3,32 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1.Helpers
 {
     public class KshteSettings : ConfigurationSection
     {
-        private static KshteSettings settings
-            = ConfigurationManager.GetSection("KshteSettings") as KshteSettings;
+
+        private static readonly Lazy<Configuration> Configuration = new Lazy<Configuration>(
+            () =>
+            {
+                string exePath = Process.GetCurrentProcess().MainModule.FileName;
+                //string exeName = Path.GetFileName(exePath);
+                // string configName = exeName + ".config";
+                return ConfigurationManager.OpenExeConfiguration(exePath);
+            });
+
+        private static readonly Lazy<KshteSettings> settings = new Lazy<KshteSettings>(
+            () =>
+            {
+                return Configuration.Value.GetSection("KshteSettings") as KshteSettings;
+            });
 
         public static KshteSettings Settings
         {
-            get
-            {
-                return settings;
-            }
+            get => settings.Value;
         }
 
         public override bool IsReadOnly()
@@ -33,7 +44,11 @@ namespace WindowsFormsApp1.Helpers
         public int TableMinID
         {
             get => (int)this["TableMinID"];
-            set => this["TableMinID"] = value;
+            set
+            {
+                this["TableMinID"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         [ConfigurationProperty("TableMaxID"
@@ -44,7 +59,11 @@ namespace WindowsFormsApp1.Helpers
         public int TableMaxID
         {
             get => (int)this["TableMaxID"];
-            set => this["TableMaxID"] = value;
+            set
+            {
+                this["TableMaxID"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         [ConfigurationProperty("DocumentsFolderPath"
@@ -59,6 +78,7 @@ namespace WindowsFormsApp1.Helpers
                     this["DocumentsFolderPath"] =
                         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
                             DocumentsFolderName);
+                    Configuration.Value.Save();
                 }
                 return (string)this["DocumentsFolderPath"];
             }
@@ -70,6 +90,7 @@ namespace WindowsFormsApp1.Helpers
                     if (fullPath.EndsWith($"{DocumentsFolderName}{Path.DirectorySeparatorChar}"))
                     {
                         this["DocumentsFolderPath"] = fullPath;
+                        Configuration.Value.Save();
                     }
                 }
                 catch (Exception e)
@@ -85,7 +106,11 @@ namespace WindowsFormsApp1.Helpers
         public string DocumentsFolderName
         {
             get => (string)this["DocumentsFolderName"];
-            set => this["DocumentsFolderName"] = value;
+            set
+            {
+                this["DocumentsFolderName"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         [ConfigurationProperty("DatabaseFolderName"
@@ -94,7 +119,11 @@ namespace WindowsFormsApp1.Helpers
         public string DatabaseFolderName
         {
             get => (string)this["DatabaseFolderName"];
-            set => this["DatabaseFolderName"] = value;
+            set
+            {
+                this["DatabaseFolderName"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         [ConfigurationProperty("DatabaseFileName"
@@ -103,7 +132,11 @@ namespace WindowsFormsApp1.Helpers
         public string DatabaseFileName
         {
             get => (string)this["DatabaseFileName"];
-            set => this["DatabaseFileName"] = value;
+            set
+            {
+                this["DatabaseFileName"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         [ConfigurationProperty("SQLiteConnectionString"
@@ -123,6 +156,7 @@ namespace WindowsFormsApp1.Helpers
                     throw new Exception(
                         "Invalid connection string: String needs to contain {0} as placeholder for database file path.");
                 this["SQLiteConnectionString"] = value;
+                Configuration.Value.Save();
             }
         }
 
@@ -130,13 +164,17 @@ namespace WindowsFormsApp1.Helpers
             Path.Combine(DocumentsFolderPath, DatabaseFolderName);
         public string DatabaseFilePath => Path.Combine(DatabaseFolderPath, DatabaseFileName);
 
-        [ConfigurationProperty("Categories"
+        [ConfigurationProperty("StartingCategories"
             , DefaultValue = "JUICE, BEER, WARM DRINKS, ALCOHOL, COMBINATIONS, FOOD"
             , IsRequired = true)]
         public string Categories
         {
-            get => (string)this["Categories"];
-            set => this["Categories"] = value;
+            get => (string)this["StartingCategories"];
+            set
+            {
+                this["StartingCategories"] = value;
+                Configuration.Value.Save();
+            }
         }
 
         public List<string> CategoryList => Categories.Split(',').Select(c => c.Trim(' ')).ToList();

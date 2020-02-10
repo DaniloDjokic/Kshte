@@ -28,12 +28,12 @@ namespace WindowsFormsApp1
             {
                 Application.Exit();
             }
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-
-            KshteSettings.Settings.CurrentConfiguration.Save();
+            else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
         }
     }
 }
