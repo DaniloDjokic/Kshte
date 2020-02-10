@@ -20,6 +20,7 @@ Global
 		{BDCD4A62-FB01-45D6-BA49-4E5CFA8FB6E1}.Debug|Any CPU.ActiveCfg = Debug
 		{BDCD4A62-FB01-45D6-BA49-4E5CFA8FB6E1}.Debug|Any CPU.Build.0 = Debug
 		{BDCD4A62-FB01-45D6-BA49-4E5CFA8FB6E1}.Release|Any CPU.ActiveCfg = Release
+		{BDCD4A62-FB01-45D6-BA49-4E5CFA8FB6E1}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

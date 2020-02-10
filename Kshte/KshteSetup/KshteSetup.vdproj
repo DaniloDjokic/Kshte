@@ -178,6 +178,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -570,12 +578,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Kšte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:KshteSetup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Đorđe Nikolić & Danilo Đokić"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -1111,7 +1119,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AB9F69E63E3040AC8F54160A3F13A6F1"
             {
-            "SourcePath" = "8:..\\WindowsFormsApp1\\obj\\Debug\\Kshte.exe"
+            "SourcePath" = "8:..\\WindowsFormsApp1\\obj\\Release\\Kshte.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_94E5F0E184A64AEE8E1868AA745928FC"
