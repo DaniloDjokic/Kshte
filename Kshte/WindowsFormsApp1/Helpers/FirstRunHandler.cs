@@ -30,9 +30,9 @@ namespace Kshte.Helpers
 
         protected abstract void ActionOnFirstRun();
 
-        protected virtual void ActionOnOtherRuns() { }
+        protected abstract void ActionOnOtherRuns();
 
-        protected virtual void ResetFirstRunFlag() { }
+        protected abstract void ResetFirstRunFlag();
 
         public void HandleRun()
         {

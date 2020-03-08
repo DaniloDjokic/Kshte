@@ -16,17 +16,21 @@ namespace Kshte.Helpers
 
         protected override void ActionOnFirstRun()
         {
-            if (DBConnector.CheckForDatabase())
+            if (!DBConnector.CheckForDatabase())
+            {
+                if (!QueryUserCreation()) return;
+
+                DBConnector.StartAndOpenDB(true);
+                DBSeeder.InitializeDatabase(DBConnector.Connection);
+                DbReady = true;
+            }
+            else
             {
                 if (!QueryUserForceCreation())
                 {
                     DBConnector.StartAndOpenDB(true);
                     DBSeeder.InitializeDatabase(DBConnector.Connection);
                 }
-                DbReady = true;
-            }
-            else
-            {
                 DbReady = true;
             }
         }
