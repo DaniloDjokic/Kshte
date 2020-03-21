@@ -23,7 +23,7 @@ namespace Kshte
             //This is not proper logging. Change later.
             try
             {
-                DbCreator firstRunTest = new DbCreator();
+                DbHandler firstRunTest = new DbHandler();
                 firstRunTest.HandleRun();
 
                 if (!firstRunTest.DbReady)

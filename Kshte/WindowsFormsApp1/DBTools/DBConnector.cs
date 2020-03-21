@@ -41,6 +41,12 @@ namespace Kshte.DBTools
             if (!CheckForDatabase() || forceCreateNew)
             {
                 Directory.CreateDirectory(DBDirectory);
+
+                if (File.Exists(DBPath))
+                {
+                    File.Delete(DBPath);
+                }
+
                 SQLiteConnection.CreateFile(DBPath);
             }
 

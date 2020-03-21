@@ -5,7 +5,7 @@ using Dapper;
 
 namespace Kshte.Helpers
 {
-    internal class DbCreator : FirstRunHandler
+    internal class DbHandler : FirstRunHandler
     {
         public bool DbReady { get; private set; } = false;
 
