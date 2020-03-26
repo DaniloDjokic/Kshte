@@ -98,7 +98,7 @@
             this.TabControl.Location = new System.Drawing.Point(12, 12);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(928, 432);
+            this.TabControl.Size = new System.Drawing.Size(928, 448);
             this.TabControl.TabIndex = 3;
             // 
             // TablesTabPage
@@ -111,7 +111,7 @@
             this.TablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.TablesTabPage.Name = "TablesTabPage";
             this.TablesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.TablesTabPage.Size = new System.Drawing.Size(920, 406);
+            this.TablesTabPage.Size = new System.Drawing.Size(920, 422);
             this.TablesTabPage.TabIndex = 0;
             this.TablesTabPage.Text = "Tables";
             // 
@@ -122,8 +122,9 @@
             this.ActiveTransactionsListBox.ItemHeight = 24;
             this.ActiveTransactionsListBox.Location = new System.Drawing.Point(716, 20);
             this.ActiveTransactionsListBox.Name = "ActiveTransactionsListBox";
-            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(192, 364);
+            this.ActiveTransactionsListBox.Size = new System.Drawing.Size(192, 388);
             this.ActiveTransactionsListBox.TabIndex = 3;
+            this.ActiveTransactionsListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ActiveTransactionsListBox_MouseClick);
             // 
             // MainRoomGroupBox
             // 
@@ -139,7 +140,7 @@
             this.MainRoomGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainRoomGroupBox.Location = new System.Drawing.Point(6, 6);
             this.MainRoomGroupBox.Name = "MainRoomGroupBox";
-            this.MainRoomGroupBox.Size = new System.Drawing.Size(344, 394);
+            this.MainRoomGroupBox.Size = new System.Drawing.Size(344, 402);
             this.MainRoomGroupBox.TabIndex = 0;
             this.MainRoomGroupBox.TabStop = false;
             this.MainRoomGroupBox.Text = "Main room";
@@ -251,7 +252,7 @@
             this.SideRoomGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SideRoomGroupBox.Location = new System.Drawing.Point(356, 192);
             this.SideRoomGroupBox.Name = "SideRoomGroupBox";
-            this.SideRoomGroupBox.Size = new System.Drawing.Size(353, 208);
+            this.SideRoomGroupBox.Size = new System.Drawing.Size(353, 216);
             this.SideRoomGroupBox.TabIndex = 1;
             this.SideRoomGroupBox.TabStop = false;
             this.SideRoomGroupBox.Text = "Side room";
@@ -655,7 +656,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(965, 456);
+            this.ClientSize = new System.Drawing.Size(949, 461);
             this.Controls.Add(this.TabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;

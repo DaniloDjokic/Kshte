@@ -58,6 +58,7 @@ namespace Kshte
                 if (control.Name.Contains("table"))
                     tableBtns.Add(control as Button);
             }
+            this.ActiveTransactionsListBox.SelectedItem = null;
         }
 
         public void RefreshTableView()
@@ -88,21 +89,39 @@ namespace Kshte
         {
             foreach(Button button in tableBtns)
             {
-                button.Click += new EventHandler(OpenTableForm);
+                button.Click += new EventHandler(HandleTableClick);
             }
         }
 
-        private void OpenTableForm(object sender, EventArgs args)
+        private void HandleTableClick(object sender, EventArgs args)
         {
-            Table table = TableManager.GetById(Int32.Parse((sender as Button).Text));
+            int tableID = Int32.Parse((sender as Button).Text);
+            OpenTableForm(tableID);
+        }
+
+        private void OpenTableForm(int tableID)
+        {
+            Table table = TableManager.GetById(tableID);
             Transaction transaction = table.CurrentTransaction;
             if (transaction == null)
             {
                 transaction = new Transaction(DateTime.Now);
-                TransactionManager.AddActiveTransaction(TableManager.GetById(Int32.Parse((sender as Button).Text)), transaction);
+                TransactionManager.AddActiveTransaction(TableManager.GetById(tableID), transaction);
             }
-            Form tableForm = new TableForm(transaction, this, Int32.Parse((sender as Button).Text));
+            Form tableForm = new TableForm(transaction, this, tableID);
             tableForm.ShowDialog();
+            ActiveTransactionsListBox.SelectedItem = null;
+        }
+
+
+        private void ActiveTransactionsListBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            int index = this.ActiveTransactionsListBox.IndexFromPoint(e.Location);
+            if(index >= 0)
+            {
+                Transaction t = TransactionManager.ActiveTransactions.ElementAt(index);
+                OpenTableForm(t.TableID);
+            }
         }
         #endregion
 
@@ -384,8 +403,8 @@ namespace Kshte
                 MessageBox.Show("History tab select error: " + Environment.NewLine + ex.GetFullMessage());
             }
         }
-        #endregion
 
+        #endregion
 
     }
 }

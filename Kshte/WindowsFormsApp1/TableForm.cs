@@ -262,6 +262,7 @@ namespace Kshte
 
         private void deleteOrderBtn_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Transaction deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             transactionController.RemoveTransaction();
             this.Close();
         }
