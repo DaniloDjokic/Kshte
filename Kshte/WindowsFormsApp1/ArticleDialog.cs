@@ -81,7 +81,10 @@ namespace WindowsFormsApp1
 
         private bool ValidateInput()
         {
-            if(nameTxtBox.Text == "" || priceTxtBox.Text == "" || Int32.Parse(priceTxtBox.Text) < 0)
+            if(nameTxtBox.Text == "" || 
+               priceTxtBox.Text == "" || 
+               !Int32.TryParse(priceTxtBox.Text, out int parsedPrice) ||
+               parsedPrice < 0)
             {
                 return false;
             }
