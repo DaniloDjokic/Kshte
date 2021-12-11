@@ -115,6 +115,8 @@
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.nameTxtBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "ArticleDialog";
             this.Text = "ArticleDialog";
             this.ResumeLayout(false);
