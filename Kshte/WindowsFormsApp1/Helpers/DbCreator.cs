@@ -16,10 +16,9 @@ namespace WindowsFormsApp1.Helpers
 
         protected override void ActionOnFirstRun()
         {
-            if (DBConnector.CheckForDatabase())
+            if (DBConnector.CheckForDatabase() &&
+                QueryUserForceCreation())
             {
-                if (!QueryUserForceCreation()) return;
-
                 DBConnector.StartAndOpenDB(true);
                 DBSeeder.InitializeDatabase(DBConnector.Connection);
                 DbReady = true;
@@ -48,7 +47,7 @@ namespace WindowsFormsApp1.Helpers
 
         public bool QueryUserForceCreation()
         {
-            DialogResult result = MessageBox.Show("Postojeća baza je detektovana. Da li želite da se ona obriše i kreira nova baza?",
+            DialogResult result = MessageBox.Show("Postojeća baza je detektovana. Ukoliko je postojeća baza nekompatibilna sa aplikacijom, može doći do grešaka. Da li želite da se postojeća baza obriše i kreira nova baza?",
                 "Prvo pokretanje aplikacije", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             return result == DialogResult.Yes ?  true : false;
